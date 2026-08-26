@@ -1,0 +1,34 @@
+{
+  "Essentials": {
+    "pt": "Essenciais",
+    "fr": "Essentiels"
+  },
+  "Outdoor": {
+    "pt": "Exterior",
+    "fr": "Extérieur"
+  },
+  "Kitchen": {
+    "pt": "Cozinha",
+    "fr": "Cuisine"
+  },
+  "Entertainment": {
+    "pt": "Entretenimento",
+    "fr": "Divertissement"
+  },
+  "Laundry": {
+    "pt": "Lavandaria",
+    "fr": "Buanderie"
+  },
+  "Safety": {
+    "pt": "Segurança",
+    "fr": "Sécurité"
+  },
+  "Accessibility": {
+    "pt": "Acessibilidade",
+    "fr": "Accessibilité"
+  },
+  "Work": {
+    "pt": "Trabalho",
+    "fr": "Travail"
+  }
+}

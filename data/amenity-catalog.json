@@ -1,0 +1,60 @@
+{
+    "Essentials": [
+        "Air conditioning",
+        "Fan",
+        "Fresh linens",
+        "Hairdryer",
+        "Heating",
+        "Wi-Fi"
+    ],
+    "Outdoor": [
+        "Balcony",
+        "Collective garden",
+        "Exterior space",
+        "Fireplace",
+        "Garden",
+        "Garden view",
+        "Ocean-facing terrace",
+        "Outdoor seating",
+        "Parking",
+        "Patio",
+        "Private balcony",
+        "Private courtyard",
+        "Private patio",
+        "Private terrace",
+        "Shared garden",
+        "Small terrace",
+        "Terrace"
+    ],
+    "Kitchen": [
+        "Coffee maker",
+        "Dishwasher",
+        "Kettle",
+        "Microwave",
+        "Oven",
+        "Refrigerator",
+        "Stove",
+        "Toaster",
+        "Washing machine"
+    ],
+    "Entertainment": [
+        "TV",
+        "Wi-Fi"
+    ],
+    "Laundry": [
+        "Drying machine",
+        "Iron",
+        "Ironing board",
+        "Washing machine"
+    ],
+    "Safety": [
+        "Fire extinguisher",
+        "First aid kit"
+    ],
+    "Work": [
+        "Dedicated workspace"
+    ],
+    "Accessibility": [
+        "Elevator"
+    ]
+}

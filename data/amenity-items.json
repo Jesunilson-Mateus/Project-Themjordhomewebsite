@@ -1,0 +1,162 @@
+{
+  "Wi-Fi": {
+    "pt": "Wi-Fi",
+    "fr": "Wi-Fi"
+  },
+  "Air conditioning": {
+    "pt": "Ar condicionado",
+    "fr": "Climatisation"
+  },
+  "Fan": {
+    "pt": "Ventoinha",
+    "fr": "Ventilateur"
+  },
+  "Heating": {
+    "pt": "Aquecimento",
+    "fr": "Chauffage"
+  },
+  "Fresh linens": {
+    "pt": "Roupa de cama lavada",
+    "fr": "Linge de maison"
+  },
+  "Hairdryer": {
+    "pt": "Secador de cabelo",
+    "fr": "Sèche-cheveux"
+  },
+  "Private terrace": {
+    "pt": "Terraço privado",
+    "fr": "Terrasse privée"
+  },
+  "Garden view": {
+    "pt": "Vista para o jardim",
+    "fr": "Vue sur le jardin"
+  },
+  "Outdoor seating": {
+    "pt": "Zona de estar exterior",
+    "fr": "Coin salon extérieur"
+  },
+  "Coffee maker": {
+    "pt": "Máquina de café",
+    "fr": "Machine à café"
+  },
+  "Refrigerator": {
+    "pt": "Frigorífico",
+    "fr": "Réfrigérateur"
+  },
+  "Oven": {
+    "pt": "Forno",
+    "fr": "Four"
+  },
+  "Stove": {
+    "pt": "Fogão",
+    "fr": "Plaques de cuisson"
+  },
+  "Dishwasher": {
+    "pt": "Máquina de lavar loiça",
+    "fr": "Lave-vaisselle"
+  },
+  "TV": {
+    "pt": "TV",
+    "fr": "TV"
+  },
+  "Washing machine": {
+    "pt": "Máquina de lavar roupa",
+    "fr": "Lave-linge"
+  },
+  "Ironing board": {
+    "pt": "Tábua de engomar",
+    "fr": "Table à repasser"
+  },
+  "Fire extinguisher": {
+    "pt": "Extintor",
+    "fr": "Extincteur"
+  },
+  "First aid kit": {
+    "pt": "Kit de primeiros socorros",
+    "fr": "Trousse de premiers secours"
+  },
+  "Private patio": {
+    "pt": "Pátio privado",
+    "fr": "Patio privé"
+  },
+  "Microwave": {
+    "pt": "Micro-ondas",
+    "fr": "Micro-ondes"
+  },
+  "Balcony": {
+    "pt": "Varanda",
+    "fr": "Balcon"
+  },
+  "Terrace": {
+    "pt": "Terraço",
+    "fr": "Terrasse"
+  },
+  "Collective garden": {
+    "pt": "Jardim comum",
+    "fr": "Jardin commun"
+  },
+  "Garden": {
+    "pt": "Jardim",
+    "fr": "Jardin"
+  },
+  "Kettle": {
+    "pt": "Chaleira",
+    "fr": "Bouilloire"
+  },
+  "Toaster": {
+    "pt": "Torradeira",
+    "fr": "Grille-pain"
+  },
+  "Private balcony": {
+    "pt": "Varanda privada",
+    "fr": "Balcon privé"
+  },
+  "Elevator": {
+    "pt": "Elevador",
+    "fr": "Ascenseur"
+  },
+  "Ocean-facing terrace": {
+    "pt": "Terraço virado para o oceano",
+    "fr": "Terrasse face à l'océan"
+  },
+  "Private courtyard": {
+    "pt": "Pátio privativo",
+    "fr": "Cour privée"
+  },
+  "Exterior space": {
+    "pt": "Espaço exterior",
+    "fr": "Espace extérieur"
+  },
+  "Fireplace": {
+    "pt": "Lareira",
+    "fr": "Cheminée"
+  },
+  "Drying machine": {
+    "pt": "Máquina de secar roupa",
+    "fr": "Sèche-linge"
+  },
+  "Iron": {
+    "pt": "Ferro de engomar",
+    "fr": "Fer à repasser"
+  },
+  "Parking": {
+    "pt": "Estacionamento",
+    "fr": "Parking"
+  },
+  "Dedicated workspace": {
+    "pt": "Espaço de trabalho dedicado",
+    "fr": "Espace de travail dédié"
+  },
+  "Small terrace": {
+    "pt": "Pequeno terraço",
+    "fr": "Petite terrasse"
+  },
+  "Patio": {
+    "pt": "Pátio",
+    "fr": "Patio"
+  },
+  "Shared garden": {
+    "pt": "Jardim partilhado",
+    "fr": "Jardin partagé"
+  }
+}

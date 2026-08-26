@@ -1,0 +1,12 @@
+# Credenciais e dados reais do painel de administração — nunca para o repositório
+admin/LEIA-ME.txt
+admin/users.json
+data/login-attempts.json
+data/backups/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+
+# Estado interno de ferramentas de desenvolvimento
+.claude/
