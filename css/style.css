@@ -374,9 +374,13 @@ a.service-card{text-decoration:none; color:inherit;}
 }
 #pageLoader.is-done{opacity:0; pointer-events:none;}
 #pageLoader svg{width:96px; height:auto; overflow:visible;}
+/* Same vertical gradient as the logo: dark azulejo blue at the top, green
+   at the bottom tips. Uses the theme tokens so it stays visible in dark mode. */
+#pageLoader .lg-a{ stop-color:var(--azulejo-deep); }
+#pageLoader .lg-b{ stop-color:var(--green-bright); }
 #pageLoader path{
-  fill:transparent;
-  stroke:var(--green-bright); stroke-width:1.5;
+  fill:url(#loaderGrad); fill-opacity:0;
+  stroke:url(#loaderGrad); stroke-width:1.5;
   stroke-linecap:round; stroke-linejoin:round;
   stroke-dasharray:100; stroke-dashoffset:100;
   animation:lpDraw 1.15s cubic-bezier(.65,0,.35,1) forwards, lpFill .6s ease forwards;
@@ -384,9 +388,9 @@ a.service-card{text-decoration:none; color:inherit;}
 #pageLoader .lp-1{ animation-delay:0s, 1s; }
 #pageLoader .lp-2{ animation-delay:.4s, 1.35s; }
 @keyframes lpDraw{ to{ stroke-dashoffset:0; } }
-@keyframes lpFill{ to{ fill:var(--green-bright); } }
+@keyframes lpFill{ to{ fill-opacity:1; } }
 @media (prefers-reduced-motion:reduce){
-  #pageLoader path{ animation:none; stroke-dashoffset:0; fill:var(--green-bright); }
+  #pageLoader path{ animation:none; stroke-dashoffset:0; fill-opacity:1; }
 }
 
 /* ---------- Collection ---------- */
