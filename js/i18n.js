@@ -78,6 +78,7 @@
     'services.3.desc': { pt: 'Equipa própria, protocolos de hotelaria entre cada estadia.', en: 'In-house team, hotel-grade protocols between every stay.', fr: 'Équipe interne, protocoles hôteliers entre chaque séjour.' },
     'services.4.title': { pt: 'Manutenção', en: 'Maintenance', fr: 'Entretien' },
     'services.4.desc': { pt: 'Rede de profissionais de confiança para qualquer imprevisto, a qualquer hora.', en: 'A trusted network of professionals for any issue, at any hour.', fr: 'Un réseau de professionnels de confiance pour tout imprévu, à toute heure.' },
+    'services.more': { pt: 'Saber mais →', en: 'Learn more →', fr: 'En savoir plus →' },
 
     'collection.heading': { pt: 'A coleção', en: 'The Collection', fr: 'La Collection' },
     'collection.viewAll': { pt: 'Ver todos os apartamentos →', en: 'View all apartments →', fr: 'Voir tous les appartements →' },

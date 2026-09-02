@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gestão de Alojamento — TheMajord'Home</title>
+<meta name="description" content="Do anúncio à faturação: a TheMajord'Home gere o seu alojamento local no Porto em todas as plataformas.">
+<script>(function(){try{var t=localStorage.getItem('tmh_theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header id="siteHeader" class="solid">
+  <a class="logo" href="index.html">
+<svg class="logo-mark" viewBox="0 0 63 81" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="logoGradientOwners" x1="0" y1="0" x2="0" y2="81" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#1B3E4C"/>
+          <stop offset="100%" stop-color="#4F8864"/>
+        </linearGradient>
+      </defs>
+      <path d="M48.67,8.17 C45.43,5.96 40.01,3.86 36.33,3.00 C32.65,2.14 29.76,2.47 26.58,3.00 C23.40,3.53 20.32,4.29 17.25,6.17 C14.18,8.04 10.38,11.35 8.17,14.25 C5.96,17.15 4.69,19.90 4.00,23.58 C3.31,27.26 2.46,30.97 4.00,36.33 C5.54,41.69 10.97,52.51 13.25,55.75 C15.53,58.99 16.72,56.44 17.67,55.75 C18.61,55.06 20.04,54.82 18.92,51.58 C17.79,48.35 12.25,41.00 10.92,36.33 C9.58,31.67 9.53,27.46 10.92,23.58 C12.31,19.71 16.64,15.36 19.25,13.08 C21.86,10.81 23.24,10.28 26.58,9.92 C29.93,9.56 35.62,9.53 39.33,10.92 C43.04,12.31 46.72,15.97 48.83,18.25 C50.94,20.53 51.81,20.57 52.00,24.58 C52.19,28.60 49.38,39.15 50.00,42.33 C50.62,45.51 54.26,44.83 55.75,43.67 C57.24,42.50 58.39,38.51 58.92,35.33 C59.44,32.15 59.44,27.76 58.92,24.58 C58.39,21.40 57.46,18.99 55.75,16.25 C54.04,13.51 51.90,10.38 48.67,8.17 Z" fill="url(#logoGradientOwners)"/>
+      <path d="M51.67,46.17 C50.78,45.44 48.50,45.82 47.58,46.00 C46.67,46.18 46.96,45.97 46.17,47.25 C45.38,48.53 45.25,50.24 42.83,53.67 C40.42,57.10 34.12,66.00 31.67,67.83 C29.21,69.67 29.42,66.28 28.08,64.67 C26.75,63.06 24.86,59.46 23.67,58.17 C22.47,56.88 21.83,56.90 20.92,56.92 C20.00,56.93 18.62,57.29 18.17,58.25 C17.71,59.21 16.32,59.58 18.17,62.67 C20.01,65.75 27.00,74.24 29.25,76.75 C31.50,79.26 30.25,78.60 31.67,77.75 C33.08,76.90 34.21,76.24 37.75,71.67 C41.29,67.10 50.60,54.58 52.92,50.33 C55.24,46.08 52.56,46.89 51.67,46.17 Z" fill="url(#logoGradientOwners)"/>
+      <g class="logo-mark-white">
+        <path d="M48.67,8.17 C45.43,5.96 40.01,3.86 36.33,3.00 C32.65,2.14 29.76,2.47 26.58,3.00 C23.40,3.53 20.32,4.29 17.25,6.17 C14.18,8.04 10.38,11.35 8.17,14.25 C5.96,17.15 4.69,19.90 4.00,23.58 C3.31,27.26 2.46,30.97 4.00,36.33 C5.54,41.69 10.97,52.51 13.25,55.75 C15.53,58.99 16.72,56.44 17.67,55.75 C18.61,55.06 20.04,54.82 18.92,51.58 C17.79,48.35 12.25,41.00 10.92,36.33 C9.58,31.67 9.53,27.46 10.92,23.58 C12.31,19.71 16.64,15.36 19.25,13.08 C21.86,10.81 23.24,10.28 26.58,9.92 C29.93,9.56 35.62,9.53 39.33,10.92 C43.04,12.31 46.72,15.97 48.83,18.25 C50.94,20.53 51.81,20.57 52.00,24.58 C52.19,28.60 49.38,39.15 50.00,42.33 C50.62,45.51 54.26,44.83 55.75,43.67 C57.24,42.50 58.39,38.51 58.92,35.33 C59.44,32.15 59.44,27.76 58.92,24.58 C58.39,21.40 57.46,18.99 55.75,16.25 C54.04,13.51 51.90,10.38 48.67,8.17 Z" fill="#fff"/>
+        <path d="M51.67,46.17 C50.78,45.44 48.50,45.82 47.58,46.00 C46.67,46.18 46.96,45.97 46.17,47.25 C45.38,48.53 45.25,50.24 42.83,53.67 C40.42,57.10 34.12,66.00 31.67,67.83 C29.21,69.67 29.42,66.28 28.08,64.67 C26.75,63.06 24.86,59.46 23.67,58.17 C22.47,56.88 21.83,56.90 20.92,56.92 C20.00,56.93 18.62,57.29 18.17,58.25 C17.71,59.21 16.32,59.58 18.17,62.67 C20.01,65.75 27.00,74.24 29.25,76.75 C31.50,79.26 30.25,78.60 31.67,77.75 C33.08,76.90 34.21,76.24 37.75,71.67 C41.29,67.10 50.60,54.58 52.92,50.33 C55.24,46.08 52.56,46.89 51.67,46.17 Z" fill="#fff"/>
+      </g>
+    </svg>
+    <span class="logo-text"><span class="logo-the">The</span><span class="logo-majord">Majord</span><span class="logo-quote">'</span><span class="logo-home">Home</span></span>
+  </a>
+  <nav class="services">
+    <a href="index.html#colecao" data-i18n="nav.stay">Alojamento</a>
+    <a href="index.html#servicos" data-i18n="nav.concierge">Concierge</a>
+    <a href="index.html#servicos" data-i18n="nav.cleaning">Limpeza &amp; Manutenção</a>
+    <a href="index.html#sobre" data-i18n="nav.about">Sobre</a>
+  </nav>
+
+<div class="prop-header-spacer"></div>
+
+<div class="wrap prop-breadcrumb">
+  <a href="index.html">TheMajord'Home</a> <span>/</span>
+  <a href="index.html#servicos">Serviços</a> <span>/</span>
+  <span>Gestão de Alojamento</span>
+</div>
+
+<!-- ===================== HERO ===================== -->
+<section class="service-hero">
+  <div class="wrap">
+    <div class="eyebrow">Serviços</div>
+    <h1>Gestão de Alojamento</h1>
+    <p class="lead">Do anúncio à faturação, tratamos do seu imóvel em todas as plataformas — Booking, Airbnb, Abritel — com um único calendário e um único ponto de contacto. O proprietário recebe rendimento; nós tratamos do resto.</p>
+  </div>
+</section>
+
+<!-- ===================== O QUE FAZEMOS ===================== -->
+<section class="services-strip">
+  <div class="wrap">
+    <div class="head">
+      <h2>O que fazemos</h2>
+      <p>O que está incluído neste serviço, do primeiro contacto ao dia a dia.</p>
+    </div>
+    <div class="service-points reveal">
+      <div class="service-card">
+        <span class="num">01</span>
+        <div>
+          <h3>Anúncio e fotografia</h3>
+          <p>Sessão fotográfica cuidada, texto do anúncio e publicação nas plataformas certas para o seu imóvel.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <span class="num">02</span>
+        <div>
+          <h3>Calendário e preços</h3>
+          <p>Gestão de disponibilidade e preços ajustados à procura e à época, com sincronização entre plataformas para não haver overbooking.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <span class="num">03</span>
+        <div>
+          <h3>Reservas e hóspedes</h3>
+          <p>Resposta a pedidos, verificação de hóspedes, contratos, cauções e toda a comunicação antes da chegada.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <span class="num">04</span>
+        <div>
+          <h3>Relatórios e faturação</h3>
+          <p>Mapa mensal de ocupação, rendimento e despesas, com a faturação tratada e enviada ao proprietário.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== GALERIA ===================== -->
+<section class="services-strip">
+  <div class="wrap">
+    <div class="head">
+      <h2>Em imagens</h2>
+      <p>Alojamentos geridos pela TheMajord'Home no Porto.</p>
+    </div>
+    <div class="service-gallery reveal">
+      <figure><img src="img/fabrica-no-jardim/06-garden-facade.jpg" alt="Cada imóvel visitado e fotografado pela equipa" loading="lazy"><figcaption>Cada imóvel visitado e fotografado pela equipa</figcaption></figure>
+      <figure><img src="img/boho-vintage-bonfim/01-living.jpg" alt="Anúncios com fotografia e texto próprios" loading="lazy"><figcaption>Anúncios com fotografia e texto próprios</figcaption></figure>
+      <figure><img src="img/joy-porto/01-living.jpg" alt="Presença simultânea em Booking, Airbnb e Abritel" loading="lazy"><figcaption>Presença simultânea em Booking, Airbnb e Abritel</figcaption></figure>
+      <figure><img src="img/gracy-porto/09-building-entrance.jpg" alt="Um único ponto de contacto para o proprietário" loading="lazy"><figcaption>Um único ponto de contacto para o proprietário</figcaption></figure>
+      <figure><img src="img/mercadory-ribeira/01-living.jpg" alt="Preços ajustados à procura e à época" loading="lazy"><figcaption>Preços ajustados à procura e à época</figcaption></figure>
+      <figure><img src="img/sky-de-loios-porto/06-living.jpg" alt="Relatório mensal de ocupação e rendimento" loading="lazy"><figcaption>Relatório mensal de ocupação e rendimento</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== OUTROS SERVIÇOS ===================== -->
+<section class="services-strip">
+  <div class="wrap">
+    <div class="head"><h2>Outros serviços</h2></div>
+    <div class="service-more reveal">
+      <a href="servico-concierge.html">Concierge →</a>
+      <a href="servico-limpeza.html">Limpeza &amp; Lavandaria →</a>
+      <a href="servico-manutencao.html">Manutenção →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CTA FINAL ===================== -->
+<section class="owner-cta">
+  <div class="wrap">
+    <div class="eyebrow">TheMajord'Home</div>
+    <h2>Falamos sobre o seu imóvel?</h2>
+    <p>Sem compromisso — só uma conversa sobre o que o seu alojamento no Porto precisa.</p>
+    <a class="cta-btn" href="mailto:resa@themajordhome.com">Falar connosco</a>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer id="contacto">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="logo">
+<svg class="logo-mark" viewBox="0 0 63 81" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="logoGradientOwnersFooter" x1="0" y1="0" x2="0" y2="81" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#1B3E4C"/>
+          <stop offset="100%" stop-color="#4F8864"/>
+        </linearGradient>
+      </defs>
+      <path d="M48.67,8.17 C45.43,5.96 40.01,3.86 36.33,3.00 C32.65,2.14 29.76,2.47 26.58,3.00 C23.40,3.53 20.32,4.29 17.25,6.17 C14.18,8.04 10.38,11.35 8.17,14.25 C5.96,17.15 4.69,19.90 4.00,23.58 C3.31,27.26 2.46,30.97 4.00,36.33 C5.54,41.69 10.97,52.51 13.25,55.75 C15.53,58.99 16.72,56.44 17.67,55.75 C18.61,55.06 20.04,54.82 18.92,51.58 C17.79,48.35 12.25,41.00 10.92,36.33 C9.58,31.67 9.53,27.46 10.92,23.58 C12.31,19.71 16.64,15.36 19.25,13.08 C21.86,10.81 23.24,10.28 26.58,9.92 C29.93,9.56 35.62,9.53 39.33,10.92 C43.04,12.31 46.72,15.97 48.83,18.25 C50.94,20.53 51.81,20.57 52.00,24.58 C52.19,28.60 49.38,39.15 50.00,42.33 C50.62,45.51 54.26,44.83 55.75,43.67 C57.24,42.50 58.39,38.51 58.92,35.33 C59.44,32.15 59.44,27.76 58.92,24.58 C58.39,21.40 57.46,18.99 55.75,16.25 C54.04,13.51 51.90,10.38 48.67,8.17 Z" fill="url(#logoGradientOwnersFooter)"/>
+      <path d="M51.67,46.17 C50.78,45.44 48.50,45.82 47.58,46.00 C46.67,46.18 46.96,45.97 46.17,47.25 C45.38,48.53 45.25,50.24 42.83,53.67 C40.42,57.10 34.12,66.00 31.67,67.83 C29.21,69.67 29.42,66.28 28.08,64.67 C26.75,63.06 24.86,59.46 23.67,58.17 C22.47,56.88 21.83,56.90 20.92,56.92 C20.00,56.93 18.62,57.29 18.17,58.25 C17.71,59.21 16.32,59.58 18.17,62.67 C20.01,65.75 27.00,74.24 29.25,76.75 C31.50,79.26 30.25,78.60 31.67,77.75 C33.08,76.90 34.21,76.24 37.75,71.67 C41.29,67.10 50.60,54.58 52.92,50.33 C55.24,46.08 52.56,46.89 51.67,46.17 Z" fill="url(#logoGradientOwnersFooter)"/>
+    </svg>
+          <span class="logo-text"><span class="logo-the">The</span><span class="logo-majord">Majord</span><span class="logo-quote">'</span><span class="logo-home">Home</span></span>
+        </div>
+        <p class="tag" data-i18n="footer.tag">Gestão de alojamento local e concierge no Porto — para hóspedes que procuram carácter, e proprietários que procuram tranquilidade.</p>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/tmh.conciergerie" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="https://www.facebook.com/TMH.Conciergerie" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15.5 8.5h-2a1.5 1.5 0 0 0-1.5 1.5v2h3.3l-.5 3H12v7h-3v-7H7v-3h2v-2.2C9 6.9 10.6 5 13.4 5h2.1v3.5Z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/company/the-majord-home-grupo/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="2.5" width="19" height="19" rx="4"/><line x1="7" y1="10" x2="7" y2="17"/><circle cx="7" cy="6.6" r="0.9" fill="currentColor" stroke="none"/><path d="M11 17v-4.2c0-1.5 1-2.3 2.3-2.3S16 11.3 16 12.8V17"/><line x1="11" y1="10" x2="11" y2="17"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5 data-i18n="footer.explore">Explorar</h5>
+        <a href="index.html#colecao" data-i18n="collection.heading">A coleção</a>
+        <a href="index.html#servicos" data-i18n="footer.services">Serviços</a>
+        <a href="index.html#sobre" data-i18n="footer.aboutUs">Sobre nós</a>
+      </div>
+      <div class="footer-col">
+        <h5 data-i18n="footer.owners">Proprietários</h5>
+        <a href="proprietarios.html" data-i18n="footer.becomePartner">Torne-se parceiro</a>
+        <a href="admin/login.php" data-i18n="footer.membersArea">Área reservada</a>
+        <span class="footer-text" data-i18n="footer.faq" title="Brevemente">Perguntas frequentes</span>
+      </div>
+      <div class="footer-col">
+        <h5 data-i18n="footer.contact">Contacto</h5>
+        <a href="mailto:resa@themajordhome.com">resa@themajordhome.com</a>
+        <a href="tel:+351910239900">+351 910 239 900</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Rua+das+Oliveirinhas%2C+N%C2%B018%2C+4000-177+Porto%2C+Portugal" target="_blank" rel="noopener noreferrer">Rua das Oliveirinhas, N°18</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Rua+das+Oliveirinhas%2C+N%C2%B018%2C+4000-177+Porto%2C+Portugal" target="_blank" rel="noopener noreferrer">4000-177 Porto, Portugal</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span data-i18n="footer.copyright">© 2026 TheMajord'Home. Todos os direitos reservados.</span>
+      <span class="mono">PORTO — PT</span>
+    </div>
+  </div>
+</footer>
+<script src="js/theme.js"></script>
+<script src="js/properties-data.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/cookie-consent.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>

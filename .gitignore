@@ -10,3 +10,6 @@ Thumbs.db
 
 # Estado interno de ferramentas de desenvolvimento
 .claude/
+
+# pasta de deploy (gerada, não versionar)
+dist/

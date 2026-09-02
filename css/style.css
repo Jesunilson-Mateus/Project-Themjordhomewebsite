@@ -229,6 +229,24 @@ header:not(.scrolled):not(.solid) .owner-btn:hover{background:#fff; color:#1E202
   width:26px; height:2px; background:rgba(255,255,255,.35); border:none; cursor:pointer; padding:0; transition:.25s;
 }
 .hero-dots button.active{background:#fff; width:40px;}
+.hero-counter{
+  color:#fff; font-family:'IBM Plex Mono',monospace; font-size:12px;
+  letter-spacing:.12em; opacity:.85; font-variant-numeric:tabular-nums;
+}
+
+/* Mobile: the generic `.wrap` padding overrides .slide-content's bottom
+   padding, so the slide meta + CTA end up under the floating booking bar.
+   Restore room for them (higher specificity than `.wrap`) and let the
+   quartos / hóspedes / m² row wrap instead of being clipped. */
+@media (max-width:940px){
+  .hero .slide-content{padding:0 22px 112px;}
+  .slide-meta{flex-wrap:wrap; gap:10px 18px;}
+}
+@media (max-width:600px){
+  .slide-title{font-size:clamp(30px,8vw,42px); line-height:1.03;}
+  .slide-meta{margin-top:14px; font-size:13px;}
+  .slide-eyebrow{margin-bottom:10px;}
+}
 
 /* ---------- Floating booking bar (signature) ---------- */
 .booking-bar{
@@ -297,6 +315,40 @@ header:not(.scrolled):not(.solid) .owner-btn:hover{background:#fff; color:#1E202
 
 .owner-page-intro{max-width:640px; margin:0 auto; text-align:center; font-size:16px; line-height:1.7; opacity:.78; padding:0 0 20px;}
 .owner-learn-more{display:inline-block; margin-top:18px; font-size:13px; font-family:'IBM Plex Mono',monospace; letter-spacing:.02em;}
+
+/* Homepage service cards became links to the detail pages */
+a.service-card{text-decoration:none; color:inherit;}
+.service-card .card-cta{
+  margin-top:18px; font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--green); display:inline-flex; align-items:center; gap:6px;
+}
+
+/* ---------- Service detail pages (servico-*.html) ---------- */
+.service-hero{padding:44px 0 8px; text-align:center;}
+.service-hero .eyebrow{font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--green); margin-bottom:20px;}
+.service-hero h1{font-family:'Lora',serif; font-weight:400; font-size:clamp(34px,5vw,60px); line-height:1.06; max-width:820px; margin:0 auto 22px;}
+.service-hero .lead{max-width:640px; margin:0 auto; font-size:16.5px; line-height:1.7; opacity:.78;}
+.service-points{display:grid; grid-template-columns:repeat(2,1fr); gap:16px;}
+.service-points .service-card{cursor:default;}
+.service-points .service-card:hover{transform:none; box-shadow:none; background:var(--paper-2);}
+@media (max-width:720px){ .service-points{grid-template-columns:1fr;} }
+.service-gallery{display:grid; grid-template-columns:repeat(3,1fr); gap:14px;}
+.service-gallery figure{margin:0; border-radius:var(--radius-md); overflow:hidden; position:relative; background:var(--paper-2);}
+.service-gallery img{width:100%; aspect-ratio:4/3; object-fit:cover; display:block; transition:transform .5s ease;}
+.service-gallery figure:hover img{transform:scale(1.04);}
+.service-gallery figcaption{
+  position:absolute; left:0; right:0; bottom:0; padding:26px 16px 12px;
+  background:linear-gradient(180deg, transparent, rgba(15,20,23,.72));
+  color:#fff; font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:.03em;
+}
+@media (max-width:820px){ .service-gallery{grid-template-columns:repeat(2,1fr);} }
+@media (max-width:520px){ .service-gallery{grid-template-columns:1fr;} }
+.service-more{display:flex; gap:14px; flex-wrap:wrap;}
+.service-more a{
+  flex:1 1 200px; padding:20px 22px; border:1px solid var(--line-strong); border-radius:var(--radius-md);
+  font-family:'Lora',serif; font-size:18px; color:var(--ink); transition:background .25s ease, transform .25s ease;
+}
+.service-more a:hover{background:var(--paper-2); transform:translateY(-3px);}
 
 /* ---------- Collection ---------- */
 .collection{padding:90px 0 100px;}

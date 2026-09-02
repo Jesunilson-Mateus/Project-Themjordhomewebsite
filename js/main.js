@@ -13,6 +13,48 @@ function escapeHtml(value) {
     .replace(/'/g, '&#39;');
 }
 
+/* Builds one hero slide per apartment in properties-data.js and injects them
+   before the dots. Units and the CTA use data-i18n so they follow the language
+   switcher; name / district come straight from the data (identical in every
+   language). Background images load in a small window around the current slide
+   (see loadSlideImg below) so the homepage doesn't fetch 60 photos at once. */
+function renderHeroSlides() {
+  const anchor = document.getElementById('heroDots');
+  if (!anchor || typeof getAllProperties !== 'function') return;
+
+  const html = getAllProperties().map((p, i) => {
+    const words = String(p.name).trim().split(/\s+/);
+    const last = escapeHtml(words.pop());
+    const lead = words.length ? escapeHtml(words.join(' ')) + ' ' : '';
+    const bedCell = p.bedrooms === 0
+      ? '<span data-i18n="unit.studio">Estúdio</span>'
+      : `<span><b>${p.bedrooms}</b>&nbsp;<span data-i18n="unit.bedroom.${p.bedrooms === 1 ? 'singular' : 'plural'}">${p.bedrooms === 1 ? 'quarto' : 'quartos'}</span></span>`;
+    const tail = p.size_m2 ? `${p.size_m2} m²` : escapeHtml(p.district);
+    const imgAttr = i === 0
+      ? `src="${escapeHtml(p.heroImage)}"`
+      : `data-src="${escapeHtml(p.heroImage)}" loading="lazy"`;
+    return `
+      <div class="slide${i === 0 ? ' active' : ''}" data-index="${i}">
+        <div class="slide-bg"><img ${imgAttr} alt="${escapeHtml(p.name)}"></div>
+        <div class="slide-content wrap">
+          <div class="slide-eyebrow"><span class="dash"></span> ${escapeHtml(p.district)}, ${escapeHtml(p.city)}</div>
+          <h1 class="slide-title">${lead}<em>${last}</em></h1>
+          <div class="slide-meta">
+            ${bedCell}
+            <span><b>${p.guests}</b>&nbsp;<span data-i18n="unit.guest.${p.guests === 1 ? 'singular' : 'plural'}">${p.guests === 1 ? 'hóspede' : 'hóspedes'}</span></span>
+            <span>${tail}</span>
+          </div>
+          <a class="slide-link" href="property.html?p=${encodeURIComponent(p.slug)}#propDetails" data-i18n="hero.cta">Ver apartamento →</a>
+        </div>
+      </div>`;
+  }).join('');
+
+  anchor.insertAdjacentHTML('beforebegin', html);
+  if (window.I18N && I18N.applyStaticTranslations) {
+    I18N.applyStaticTranslations(document.getElementById('hero'));
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
 
   /* ---- Header background on scroll ---- */
@@ -24,31 +66,64 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ---- Hero slideshow ---- */
+  renderHeroSlides();
   const slides = Array.from(document.querySelectorAll('.slide'));
   const dotsWrap = document.getElementById('heroDots');
   let current = 0;
   let timer;
 
+  /* Load a slide's background image on demand (see renderHeroSlides: only the
+     first slide ships with a real src, the rest carry data-src). */
+  function loadSlideImg(index) {
+    const slide = slides[(index % slides.length + slides.length) % slides.length];
+    if (!slide) return;
+    const img = slide.querySelector('.slide-bg img');
+    if (img && !img.getAttribute('src') && img.dataset.src) {
+      img.src = img.dataset.src;
+    }
+  }
+
   if (slides.length && dotsWrap) {
-    slides.forEach((_, i) => {
-      const dot = document.createElement('button');
-      dot.type = 'button';
-      dot.setAttribute('aria-label', `${window.I18N ? window.I18N.t('aria.goToSlide') : 'Ir para o slide'} ${i + 1}`);
-      if (i === 0) dot.classList.add('active');
-      dot.addEventListener('click', () => goTo(i));
-      dotsWrap.appendChild(dot);
-    });
-    const dots = Array.from(dotsWrap.children);
+    // Poucos apartamentos → uma bolinha por slide. Muitos → as bolinhas não
+    // caberiam na barra, por isso mostra-se um contador "n / total".
+    const useCounter = slides.length > 14;
+    let counter = null;
+    if (useCounter) {
+      dotsWrap.classList.add('hero-dots--counter');
+      counter = document.createElement('span');
+      counter.className = 'hero-counter';
+      counter.textContent = '1 / ' + slides.length;
+      dotsWrap.appendChild(counter);
+    } else {
+      slides.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.setAttribute('aria-label', `${window.I18N ? window.I18N.t('aria.goToSlide') : 'Ir para o slide'} ${i + 1}`);
+        if (i === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => goTo(i));
+        dotsWrap.appendChild(dot);
+      });
+    }
+    const dots = Array.from(dotsWrap.querySelectorAll('button'));
 
     let paused = false;
     const pauseBtn = document.getElementById('heroPause');
 
+    // Pré-carrega a primeira imagem e as vizinhas imediatas.
+    loadSlideImg(0);
+    loadSlideImg(1);
+    loadSlideImg(-1);
+
     function goTo(index) {
       slides[current].classList.remove('active');
-      dots[current].classList.remove('active');
+      if (dots[current]) dots[current].classList.remove('active');
       current = (index + slides.length) % slides.length;
       slides[current].classList.add('active');
-      dots[current].classList.add('active');
+      if (dots[current]) dots[current].classList.add('active');
+      if (counter) counter.textContent = (current + 1) + ' / ' + slides.length;
+      loadSlideImg(current);
+      loadSlideImg(current + 1);
+      loadSlideImg(current - 1);
       resetTimer();
     }
 
