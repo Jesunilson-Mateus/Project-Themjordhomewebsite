@@ -85,6 +85,7 @@
     'collection.badgeFeatured': { pt: 'Destaque', en: 'Featured', fr: 'Coup de cœur' },
     'collection.fullHeading': { pt: 'A coleção completa', en: 'The full collection', fr: 'La collection complète' },
     'collection.countSuffix': { pt: 'moradas no Porto', en: 'addresses in Porto', fr: 'adresses à Porto' },
+    'collection.page': { pt: 'Página', en: 'Page', fr: 'Page' },
     'common.from': { pt: 'desde', en: 'from', fr: 'dès' },
 
     'trust.eyebrow': { pt: "Porquê a TheMajord'Home", en: "Why TheMajord'Home", fr: "Pourquoi TheMajord'Home" },

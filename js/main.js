@@ -271,8 +271,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (directoryGroups) {
-      // Full collection page: every property, grouped by district, in original order
-      const directory = getAllProperties().map(p => I18N.getLocalizedProperty(p.slug, p));
+      // Full collection page: split into 3 pages you can flip through
+      // (?page=1..3). Each page keeps the district grouping for its slice.
+      const PAGES = 3;
+      const all = getAllProperties().map(p => I18N.getLocalizedProperty(p.slug, p));
+      const per = Math.ceil(all.length / PAGES);
+      let page = parseInt(new URLSearchParams(window.location.search).get('page'), 10);
+      if (!(page >= 1 && page <= PAGES)) page = 1;
+      const directory = all.slice((page - 1) * per, (page - 1) * per + per);
 
       const groups = {};
       const order = [];
@@ -306,7 +312,33 @@ document.addEventListener('DOMContentLoaded', () => {
       `).join('');
 
       const countEl = document.getElementById('directoryCount');
-      if (countEl) countEl.textContent = directory.length + ' ' + I18N.t('collection.countSuffix');
+      if (countEl) {
+        countEl.textContent = all.length + ' ' + I18N.t('collection.countSuffix')
+          + ' · ' + I18N.t('collection.page') + ' ' + page + '/' + PAGES;
+      }
+
+      /* Pager (‹ 1 2 3 ›). Real hrefs so it works without JS / links are
+         shareable; JS upgrades it to an in-page switch, no full reload. */
+      const pager = document.getElementById('directoryPager');
+      if (pager) {
+        const cell = (n, label) => {
+          if (n < 1 || n > PAGES) return `<span class="is-disabled">${label}</span>`;
+          if (n === page) return `<span class="is-current" aria-current="page">${label}</span>`;
+          return `<a href="apartments.html?page=${n}" data-page="${n}">${label}</a>`;
+        };
+        let out = cell(page - 1, '‹');
+        for (let n = 1; n <= PAGES; n++) out += cell(n, n);
+        out += cell(page + 1, '›');
+        pager.innerHTML = out;
+        pager.querySelectorAll('a[data-page]').forEach(a => {
+          a.addEventListener('click', (e) => {
+            e.preventDefault();
+            history.pushState(null, '', 'apartments.html?page=' + a.dataset.page);
+            renderCollection({ animate: false });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          });
+        });
+      }
     }
 
     const dynamicReveal = document.querySelectorAll('#featuredGrid .reveal, #directoryGroups .reveal');
@@ -318,6 +350,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   renderCollection({ animate: true });
+
+  /* Back / forward between collection pages */
+  window.addEventListener('popstate', () => {
+    if (document.getElementById('directoryGroups')) renderCollection({ animate: false });
+  });
 
   /* ---- Testimonials (avaliações aprovadas no painel, de todos os apartamentos) ---- */
   function renderTestimonials() {

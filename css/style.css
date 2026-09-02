@@ -461,6 +461,19 @@ a.service-card{text-decoration:none; color:inherit;}
   .dir-desc{order:3;}
 }
 
+/* Collection pager (‹ 1 2 3 ›) */
+.pager{display:flex; justify-content:center; align-items:center; gap:8px; margin-top:52px;}
+.pager a, .pager span{
+  min-width:42px; height:42px; padding:0 6px;
+  display:inline-flex; align-items:center; justify-content:center;
+  border:1px solid var(--line-strong); border-radius:var(--radius-md);
+  font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--ink);
+  transition:background .2s ease, border-color .2s ease, color .2s ease;
+}
+.pager a:hover{background:var(--paper-2); border-color:var(--ink);}
+.pager .is-current{background:var(--azulejo-deep); color:#fff; border-color:var(--azulejo-deep);}
+.pager .is-disabled{opacity:.32; pointer-events:none;}
+
 /* ---------- Trust / why section ---------- */
 .trust{background:var(--ink); color:var(--paper); padding:100px 0;}
 .trust .head{max-width:560px; margin-bottom:64px;}
