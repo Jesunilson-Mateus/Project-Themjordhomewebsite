@@ -3577,77 +3577,6 @@
             "img/charming-garden-porto/10-bathroom2.jpg"
         ]
     },
-    "so-gracy-porto": {
-        "name": "Touchy Studio Porto",
-        "subtitle": "A vintage-styled garden-level studio with a striking teal kitchen, in the heart of Baixa",
-        "district": "Baixa",
-        "city": "Porto",
-        "country": "Portugal",
-        "guests": 2,
-        "bedrooms": 0,
-        "beds": 1,
-        "bathrooms": 1,
-        "size_m2": null,
-        "rating": null,
-        "reviews": null,
-        "price": null,
-        "featured": false,
-        "heroImage": "img/so-gracy-porto/01-living-bed.jpg",
-        "images": [
-            "img/so-gracy-porto/01-living-bed.jpg",
-            "img/so-gracy-porto/02-living-room.jpg",
-            "img/so-gracy-porto/03-kitchen-living.jpg",
-            "img/so-gracy-porto/04-kitchen-detail.jpg",
-            "img/so-gracy-porto/05-sofa.jpg",
-            "img/so-gracy-porto/06-bed-detail.jpg",
-            "img/so-gracy-porto/07-dining-corner.jpg"
-        ],
-        "description": "Touchy Studio Porto is a stylish, open-plan studio on the garden level of a Baixa townhouse, mixing mid-century and vintage furniture — a green leather sofa, brass-trimmed cabinetry, layered rugs — around a striking teal-and-marble kitchen. Terrazzo floors and tall barred windows give it a quiet, light-filled character, with a comfortable bed making it a stylish base for two in central Porto.",
-        "neighborhood": "Rua de Álvares Cabral 372, Porto. Baixa is Porto's historic centre — cobbled streets, azulejo facades, and the widest concentration of cafés, shops, and miradouros in the city, with Rua do Almada and the Aliados just a few minutes away.",
-        "nearby": [
-            {
-                "label": "Avenida dos Aliados",
-                "distance": "7 min walk"
-            },
-            {
-                "label": "São Bento train station",
-                "distance": "9 min walk"
-            },
-            {
-                "label": "Ribeira riverfront",
-                "distance": "13 min walk"
-            },
-            {
-                "label": "Mercado do Bolhão",
-                "distance": "9 min walk"
-            }
-        ],
-        "amenities": {
-            "Essentials": [
-                "Wi-Fi",
-                "Air conditioning",
-                "Heating"
-            ],
-            "Kitchen": [
-                "Refrigerator",
-                "Oven",
-                "Stovetop",
-                "Microwave",
-                "Coffee maker",
-                "Toaster",
-                "Kettle",
-                "Cookware"
-            ],
-            "Entertainment": [
-                "TV"
-            ],
-            "Safety": [
-                "Fire extinguisher"
-            ]
-        },
-        "checkIn": "16:00–23:00",
-        "checkOut": "11:00"
-    },
     "charmy-studio-porto": {
         "name": "Charmy Studio",
         "subtitle": "A duplex studio with a spiral staircase and balcony views over Baixa — 3rd floor, no lift",
@@ -3876,7 +3805,7 @@
             "img/gracy-porto/08-staircase.jpg",
             "img/gracy-porto/09-building-entrance.jpg"
         ],
-        "description": "Gracy Porto is a bright, spacious studio in the same Baixa townhouse as Touchy Studio Porto and Charmy Studio, a short walk from Rua do Almada and the Aliados. A pink marble kitchenette with brass fittings opens onto a warm living and dining area furnished with vintage pieces, glass doors leading out to a small garden terrace scattered with wildflowers. The queen bed sits behind an open shelving divider, and the building itself has a striking wrought-iron spiral staircase. A comfortable, well-equipped base for two in central Porto.",
+        "description": "Gracy Porto is a bright, spacious studio in the same Baixa townhouse as Charmy Studio, a short walk from Rua do Almada and the Aliados. A pink marble kitchenette with brass fittings opens onto a warm living and dining area furnished with vintage pieces, glass doors leading out to a small garden terrace scattered with wildflowers. The queen bed sits behind an open shelving divider, and the building itself has a striking wrought-iron spiral staircase. A comfortable, well-equipped base for two in central Porto.",
         "neighborhood": "Rua de Álvares Cabral 372, Porto. Baixa is Porto's historic centre — cobbled streets, azulejo facades, and the widest concentration of cafés, shops, and miradouros in the city, with Rua do Almada and the Aliados just a few minutes away.",
         "nearby": [
             {

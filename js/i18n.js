@@ -924,18 +924,6 @@
             "neighborhood": "Rua da Torrinha 136, 4050-609 Porto. Miguel Bombarda est le quartier des galeries de Porto, un coin verdoyant et créatif près du musée Soares dos Reis et du jardin du Carregal, avec Baixa et le métro Trindade à quelques minutes à pied."
         }
     },
-    "so-gracy-porto": {
-        "pt": {
-            "subtitle": "Um estúdio de estilo vintage com uma cozinha verde-azulada marcante, no coração da Baixa",
-            "description": "O Touchy Studio Porto é um estúdio de conceito aberto no piso térreo de um prédio da Baixa, que mistura mobiliário vintage e de meados do século — um sofá em pele verde, armários com detalhes em latão, tapetes sobrepostos — em torno de uma cozinha marcante em verde-azulado e mármore. O chão em terrazzo e as janelas altas com gradeamento dão-lhe um carácter tranquilo e luminoso, com uma cama confortável que o torna uma base estilosa para duas pessoas no centro do Porto.",
-            "neighborhood": "Rua de Álvares Cabral 372, Porto. A Baixa é o centro histórico do Porto — ruas de calçada, fachadas de azulejo, e a maior concentração de cafés, lojas e miradouros da cidade, com a Rua do Almada e os Aliados a poucos minutos."
-        },
-        "fr": {
-            "subtitle": "Un studio au style vintage avec une cuisine sarcelle marquante, au cœur de la Baixa",
-            "description": "Touchy Studio Porto est un studio à aire ouverte au rez-de-jardin d'une maison de la Baixa, mêlant mobilier vintage et du milieu du siècle — un canapé en cuir vert, des meubles aux détails laiton, des tapis superposés — autour d'une cuisine marquante en sarcelle et marbre. Le sol en terrazzo et les hautes fenêtres à barreaux lui donnent un caractère calme et lumineux, avec un lit confortable qui en fait une base élégante pour deux personnes au centre de Porto.",
-            "neighborhood": "Rua de Álvares Cabral 372, Porto. La Baixa est le centre historique de Porto — rues pavées, façades d'azulejos, et la plus grande concentration de cafés, boutiques et miradouros de la ville, avec la Rua do Almada et les Aliados à quelques minutes."
-        }
-    },
     "charmy-studio-porto": {
         "pt": {
             "subtitle": "Um estúdio duplex com escada em caracol e vista de varanda sobre a Baixa — 3º andar, sem elevador",
@@ -987,12 +975,12 @@
     "gracy-porto": {
         "pt": {
             "subtitle": "Um estúdio luminoso com terraço e jardim, no coração da Baixa",
-            "description": "O Gracy Porto é um estúdio luminoso e espaçoso no mesmo prédio da Baixa que o Touchy Studio Porto e o Charmy Studio, a poucos passos da Rua do Almada e dos Aliados. Uma kitchenette em mármore rosa com acabamentos em latão abre para uma sala de estar e jantar acolhedora, mobilada com peças vintage, com portas de vidro que dão para um pequeno terraço-jardim salpicado de flores silvestres. A cama queen-size fica atrás de uma estante aberta que divide o espaço, e o próprio prédio tem uma marcante escada em caracol de ferro forjado. Uma base confortável e bem equipada para duas pessoas no centro do Porto.",
+            "description": "O Gracy Porto é um estúdio luminoso e espaçoso no mesmo prédio da Baixa que o Charmy Studio, a poucos passos da Rua do Almada e dos Aliados. Uma kitchenette em mármore rosa com acabamentos em latão abre para uma sala de estar e jantar acolhedora, mobilada com peças vintage, com portas de vidro que dão para um pequeno terraço-jardim salpicado de flores silvestres. A cama queen-size fica atrás de uma estante aberta que divide o espaço, e o próprio prédio tem uma marcante escada em caracol de ferro forjado. Uma base confortável e bem equipada para duas pessoas no centro do Porto.",
             "neighborhood": "Rua de Álvares Cabral 372, Porto. A Baixa é o centro histórico do Porto — ruas de calçada, fachadas de azulejo, e a maior concentração de cafés, lojas e miradouros da cidade, com a Rua do Almada e os Aliados a poucos minutos."
         },
         "fr": {
             "subtitle": "Un studio lumineux avec terrasse et jardin, au cœur de la Baixa",
-            "description": "Gracy Porto est un studio lumineux et spacieux dans le même immeuble de la Baixa que Touchy Studio Porto et Charmy Studio, à deux pas de la Rua do Almada et des Aliados. Une kitchenette en marbre rose aux finitions laiton s'ouvre sur un séjour-salle à manger chaleureux, meublé de pièces vintage, avec des portes vitrées donnant sur une petite terrasse-jardin parsemée de fleurs sauvages. Le lit queen size se trouve derrière une étagère ouverte qui divise l'espace, et l'immeuble lui-même possède un escalier en colimaçon en fer forgé remarquable. Une base confortable et bien équipée pour deux personnes au centre de Porto.",
+            "description": "Gracy Porto est un studio lumineux et spacieux dans le même immeuble de la Baixa que Charmy Studio, à deux pas de la Rua do Almada et des Aliados. Une kitchenette en marbre rose aux finitions laiton s'ouvre sur un séjour-salle à manger chaleureux, meublé de pièces vintage, avec des portes vitrées donnant sur une petite terrasse-jardin parsemée de fleurs sauvages. Le lit queen size se trouve derrière une étagère ouverte qui divise l'espace, et l'immeuble lui-même possède un escalier en colimaçon en fer forgé remarquable. Une base confortable et bien équipée pour deux personnes au centre de Porto.",
             "neighborhood": "Rua de Álvares Cabral 372, Porto. La Baixa est le centre historique de Porto — rues pavées, façades d'azulejos, et la plus grande concentration de cafés, boutiques et miradouros de la ville, avec la Rua do Almada et les Aliados à quelques minutes."
         }
     }
