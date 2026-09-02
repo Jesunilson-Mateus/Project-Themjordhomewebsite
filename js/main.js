@@ -13,6 +13,29 @@ function escapeHtml(value) {
     .replace(/'/g, '&#39;');
 }
 
+/* The 9 apartments that had a hand-picked hero photo before the slideshow
+   became data-driven — keep those exactly as chosen. */
+var HERO_KEEP_IMAGE = [
+  'fabrica-no-jardim', 'arty-porto', 'volta-do-patio-porto', 'casa-senhorinha',
+  'casa-bonfim', 'balcony-porto-view', 'shiny-porto', 'sky-de-loios-porto',
+  'cocoon-almada-porto'
+];
+
+/* Every other apartment shows a living-room photo in the slide. Picks the
+   first image whose filename points at the living area, in order of
+   preference; falls back to heroImage when the listing has no such photo. */
+function heroPhotoFor(p) {
+  if (HERO_KEEP_IMAGE.indexOf(p.slug) !== -1) return p.heroImage;
+  var imgs = (p.images && p.images.length) ? p.images : [];
+  var ranks = [/living/i, /lounge|sitting|salon/i, /studio|overview/i, /sofa|tv-wall|tv-console|fireplace/i, /dining/i];
+  for (var r = 0; r < ranks.length; r++) {
+    for (var i = 0; i < imgs.length; i++) {
+      if (ranks[r].test(imgs[i])) return imgs[i];
+    }
+  }
+  return p.heroImage;
+}
+
 /* Builds one hero slide per apartment in properties-data.js and injects them
    before the dots. Units and the CTA use data-i18n so they follow the language
    switcher; name / district come straight from the data (identical in every
@@ -30,9 +53,10 @@ function renderHeroSlides() {
       ? '<span data-i18n="unit.studio">Estúdio</span>'
       : `<span><b>${p.bedrooms}</b>&nbsp;<span data-i18n="unit.bedroom.${p.bedrooms === 1 ? 'singular' : 'plural'}">${p.bedrooms === 1 ? 'quarto' : 'quartos'}</span></span>`;
     const tail = p.size_m2 ? `${p.size_m2} m²` : escapeHtml(p.district);
+    const photo = heroPhotoFor(p);
     const imgAttr = i === 0
-      ? `src="${escapeHtml(p.heroImage)}"`
-      : `data-src="${escapeHtml(p.heroImage)}" loading="lazy"`;
+      ? `src="${escapeHtml(photo)}"`
+      : `data-src="${escapeHtml(photo)}" loading="lazy"`;
     return `
       <div class="slide${i === 0 ? ' active' : ''}" data-index="${i}">
         <div class="slide-bg"><img ${imgAttr} alt="${escapeHtml(p.name)}"></div>
