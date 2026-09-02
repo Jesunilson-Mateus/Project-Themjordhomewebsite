@@ -365,6 +365,30 @@ a.service-card{text-decoration:none; color:inherit;}
 .footer-bottom a{opacity:.75; transition:opacity .2s ease;}
 .footer-bottom a:hover{opacity:1; text-decoration:underline;}
 
+/* ---------- Page loader — the logo draws itself while the page loads ---------- */
+#pageLoader{
+  position:fixed; inset:0; z-index:2000;
+  display:flex; align-items:center; justify-content:center;
+  background:var(--paper);
+  transition:opacity .55s ease;
+}
+#pageLoader.is-done{opacity:0; pointer-events:none;}
+#pageLoader svg{width:96px; height:auto; overflow:visible;}
+#pageLoader path{
+  fill:transparent;
+  stroke:var(--green-bright); stroke-width:1.5;
+  stroke-linecap:round; stroke-linejoin:round;
+  stroke-dasharray:100; stroke-dashoffset:100;
+  animation:lpDraw 1.15s cubic-bezier(.65,0,.35,1) forwards, lpFill .6s ease forwards;
+}
+#pageLoader .lp-1{ animation-delay:0s, 1s; }
+#pageLoader .lp-2{ animation-delay:.4s, 1.35s; }
+@keyframes lpDraw{ to{ stroke-dashoffset:0; } }
+@keyframes lpFill{ to{ fill:var(--green-bright); } }
+@media (prefers-reduced-motion:reduce){
+  #pageLoader path{ animation:none; stroke-dashoffset:0; fill:var(--green-bright); }
+}
+
 /* ---------- Collection ---------- */
 .collection{padding:90px 0 100px;}
 .collection .head{display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:48px; gap:24px; flex-wrap:wrap;}
