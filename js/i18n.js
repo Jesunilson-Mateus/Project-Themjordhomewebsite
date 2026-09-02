@@ -142,6 +142,7 @@
     'footer.faq': { pt: 'Perguntas frequentes', en: 'FAQ', fr: 'Questions fréquentes' },
     'footer.contact': { pt: 'Contacto', en: 'Contact', fr: 'Contact' },
     'footer.copyright': { pt: "© 2026 TheMajord'Home. Todos os direitos reservados.", en: "© 2026 TheMajord'Home. All rights reserved.", fr: "© 2026 TheMajord'Home. Tous droits réservés." },
+    'footer.legal': { pt: 'Aviso legal', en: 'Legal Notice', fr: 'Mentions légales' },
 
     'breadcrumb.collection': { pt: 'A coleção', en: 'The Collection', fr: 'La Collection' },
     'notFound.title': { pt: 'Apartamento não encontrado', en: 'Apartment not found', fr: 'Appartement introuvable' },
