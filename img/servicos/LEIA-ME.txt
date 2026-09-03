@@ -9,8 +9,8 @@ servico-limpeza.html (seccao "Em imagens") espera estes 4 ficheiros aqui:
 
 servico-concierge.html (seccao "Em imagens") espera estes 2 ficheiros aqui:
 
-  concierge-1.jpg       - concierge / receção
-  concierge-2.jpg       - equipa num check-in / visita a porta
+  concierge-1.jpg       - concierge / receção          (EM FALTA)
+  concierge-2.jpg       - equipa num check-in           (OK, adicionado)
 
 Formato: JPG (fotos) largura ~1200 px; PNG para o icone (fundo transparente ok).
 Enquanto os ficheiros nao existirem, cada figura esconde-se sozinha na pagina.
