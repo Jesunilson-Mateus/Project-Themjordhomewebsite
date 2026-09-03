@@ -47,6 +47,25 @@
     <a href="index.html#servicos" data-i18n="nav.cleaning">Limpeza &amp; Manutenção</a>
     <a href="index.html#sobre" data-i18n="nav.about">Sobre</a>
   </nav>
+  <div class="nav-right">
+    <div class="lang-toggle" role="group" aria-label="Idioma"><button type="button" data-lang="pt" aria-label="Português">PT</button>/<button type="button" data-lang="en" aria-label="English">EN</button>/<button type="button" data-lang="fr" aria-label="Français">FR</button></div>
+    <button type="button" class="theme-toggle" aria-label="Alternar tema claro/escuro">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>
+    </button>
+    <a class="owner-btn" href="proprietarios.html" data-i18n="nav.owners">Área de Proprietários</a>
+    <button class="menu-toggle" id="menuToggle" data-i18n-aria-label="aria.openMenu" aria-label="Abrir menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="mobile-backdrop" id="mobileBackdrop"></div>
+<nav class="mobile-panel" id="mobilePanel">
+  <a href="index.html#colecao" data-i18n="nav.stay">Alojamento</a>
+  <a href="index.html#servicos" data-i18n="nav.concierge">Concierge</a>
+  <a href="index.html#servicos" data-i18n="nav.cleaning">Limpeza &amp; Manutenção</a>
+  <a href="index.html#sobre" data-i18n="nav.about">Sobre</a>
+  <a href="proprietarios.html" data-i18n="nav.owners">Área de Proprietários</a>
+</nav>
 
 <div class="prop-header-spacer"></div>
 
@@ -60,8 +79,8 @@
 <section class="service-hero">
   <div class="wrap">
     <div class="eyebrow">Serviços</div>
-    <h1>Limpeza & Lavandaria</h1>
-    <p class="lead">Equipa própria e protocolos de hotelaria entre cada estadia: roupa de casa lavada e passada, reposição de essenciais e uma verificação ponto a ponto antes de cada hóspede.</p>
+    <h1>Limpeza &amp; Lavandaria</h1>
+    <p class="lead">Equipa fixa e formada, com protocolos de hotelaria entre cada estadia. Tratamos da limpeza entre hóspedes, da roupa de casa e da reposição dos consumíveis, e deixamos o alojamento pronto e verificado a tempo do check-in seguinte — 7 dias por semana.</p>
   </div>
 </section>
 
@@ -70,35 +89,176 @@
   <div class="wrap">
     <div class="head">
       <h2>O que fazemos</h2>
-      <p>O que está incluído neste serviço, do primeiro contacto ao dia a dia.</p>
+      <p>Tudo o que mantém um alojamento local sempre pronto para receber, estadia após estadia.</p>
     </div>
     <div class="service-points reveal">
       <div class="service-card">
         <span class="num">01</span>
         <div>
-          <h3>Limpeza entre estadias</h3>
-          <p>Checklist de hotelaria em toda a casa, com casa de banho e cozinha limpas a fundo.</p>
+          <h3>Limpeza entre hóspedes</h3>
+          <p>Limpeza completa de quartos, casas de banho, cozinha e áreas comuns após cada saída, para o alojamento ficar pronto para a chegada seguinte.</p>
         </div>
       </div>
       <div class="service-card">
         <span class="num">02</span>
         <div>
-          <h3>Lavandaria</h3>
-          <p>Roupa de cama e toalhas lavadas, passadas e trocadas a cada estadia.</p>
+          <h3>Roupa de casa e atoalhados</h3>
+          <p>Recolha, lavagem, engomadoria e reposição de lençóis e toalhas a cada estadia, com um par de trocas em stock para nunca faltar.</p>
         </div>
       </div>
       <div class="service-card">
         <span class="num">03</span>
         <div>
           <h3>Reposição de consumíveis</h3>
-          <p>Café, sabonetes, papel e produtos de acolhimento repostos entre hóspedes.</p>
+          <p>Kit de acolhimento e essenciais repostos entre hóspedes: papel higiénico, sabonete, champô, sacos do lixo, café e pastilhas de máquina.</p>
         </div>
       </div>
       <div class="service-card">
         <span class="num">04</span>
         <div>
-          <h3>Inspeção final</h3>
-          <p>Registo fotográfico do estado da casa e verificação antes de cada check-in.</p>
+          <h3>Limpezas profundas periódicas</h3>
+          <p>Eletrodomésticos por dentro, calcário, juntas, vidros e zonas de difícil acesso, em ciclos programados ou no arranque de época.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <span class="num">05</span>
+        <div>
+          <h3>Inspeção e relatório</h3>
+          <p>Verificação divisão a divisão com checklist e registo fotográfico; qualquer dano, avaria ou falta é comunicado de imediato ao proprietário.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <span class="num">06</span>
+        <div>
+          <h3>Objetos esquecidos</h3>
+          <p>Guardados em segurança e comunicados ao proprietário e à plataforma; a devolução ao hóspede é combinada por envio.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== O QUE ESTÁ INCLUÍDO ===================== -->
+<section class="services-strip">
+  <div class="wrap">
+    <div class="head">
+      <h2>O que está incluído em cada limpeza</h2>
+      <p>A checklist que a equipa segue, divisão a divisão, antes de dar luz verde ao alojamento.</p>
+    </div>
+    <div class="amenities-grid reveal">
+      <div class="amenity-cat">
+        <h4>Cozinha</h4>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Bancadas, lava-loiça e torneiras</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Placa, forno e micro-ondas</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Frigorífico esvaziado e limpo</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Loiça lavada e arrumada</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Chão e caixote do lixo</li>
+        </ul>
+      </div>
+      <div class="amenity-cat">
+        <h4>Casas de banho</h4>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Sanita, chuveiro e banheira</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Torneiras e espelhos sem calcário</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Toalhas novas dobradas</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Reposição de sabonete e champô</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Chão desinfetado</li>
+        </ul>
+      </div>
+      <div class="amenity-cat">
+        <h4>Quartos</h4>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Camas mudadas e feitas</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Aspiração e pó em todas as superfícies</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Interruptores e maçanetas</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Arejamento da divisão</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Roupeiros e cabides conferidos</li>
+        </ul>
+      </div>
+      <div class="amenity-cat">
+        <h4>Sala e áreas comuns</h4>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Sofás e almofadas ajeitados</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Pó e superfícies</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Comandos e eletrónica</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Chão aspirado e lavado</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Ambiente arrumado para as fotos</li>
+        </ul>
+      </div>
+      <div class="amenity-cat">
+        <h4>Exterior</h4>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Varanda ou terraço varridos</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Mesa e cadeiras limpas</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Plantas regadas, se combinado</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Estendal e caixote recolhidos</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ROUPA / LAVANDARIA ===================== -->
+<section class="services-strip">
+  <div class="wrap">
+    <div class="head">
+      <h2>Roupa de casa e lavandaria</h2>
+      <p>Lençóis e atoalhados sempre lavados, engomados e a tempo — sem depender da máquina do alojamento.</p>
+    </div>
+    <div class="service-points reveal">
+      <div class="service-card">
+        <span class="num">01</span>
+        <div>
+          <h3>Par de trocas em stock</h3>
+          <p>Mantemos jogos extra de lençóis e toalhas por alojamento, para que uma limpeza nunca fique à espera da máquina.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <span class="num">02</span>
+        <div>
+          <h3>Lavagem profissional e engomadoria</h3>
+          <p>Lavagem a temperatura de hotelaria, secagem e engomadoria; a roupa é entregue pronta a colocar.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <span class="num">03</span>
+        <div>
+          <h3>Controlo de estado</h3>
+          <p>Peças manchadas ou gastas são retiradas e substituídas, com aviso ao proprietário para reposição do enxoval.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== COMO FUNCIONA ===================== -->
+<section class="services-strip">
+  <div class="wrap">
+    <div class="head">
+      <h2>Como funciona</h2>
+      <p>Do calendário de reservas à luz verde para o próximo hóspede.</p>
+    </div>
+    <div class="steps-grid reveal">
+      <div class="service-card">
+        <span class="num">01</span>
+        <div>
+          <h3>Sincronizado com as reservas</h3>
+          <p>Ligamos o calendário do alojamento ao nosso planeamento; cada check-out gera automaticamente uma limpeza.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <span class="num">02</span>
+        <div>
+          <h3>Limpeza e preparação</h3>
+          <p>A equipa limpa, muda a roupa, repõe os consumíveis e deixa a casa a postos — mesmo em check-ins no próprio dia.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <span class="num">03</span>
+        <div>
+          <h3>Inspeção e luz verde</h3>
+          <p>Checklist e fotos de conclusão; o alojamento só fica "pronto" depois de verificado.</p>
         </div>
       </div>
     </div>
