@@ -265,20 +265,27 @@
   </div>
 </section>
 
-<!-- ===================== GALERIA ===================== -->
+<!-- ===================== EM IMAGENS =====================
+     As 4 primeiras figuras usam as fotos enviadas pelo cliente. Colocar os
+     ficheiros em img/servicos/ com estes nomes exatos:
+       limpeza-equipa-1.jpg   (equipa a limpar — cozinha)
+       limpeza-equipa-2.jpg   (aspiração de quarto)
+       lavandaria.jpg         (enxoval dobrado em prateleira)
+       kit-limpeza.png        (ícone kit de limpeza / checklist)
+     Enquanto não existirem, cada figura esconde-se sozinha (onerror). -->
 <section class="services-strip">
   <div class="wrap">
     <div class="head">
       <h2>Em imagens</h2>
-      <p>Alojamentos geridos pela TheMajord'Home no Porto.</p>
+      <p>A equipa em ação e os alojamentos que preparamos, no Porto.</p>
     </div>
     <div class="service-gallery reveal">
-      <figure><img src="img/torrinha-f-porto/04-linens.jpg" alt="Roupa de casa lavada e passada a cada estadia" loading="lazy"><figcaption>Roupa de casa lavada e passada a cada estadia</figcaption></figure>
-      <figure><img src="img/torrinha-h-porto/04-linens.jpg" alt="Toalhas e lençóis trocados entre hóspedes" loading="lazy"><figcaption>Toalhas e lençóis trocados entre hóspedes</figcaption></figure>
+      <figure><img src="img/servicos/limpeza-equipa-1.jpg" alt="Equipa da TheMajord'Home a limpar a cozinha de um alojamento" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Equipa fixa, com formação e protocolos próprios</figcaption></figure>
+      <figure><img src="img/servicos/limpeza-equipa-2.jpg" alt="Aspiração de um quarto ao padrão de hotelaria" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Quartos preparados ao padrão de hotelaria</figcaption></figure>
+      <figure><img src="img/servicos/lavandaria.jpg" alt="Enxoval lavado e dobrado em prateleira" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Enxoval lavado, engomado e em stock</figcaption></figure>
+      <figure><img src="img/servicos/kit-limpeza.png" alt="Kit de limpeza e checklist" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Kit e consumíveis repostos entre estadias</figcaption></figure>
       <figure><img src="img/belleville-porto/07-bathroom1.jpg" alt="Casa de banho limpa a fundo" loading="lazy"><figcaption>Casa de banho limpa a fundo</figcaption></figure>
-      <figure><img src="img/purely-porto/02-kitchen.jpg" alt="Cozinha verificada ponto a ponto" loading="lazy"><figcaption>Cozinha verificada ponto a ponto</figcaption></figure>
-      <figure><img src="img/comfy-porto/03-bedroom-1.jpg" alt="Quartos preparados ao padrão de hotelaria" loading="lazy"><figcaption>Quartos preparados ao padrão de hotelaria</figcaption></figure>
-      <figure><img src="img/torrinha-i-porto/05-linens.jpg" alt="Essenciais repostos antes de cada check-in" loading="lazy"><figcaption>Essenciais repostos antes de cada check-in</figcaption></figure>
+      <figure><img src="img/torrinha-i-porto/05-linens.jpg" alt="Essenciais repostos antes de cada check-in" loading="lazy"><figcaption>Verificação ponto a ponto antes do check-in</figcaption></figure>
     </div>
   </div>
 </section>

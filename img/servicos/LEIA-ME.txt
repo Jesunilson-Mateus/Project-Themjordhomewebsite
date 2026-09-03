@@ -1,0 +1,14 @@
+Fotos das paginas de servicos.
+
+servico-limpeza.html (seccao "Em imagens") espera estes 4 ficheiros aqui:
+
+  limpeza-equipa-1.jpg  - equipa a limpar (cozinha / bancada)
+  limpeza-equipa-2.jpg  - aspiracao de um quarto
+  lavandaria.jpg        - enxoval branco dobrado em prateleira / armazem
+  kit-limpeza.png       - icone do kit de limpeza + checklist
+
+Formato: JPG (fotos) largura ~1200 px; PNG para o icone (fundo transparente ok).
+Enquanto os ficheiros nao existirem, cada figura esconde-se sozinha na pagina.
+
+Nota: confirmar que ha direitos de uso destas imagens antes de publicar
+(as enviadas eram de outras empresas / bancos de imagens).
