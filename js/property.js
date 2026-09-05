@@ -213,6 +213,57 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       priceLine.innerHTML = `<span class="amt" style="font-size:19px;">${I18N.t('property.priceOnRequest')}</span>`;
     }
+    // Preço final por reserva vem do Beds24 (ver README) — o que está aqui é só
+    // uma indicação de arranque enquanto a ligação em tempo real não entra.
+    populateGuestSelects(lp);
+  }
+
+  /* Substitui {chave} por valores num texto traduzido (I18N.t não tem
+     placeholders nativos — ver js/i18n.js). */
+  function fillTemplate(str, vals) {
+    return Object.keys(vals).reduce((s, k) => s.split('{' + k + '}').join(vals[k]), str);
+  }
+
+  /* Adultos / crianças: opções e limite dependem da capacidade do próprio
+     alojamento (lp.guests), por isso são geradas em vez de fixas no HTML. */
+  function populateGuestSelects(lp) {
+    const adultsSel = document.getElementById('bookAdults');
+    const childrenSel = document.getElementById('bookChildren');
+    if (!adultsSel || !childrenSel) return;
+    const max = lp.guests || 1;
+    const prevAdults = adultsSel.value ? parseInt(adultsSel.value, 10) : Math.min(2, max);
+    const prevChildren = childrenSel.value ? parseInt(childrenSel.value, 10) : 0;
+
+    adultsSel.innerHTML = '';
+    for (let n = 1; n <= max; n++) {
+      const opt = document.createElement('option');
+      opt.value = n;
+      opt.textContent = `${n} ${I18N.t(n === 1 ? 'booking.adultsWord.singular' : 'booking.adultsWord.plural')}`;
+      adultsSel.appendChild(opt);
+    }
+    adultsSel.value = Math.min(prevAdults, max);
+
+    childrenSel.innerHTML = '';
+    for (let n = 0; n <= Math.max(0, max - 1); n++) {
+      const opt = document.createElement('option');
+      opt.value = n;
+      opt.textContent = `${n} ${I18N.t(n === 1 ? 'booking.childrenWord.singular' : 'booking.childrenWord.plural')}`;
+      childrenSel.appendChild(opt);
+    }
+    childrenSel.value = Math.min(prevChildren, max - 1);
+
+    updateGuestsNote(max);
+  }
+
+  function updateGuestsNote(max) {
+    const note = document.getElementById('guestsNote');
+    const adultsSel = document.getElementById('bookAdults');
+    const childrenSel = document.getElementById('bookChildren');
+    if (!note || !adultsSel || !childrenSel) return;
+    const total = (parseInt(adultsSel.value, 10) || 0) + (parseInt(childrenSel.value, 10) || 0);
+    const over = total > max;
+    note.classList.toggle('is-warning', over);
+    note.textContent = fillTemplate(I18N.t(over ? 'booking.guests.over' : 'booking.guests.total'), { n: total, max });
   }
 
   readMoreBtn.onclick = () => {
@@ -221,8 +272,28 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const bookForm = document.getElementById('bookForm');
+  const bookAdultsSel = document.getElementById('bookAdults');
+  const bookChildrenSel = document.getElementById('bookChildren');
+  [bookAdultsSel, bookChildrenSel].forEach(sel => {
+    if (sel) sel.addEventListener('change', () => updateGuestsNote(prop.guests || 1));
+  });
+
+  const wantsTransfer = document.getElementById('wantsTransfer');
+  const transferFields = document.getElementById('transferFields');
+  if (wantsTransfer && transferFields) {
+    wantsTransfer.addEventListener('change', () => {
+      transferFields.hidden = !wantsTransfer.checked;
+    });
+  }
+
   bookForm.addEventListener('submit', (e) => {
     e.preventDefault();
+    const max = prop.guests || 1;
+    const total = (parseInt(bookAdultsSel && bookAdultsSel.value, 10) || 0) + (parseInt(bookChildrenSel && bookChildrenSel.value, 10) || 0);
+    if (total > max) {
+      alert(fillTemplate(I18N.t('booking.guests.overAlert'), { max }));
+      return;
+    }
     alert(I18N.t('booking.alert'));
   });
 

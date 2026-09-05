@@ -154,24 +154,58 @@
         <div class="side-fields-row">
           <div class="side-field">
             <label data-i18n="booking.checkin">Check-in</label>
-            <input type="date" required>
+            <input type="date" name="checkin" required>
           </div>
           <div class="side-field">
             <label data-i18n="booking.checkout">Check-out</label>
-            <input type="date" required>
+            <input type="date" name="checkout" required>
           </div>
         </div>
-        <div class="side-field" style="margin-top:10px;">
-          <label data-i18n="booking.guestsLabel">Hóspedes</label>
-          <select>
-            <option data-i18n="booking.guests.1">1 hóspede</option>
-            <option selected data-i18n="booking.guests.2">2 hóspedes</option>
-            <option data-i18n="booking.guests.3">3 hóspedes</option>
-            <option data-i18n="booking.guests.4">4 hóspedes</option>
-          </select>
+
+        <div class="side-fields-row" style="margin-top:10px;">
+          <div class="side-field">
+            <label data-i18n="booking.adultsLabel">Adultos</label>
+            <select name="adults" id="bookAdults"></select>
+          </div>
+          <div class="side-field">
+            <label data-i18n="booking.childrenLabel">Crianças</label>
+            <select name="children" id="bookChildren"></select>
+          </div>
         </div>
+        <p class="side-note" id="guestsNote"></p>
+
+        <div class="side-field" style="margin-top:10px;">
+          <label data-i18n="booking.phone">Telefone</label>
+          <input type="tel" name="phone" id="bookPhone" placeholder="+351 9xx xxx xxx" autocomplete="tel" required>
+        </div>
+
+        <label class="side-checkbox">
+          <input type="checkbox" id="wantsTransfer" name="wantsTransfer">
+          <span data-i18n="booking.transfer.need">Preciso de transfer (aeroporto)</span>
+        </label>
+
+        <div class="side-transfer-fields" id="transferFields" hidden>
+          <div class="side-field">
+            <label data-i18n="booking.transfer.vehicle">Veículo</label>
+            <select name="transferType" id="transferType">
+              <option value="car" data-i18n="booking.transfer.carOption">Carro — 25€</option>
+              <option value="van" data-i18n="booking.transfer.vanOption">Van (grupos) — 50€</option>
+            </select>
+          </div>
+          <div class="side-fields-row" style="margin-top:10px;">
+            <div class="side-field">
+              <label data-i18n="booking.flight.number">Nº do voo</label>
+              <input type="text" name="flightNumber" placeholder="ex.: TP1234">
+            </div>
+            <div class="side-field">
+              <label data-i18n="booking.flight.arrival">Chegada</label>
+              <input type="datetime-local" name="flightArrival">
+            </div>
+          </div>
+        </div>
+
         <button type="submit" class="book-btn" data-i18n="booking.cta">Verificar disponibilidade</button>
-        <p class="fine-print" data-i18n="property.finePrint">Não será cobrado nada já. Ligação em tempo real ao Beds24 em breve.</p>
+        <p class="fine-print" data-i18n="property.finePrint">Não será cobrado nada já. Preços e disponibilidade em tempo real, ligados ao Beds24, chegam em breve.</p>
       </form>
     </aside>
   </div>
