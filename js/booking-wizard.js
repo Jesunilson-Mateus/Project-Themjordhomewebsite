@@ -68,7 +68,7 @@ class BookingWizard {
   initGuestSelects() {
     const adultsSelect = this.form.querySelector('[name="adults"]');
     const childrenSelect = this.form.querySelector('[name="children"]');
-    const capacityNote = this.form.querySelector('[style*="color:#c84d5c"]');
+    const capacityNote = document.getElementById('capacityNote');
 
     if (!adultsSelect || !childrenSelect) return;
 
@@ -132,7 +132,6 @@ class BookingWizard {
       if (this.currentStep < this.totalSteps) {
         this.currentStep++;
         this.updateStepVisibility();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     }
   }
@@ -141,7 +140,6 @@ class BookingWizard {
     if (this.currentStep > 1) {
       this.currentStep--;
       this.updateStepVisibility();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }
 
@@ -157,6 +155,39 @@ class BookingWizard {
         input.classList.remove('error');
       }
     });
+
+    // Step 1: Validate dates
+    if (step === 1) {
+      const checkInField = this.form.querySelector('[name="dateRange"]');
+      if (checkInField) {
+        if (!checkInField.value) {
+          // Show error for empty field
+          if (window.dateValidator) {
+            const emptyError = [{
+              type: 'empty_field',
+              field: 'check-in',
+              message: window.I18N ? window.I18N.t('validation.invalidDateFormat') : 'Data inválida. Use dd-mm-yyyy'
+            }];
+            window.dateValidator.showErrors(emptyError, 'bookForm');
+          }
+          isValid = false;
+        } else {
+          const dates = checkInField.value.split(' — ');
+          const checkInStr = dates[0];
+          const checkOutStr = dates[1];
+
+          if (window.dateValidator) {
+            const errors = window.dateValidator.validate(checkInStr, checkOutStr);
+            if (errors.length > 0) {
+              window.dateValidator.showErrors(errors, 'bookForm');
+              isValid = false;
+            } else {
+              window.dateValidator.clearErrors('bookForm');
+            }
+          }
+        }
+      }
+    }
 
     // Step 2: Validate capacity (max capacity)
     if (step === 2) {
@@ -250,5 +281,5 @@ class BookingWizard {
 
 // Initialize wizard when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-  new BookingWizard('bookForm');
+  window.bookingWizard = new BookingWizard('bookForm');
 });

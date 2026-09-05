@@ -103,6 +103,14 @@
     'booking.transfer.note': { pt: 'Pago em dinheiro ao motorista na chegada.', en: 'Paid in cash to the driver on arrival.', fr: 'Payé en espèces au chauffeur à l\'arrivée.' },
     'booking.babyKit.note': { pt: 'Pago em dinheiro no check-in ao concierge. Já estará preparado no apartamento.', en: 'Paid in cash at check-in to concierge. Already prepared in the apartment.', fr: 'Payé en espèces à la réception au concierge. Déjà préparé dans l\'appartement.' },
 
+    'search.title': { pt: 'Resultados da Busca', en: 'Search Results', fr: 'Résultats de la Recherche' },
+    'search.guests': { pt: 'hóspedes', en: 'guests', fr: 'voyageurs' },
+
+    'validation.invalidDateFormat': { pt: 'Data inválida. Use dd-mm-yyyy', en: 'Invalid date format. Use dd-mm-yyyy', fr: 'Format de date invalide. Utilisez dd-mm-yyyy' },
+    'validation.datePassed': { pt: 'Esta data já passou', en: 'This date has already passed', fr: 'Cette date est passée' },
+    'validation.sameDayAfter18': { pt: 'Reservas para hoje só são permitidas antes das 18h00', en: 'Same-day bookings allowed only before 6:00 PM', fr: 'Les réservations le jour même ne sont autorisées qu\'avant 18h00' },
+    'validation.checkOutBeforeCheckIn': { pt: 'Data de saída deve ser após data de entrada', en: 'Check-out date must be after check-in date', fr: 'La date de départ doit être après la date d\'arrivée' },
+
     'services.heading': { pt: 'Mais do que<br>uma estadia.', en: 'More than<br>a stay.', fr: "Plus qu'<br>un séjour." },
     'services.sub': { pt: "A TheMajord'Home cuida de cada detalhe — do check-in à última toalha dobrada — para hóspedes e para proprietários.", en: "TheMajord'Home takes care of every detail — from check-in to the last folded towel — for guests and for owners.", fr: "TheMajord'Home s'occupe de chaque détail — du check-in à la dernière serviette pliée — pour les voyageurs et les propriétaires." },
     'services.1.title': { pt: 'Gestão de Alojamento', en: 'Property Management', fr: 'Gestion Locative' },

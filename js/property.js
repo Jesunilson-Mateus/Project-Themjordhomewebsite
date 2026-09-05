@@ -263,6 +263,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const bookForm = document.getElementById('bookForm');
   if (bookForm && prop.guests) {
     bookForm.setAttribute('data-max-capacity', prop.guests);
+    // Update BookingWizard instance if it exists
+    if (window.bookingWizard) {
+      window.bookingWizard.setCapacity(prop.guests);
+    }
   }
 
   // Booking form is initialized by BookingWizard (js/booking-wizard.js) and BookingCalendar (js/booking-calendar.js)
