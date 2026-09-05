@@ -253,6 +253,20 @@ document.addEventListener('DOMContentLoaded', () => {
     childrenSel.value = Math.min(prevChildren, max - 1);
 
     updateGuestsNote(max);
+    updateBabyKitVisibility();
+  }
+
+  /* Kit de bebé só é oferecido quando há pelo menos uma criança na reserva. */
+  function updateBabyKitVisibility() {
+    const childrenSel = document.getElementById('bookChildren');
+    const field = document.getElementById('babyKitField');
+    const note = document.getElementById('babyKitNote');
+    const checkbox = document.getElementById('wantsBabyKit');
+    if (!childrenSel || !field) return;
+    const hasChildren = (parseInt(childrenSel.value, 10) || 0) > 0;
+    field.hidden = !hasChildren;
+    if (note) note.hidden = !hasChildren;
+    if (!hasChildren && checkbox) checkbox.checked = false;
   }
 
   function updateGuestsNote(max) {
@@ -277,6 +291,7 @@ document.addEventListener('DOMContentLoaded', () => {
   [bookAdultsSel, bookChildrenSel].forEach(sel => {
     if (sel) sel.addEventListener('change', () => updateGuestsNote(prop.guests || 1));
   });
+  if (bookChildrenSel) bookChildrenSel.addEventListener('change', updateBabyKitVisibility);
 
   const wantsTransfer = document.getElementById('wantsTransfer');
   const transferFields = document.getElementById('transferFields');

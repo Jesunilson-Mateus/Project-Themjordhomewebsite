@@ -77,6 +77,8 @@
     'booking.guests.total': { pt: '{n} hóspedes no total · capacidade máxima do alojamento: {max}', en: '{n} guests in total · maximum capacity: {max}', fr: '{n} voyageurs au total · capacité maximale : {max}' },
     'booking.guests.over': { pt: '{n} hóspedes excede a capacidade máxima deste alojamento ({max}).', en: '{n} guests exceeds this property\'s maximum capacity ({max}).', fr: '{n} voyageurs dépasse la capacité maximale de ce logement ({max}).' },
     'booking.guests.overAlert': { pt: 'Este alojamento tem capacidade para {max} hóspedes — reduz o número de adultos/crianças antes de continuar.', en: 'This property has a maximum capacity of {max} guests — reduce the number of adults/children before continuing.', fr: 'Ce logement a une capacité maximale de {max} voyageurs — réduisez le nombre d\'adultes/enfants avant de continuer.' },
+    'booking.babyKit.need': { pt: 'Preciso de kit de bebé — 25€', en: 'I need a baby kit — €25', fr: "J'ai besoin d'un kit bébé — 25 €" },
+    'booking.babyKit.contents': { pt: 'Inclui: cadeira alta, banheira, roupa de cama, cama de bebé e toalhas.', en: 'Includes: high chair, bathtub, linen, crib and towels.', fr: 'Comprend : chaise haute, baignoire, linge de lit, lit bébé et serviettes.' },
     'booking.phone': { pt: 'Telefone', en: 'Phone', fr: 'Téléphone' },
     'booking.transfer.need': { pt: 'Preciso de transfer (aeroporto)', en: 'I need an airport transfer', fr: 'J\'ai besoin d\'un transfert (aéroport)' },
     'booking.transfer.vehicle': { pt: 'Veículo', en: 'Vehicle', fr: 'Véhicule' },
