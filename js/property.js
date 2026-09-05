@@ -259,6 +259,12 @@ document.addEventListener('DOMContentLoaded', () => {
     readMoreBtn.textContent = expanded ? I18N.t('property.readMore') : I18N.t('property.showLess');
   };
 
+  // Set property capacity for BookingWizard
+  const bookForm = document.getElementById('bookForm');
+  if (bookForm && prop.guests) {
+    bookForm.setAttribute('data-max-capacity', prop.guests);
+  }
+
   // Booking form is initialized by BookingWizard (js/booking-wizard.js) and BookingCalendar (js/booking-calendar.js)
 
   /* ---------- Guest reviews (aprovadas no painel; não dependem do idioma) ---------- */

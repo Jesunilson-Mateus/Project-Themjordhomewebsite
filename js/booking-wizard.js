@@ -4,16 +4,26 @@
    ========================================================================= */
 
 class BookingWizard {
-  constructor(formId) {
+  constructor(formId, maxCapacity = null) {
     this.form = document.getElementById(formId);
     if (!this.form) return;
 
     this.currentStep = 1;
     this.totalSteps = 4;
     this.formData = {};
-    this.maxAdults = 2;
+
+    // Ler capacidade do atributo data se não fornecido
+    if (maxCapacity === null) {
+      maxCapacity = parseInt(this.form.getAttribute('data-max-capacity')) || 2;
+    }
+    this.maxCapacity = maxCapacity;
 
     this.init();
+  }
+
+  setCapacity(maxCapacity) {
+    this.maxCapacity = maxCapacity;
+    this.initGuestSelects();
   }
 
   init() {
@@ -58,11 +68,16 @@ class BookingWizard {
   initGuestSelects() {
     const adultsSelect = this.form.querySelector('[name="adults"]');
     const childrenSelect = this.form.querySelector('[name="children"]');
+    const capacityNote = this.form.querySelector('[style*="color:#c84d5c"]');
 
     if (!adultsSelect || !childrenSelect) return;
 
-    // Populate adults (1-2)
-    for (let i = 1; i <= this.maxAdults; i++) {
+    // Limpar opções anteriores
+    adultsSelect.innerHTML = '';
+    childrenSelect.innerHTML = '';
+
+    // Populate adults (1 até maxCapacity)
+    for (let i = 1; i <= this.maxCapacity; i++) {
       const opt = document.createElement('option');
       opt.value = i;
       opt.textContent = i === 1 ? '1 adulto' : `${i} adultos`;
@@ -76,6 +91,17 @@ class BookingWizard {
       if (i === 0) opt.textContent = 'Nenhuma';
       else opt.textContent = i === 1 ? '1 criança' : `${i} crianças`;
       childrenSelect.appendChild(opt);
+    }
+
+    // Atualizar mensagem de capacidade
+    if (capacityNote) {
+      const pt = `Máximo ${this.maxCapacity} adulto${this.maxCapacity > 1 ? 's' : ''}. Bebés não contam para o limite.`;
+      const en = `Maximum ${this.maxCapacity} adult${this.maxCapacity > 1 ? 's' : ''}. Babies do not count towards the limit.`;
+      const fr = `Maximum ${this.maxCapacity} adulte${this.maxCapacity > 1 ? 's' : ''}. Les bébés ne comptent pas dans la limite.`;
+
+      const lang = window.I18N ? window.I18N.currentLang : 'pt';
+      const message = lang === 'en' ? en : lang === 'fr' ? fr : pt;
+      capacityNote.textContent = message;
     }
 
     adultsSelect.value = 1;
@@ -132,12 +158,17 @@ class BookingWizard {
       }
     });
 
-    // Step 2: Validate capacity (max 2 adults)
+    // Step 2: Validate capacity (max capacity)
     if (step === 2) {
       const adultsSelect = this.form.querySelector('[name="adults"]');
       const adults = parseInt(adultsSelect?.value) || 0;
-      if (adults > this.maxAdults) {
-        alert(`Capacidade máxima: ${this.maxAdults} adultos`);
+      if (adults > this.maxCapacity) {
+        const pt = `Capacidade máxima: ${this.maxCapacity} adulto${this.maxCapacity > 1 ? 's' : ''}`;
+        const en = `Maximum capacity: ${this.maxCapacity} adult${this.maxCapacity > 1 ? 's' : ''}`;
+        const fr = `Capacité maximale: ${this.maxCapacity} adulte${this.maxCapacity > 1 ? 's' : ''}`;
+        const lang = window.I18N ? window.I18N.currentLang : 'pt';
+        const message = lang === 'en' ? en : lang === 'fr' ? fr : pt;
+        alert(message);
         isValid = false;
       }
     }
