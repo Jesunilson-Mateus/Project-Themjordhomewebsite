@@ -248,11 +248,21 @@
           </div>
         </div>
 
+        <!-- Step 5: Review -->
+        <div data-wizard-step="5" style="display:none;">
+          <h3 data-i18n="booking.step5">Resumo e confirmação</h3>
+          <div id="summaryContent"></div>
+          <div class="side-field" style="margin-top:20px;">
+            <label data-i18n="booking.notes">Notas ou pedidos especiais (opcional)</label>
+            <textarea name="notes" placeholder="Ex: Chegada depois das 15h, preciso de berço..." style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; font-family: inherit; font-size: 14px; min-height: 100px; resize: vertical;"></textarea>
+          </div>
+        </div>
+
         <!-- Navigation -->
         <div class="booking-nav" style="margin-top:20px; display:flex; gap:10px;">
           <button type="button" data-wizard-prev class="btn-secondary" style="display:none;" data-i18n="booking.back">← Voltar</button>
           <button type="button" data-wizard-next class="btn-primary" data-i18n="booking.next">Seguinte →</button>
-          <button type="submit" data-wizard-submit class="book-btn" style="display:none;" data-i18n="booking.cta">Verificar disponibilidade</button>
+          <button type="submit" data-wizard-submit class="book-btn" style="display:none;" data-i18n="booking.cta">Confirmar reserva</button>
         </div>
 
         <p class="fine-print" data-i18n="property.finePrint">Não será cobrado nada já. Preços e disponibilidade em tempo real, ligados ao Beds24, chegam em breve.</p>

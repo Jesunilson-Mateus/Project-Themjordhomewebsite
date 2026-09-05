@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposta TheMajord'Home</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .email-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #1B3E4C;
+            border-bottom: 2px solid #4F8864;
+            padding-bottom: 10px;
+        }
+        h3 {
+            color: #4F8864;
+            margin-top: 30px;
+        }
+        .price-highlight {
+            background-color: #f0f8f4;
+            padding: 20px;
+            border-left: 4px solid #4F8864;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .price-main {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1B3E4C;
+        }
+        .price-original {
+            text-decoration: line-through;
+            color: #999;
+            margin-right: 10px;
+        }
+        .features-list {
+            list-style: none;
+            padding: 0;
+        }
+        .features-list li {
+            padding: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            border-bottom: 1px solid #eee;
+        }
+        .features-list li:last-child {
+            border-bottom: none;
+        }
+        .features-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #4F8864;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .not-included {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        .not-included li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        .not-included li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #999;
+        }
+        .note-box {
+            background-color: #fff3cd;
+            border: 1px solid #ffc107;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+        .screenshot-note {
+            background-color: #e7f3ff;
+            border: 1px solid #0066cc;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+        .signature {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+        .link-section {
+            background-color: #e8f5e9;
+            border: 1px solid #4F8864;
+            padding: 20px;
+            border-radius: 4px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .link-section a {
+            display: inline-block;
+            background-color: #4F8864;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .link-section a:hover {
+            background-color: #1B3E4C;
+        }
+        .new-feature {
+            background-color: #ffe8e8;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 11px;
+            font-weight: bold;
+            color: #d32f2f;
+            margin-left: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <p>Olá,</p>
+
+        <p>Segue em anexo uma versão de pré-visualização do site <strong>TheMajord'Home</strong>, pronta para avaliação interna. A entrega final do código (incluindo o painel de administração completo) faz-se depois de fecharmos todos os detalhes do projeto.</p>
+
+        <div class="link-section">
+            <p><strong>Para avaliar o site:</strong></p>
+            <p><a href="https://github.com/Jesunilson-Mateus/Project-Themjordhomewebsite">Aceder ao repositório GitHub</a></p>
+            <p style="font-size: 12px; margin-top: 10px;">Podem fazer download e abrir localmente no navegador — tudo funciona sem precisar de servidor.</p>
+        </div>
+
+        <h2>Preço</h2>
+        <div class="price-highlight">
+            <p>O valor normal para um trabalho deste tipo seria <span class="price-original">2.000€</span></p>
+            <p class="price-main">Ficará por <strong>1.600€</strong></p>
+        </div>
+
+        <p>Este valor <strong>não inclui</strong>:</p>
+        <ul class="not-included">
+            <li>A ligação em tempo real ao Beds24 (disponibilidade e reservas);</li>
+            <li>A integração de pagamentos com o Stripe;</li>
+            <li>O lançamento do site no Google (domínio, publicação em servidor e otimização de motores de busca).</li>
+        </ul>
+
+        <h2>O que o site já tem, função a função</h2>
+
+        <h3>📄 Páginas principais</h3>
+        <ul class="features-list">
+            <li><strong>Página inicial:</strong> Apresentação da empresa, carrossel com apartamentos em destaque, seletor de idioma (PT/EN/FR) e acesso rápido à coleção.</li>
+            <li><strong>Página "A coleção":</strong> Lista completa de todos os apartamentos, organizada por bairro.</li>
+            <li><strong>Página de cada apartamento:</strong> Galeria de fotos, descrição, comodidades e informação do bairro em 3 línguas; regras da casa, check-in/check-out, notas de segurança e kit de bebé disponível.</li>
+            <li><strong>Página "Torne-se parceiro":</strong> Dirigida a proprietários interessados, com benefícios e contacto direto.</li>
+        </ul>
+
+        <h3>🔖 Sistema de Reservas <span class="new-feature">NOVO</span></h3>
+        <ul class="features-list">
+            <li><strong>Wizard de 4 passos:</strong> Seleção de datas com calendário, hóspedes dinâmicos, serviços adicionais (Transfer, Kit de Bebé) e contacto.</li>
+            <li><strong>Email de confirmação:</strong> Automaticamente enviado após reserva com todos os detalhes da estadia.</li>
+            <li><strong>Link tokenizado seguro:</strong> Cada confirmação inclui um link único para deixar avaliação.</li>
+            <li><strong>Validação completa:</strong> Verifica disponibilidade, capacidade de hóspedes e datas válidas.</li>
+        </ul>
+
+        <h3>⭐ Sistema de Avaliações de Hóspedes <span class="new-feature">NOVO</span></h3>
+        <ul class="features-list">
+            <li><strong>Página de avaliação:</strong> Hóspedes recebem email com link para deixar review após checkout.</li>
+            <li><strong>Formulário completo:</strong> Classificação de 5 estrelas, título, texto, nome e país do visitante.</li>
+            <li><strong>Validação integrada:</strong> Garante que todas as informações obrigatórias estão preenchidas.</li>
+            <li><strong>Backup automático:</strong> Avaliações são salvas localmente como backup.</li>
+            <li><strong>Pronto para painel:</strong> As avaliações ficam organizadas no painel de administração para aprovação antes de aparecer no site.</li>
+        </ul>
+
+        <h3>🌐 Suporte multi-idioma</h3>
+        <ul class="features-list">
+            <li>Site completamente traduzido em português, inglês e francês.</li>
+            <li>Seletor de idioma em tempo real.</li>
+            <li>Todas as comodidades, regras e descrições em 3 línguas.</li>
+        </ul>
+
+        <h3>♿ Acessibilidade</h3>
+        <ul class="features-list">
+            <li>Navegação completa por teclado (galeria, seletor de idioma, formulários).</li>
+            <li>Compatibilidade com leitores de ecrã.</li>
+            <li>Site responsivo e otimizado para telemóvel.</li>
+        </ul>
+
+        <h3>🔐 Painel de Administração</h3>
+        <ul class="features-list">
+            <li><strong>Área protegida por password:</strong> Para a equipa editar conteúdo sem saber programar.</li>
+            <li><strong>Gestão completa:</strong> Descrições, comodidades, fotos, regras da casa e preços de cada apartamento.</li>
+            <li><strong>Aprovação de avaliações:</strong> Dashboard para ver, moderar e aprovar reviews antes de aparecerem no site.</li>
+            <li><strong>Totalmente testado e funcional:</strong> Pronto para usar. Duas capturas de ecrã em anexo mostram o aspeto.</li>
+        </ul>
+
+        <h3>🔍 Página de Resultados de Busca <span class="new-feature">NOVO</span></h3>
+        <ul class="features-list">
+            <li><strong>Filtro inteligente:</strong> Mostra apartamentos disponíveis para as datas e número de hóspedes pesquisados.</li>
+            <li><strong>Agrupamento por zona:</strong> Organiza resultados por bairro para facilitar a navegação.</li>
+            <li><strong>Pronto para Beds24:</strong> Estrutura preparada para ligar ao API de disponibilidade em tempo real.</li>
+        </ul>
+
+        <h2>Porque não vão conseguir ver o "Painel de Administração"</h2>
+        <p>No rodapé do site há um link "Área reservada", que é a entrada para o painel. <strong>Ao abrir a pasta localmente, esse link não vai funcionar</strong> — todo o resto funciona normalmente. Há duas razões:</p>
+
+        <ol>
+            <li><strong>PHP:</strong> O painel é feito em PHP, que só corre num servidor a sério, nunca ao abrir ficheiros diretamente no browser.</li>
+            <li><strong>Entrega pós-aprovação:</strong> O código do painel não está incluído nesta pré-visualização porque é a parte mais trabalhosa. Fica a ser entregue, totalmente testado no servidor final, quando fecharmos os detalhes do projeto.</li>
+        </ol>
+
+        <div class="screenshot-note">
+            <strong>📸 Capturas de ecrã em anexo:</strong> Mostram que o painel já está pronto e funcional. Podem ver:
+            <ul style="margin: 10px 0; padding-left: 20px;">
+                <li>Dashboard de administração com lista de apartamentos</li>
+                <li>Editor de conteúdo para cada propriedade</li>
+                <li>Gestor de avaliações de hóspedes</li>
+                <li>Interface limpa e intuitiva</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <strong>Nota técnica:</strong> Quando for hora de publicar, o painel precisa do mesmo tipo de alojamento onde está o site atual (themajordhome.com — cPanel ou hosting LAMP/PHP tradicional), sem necessidade de base de dados (dados em JSON). Envio a documentação técnica completa (permissões, estrutura de dados, credenciais) quando avançarmos.
+        </div>
+
+        <h2>Próximos passos</h2>
+        <ul class="features-list">
+            <li>Avaliem o site e deixem feedback.</li>
+            <li>Definam os detalhes do projeto (domínio, hosting, data de lançamento).</li>
+            <li>Integração com Beds24 (calendários de disponibilidade).</li>
+            <li>Integração de pagamentos (Stripe ou similar).</li>
+            <li>Publicação no Google (SEO e otimização).</li>
+        </ul>
+
+        <p style="margin-top: 30px;">Qualquer dúvida ou se precisarem de esclarecer algo, é só dizerem.</p>
+
+        <div class="signature">
+            <p>Um abraço,</p>
+            <p><strong>Jess</strong></p>
+            <p style="font-size: 12px; color: #999;">Desenvolvedor de Software</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,128 @@
+Olá,
+
+Segue em anexo uma versão de pré-visualização do site TheMajord'Home, pronta para avaliação interna. A entrega final do código (incluindo o painel de administração completo) faz-se depois de fecharmos todos os detalhes do projeto.
+
+PARA AVALIAR O SITE:
+Repositório GitHub: https://github.com/Jesunilson-Mateus/Project-Themjordhomewebsite
+Podem fazer download e abrir localmente no navegador — tudo funciona sem precisar de servidor.
+
+---
+
+PREÇO
+
+O valor normal para um trabalho deste tipo seria 2.000€
+Ficará por 1.600€
+
+Este valor NÃO inclui:
+
+• A ligação em tempo real ao Beds24 (disponibilidade e reservas);
+• A integração de pagamentos com o Stripe;
+• O lançamento do site no Google (domínio, publicação em servidor e otimização de motores de busca).
+
+---
+
+O QUE O SITE JÁ TEM, FUNÇÃO A FUNÇÃO
+
+PÁGINAS PRINCIPAIS
+
+✓ Página inicial: Apresentação da empresa, carrossel com apartamentos em destaque, seletor de idioma (PT/EN/FR) e acesso rápido à coleção.
+
+✓ Página "A coleção": Lista completa de todos os apartamentos, organizada por bairro.
+
+✓ Página de cada apartamento: Galeria de fotos, descrição, comodidades e informação do bairro em 3 línguas; regras da casa, check-in/check-out, notas de segurança e kit de bebé disponível.
+
+✓ Página "Torne-se parceiro": Dirigida a proprietários interessados, com benefícios e contacto direto.
+
+SISTEMA DE RESERVAS [NOVO]
+
+✓ Wizard de 4 passos: Seleção de datas com calendário, hóspedes dinâmicos, serviços adicionais (Transfer, Kit de Bebé) e contacto.
+
+✓ Email de confirmação: Automaticamente enviado após reserva com todos os detalhes da estadia.
+
+✓ Link tokenizado seguro: Cada confirmação inclui um link único para deixar avaliação.
+
+✓ Validação completa: Verifica disponibilidade, capacidade de hóspedes e datas válidas.
+
+SISTEMA DE AVALIAÇÕES DE HÓSPEDES [NOVO]
+
+✓ Página de avaliação: Hóspedes recebem email com link para deixar review após checkout.
+
+✓ Formulário completo: Classificação de 5 estrelas, título, texto, nome e país do visitante.
+
+✓ Validação integrada: Garante que todas as informações obrigatórias estão preenchidas.
+
+✓ Backup automático: Avaliações são salvas localmente como backup.
+
+✓ Pronto para painel: As avaliações ficam organizadas no painel de administração para aprovação antes de aparecer no site.
+
+SUPORTE MULTI-IDIOMA
+
+✓ Site completamente traduzido em português, inglês e francês.
+
+✓ Seletor de idioma em tempo real.
+
+✓ Todas as comodidades, regras e descrições em 3 línguas.
+
+ACESSIBILIDADE
+
+✓ Navegação completa por teclado (galeria, seletor de idioma, formulários).
+
+✓ Compatibilidade com leitores de ecrã.
+
+✓ Site responsivo e otimizado para telemóvel.
+
+PAINEL DE ADMINISTRAÇÃO
+
+✓ Área protegida por password: Para a equipa editar conteúdo sem saber programar.
+
+✓ Gestão completa: Descrições, comodidades, fotos, regras da casa e preços de cada apartamento.
+
+✓ Aprovação de avaliações: Dashboard para ver, moderar e aprovar reviews antes de aparecerem no site.
+
+✓ Totalmente testado e funcional: Pronto para usar. Duas capturas de ecrã em anexo mostram o aspeto.
+
+PÁGINA DE RESULTADOS DE BUSCA [NOVO]
+
+✓ Filtro inteligente: Mostra apartamentos disponíveis para as datas e número de hóspedes pesquisados.
+
+✓ Agrupamento por zona: Organiza resultados por bairro para facilitar a navegação.
+
+✓ Pronto para Beds24: Estrutura preparada para ligar ao API de disponibilidade em tempo real.
+
+---
+
+PORQUE NÃO VÃO CONSEGUIR VER O "PAINEL DE ADMINISTRAÇÃO"
+
+No rodapé do site há um link "Área reservada", que é a entrada para o painel. Ao abrir a pasta localmente, esse link não vai funcionar — todo o resto funciona normalmente. Há duas razões:
+
+1. PHP: O painel é feito em PHP, que só corre num servidor a sério, nunca ao abrir ficheiros diretamente no browser.
+
+2. Entrega pós-aprovação: O código do painel não está incluído nesta pré-visualização porque é a parte mais trabalhosa. Fica a ser entregue, totalmente testado no servidor final, quando fecharmos os detalhes do projeto.
+
+CAPTURAS DE ECRÃ EM ANEXO:
+Mostram que o painel já está pronto e funcional. Podem ver:
+• Dashboard de administração com lista de apartamentos
+• Editor de conteúdo para cada propriedade
+• Gestor de avaliações de hóspedes
+• Interface limpa e intuitiva
+
+NOTA TÉCNICA:
+Quando for hora de publicar, o painel precisa do mesmo tipo de alojamento onde está o site atual (themajordhome.com — cPanel ou hosting LAMP/PHP tradicional), sem necessidade de base de dados (dados em JSON). Envio a documentação técnica completa (permissões, estrutura de dados, credenciais) quando avançarmos.
+
+---
+
+PRÓXIMOS PASSOS
+
+• Avaliem o site e deixem feedback.
+• Definam os detalhes do projeto (domínio, hosting, data de lançamento).
+• Integração com Beds24 (calendários de disponibilidade).
+• Integração de pagamentos (Stripe ou similar).
+• Publicação no Google (SEO e otimização).
+
+---
+
+Qualquer dúvida ou se precisarem de esclarecer algo, é só dizerem.
+
+Um abraço,
+Jess
+Desenvolvedor de Software

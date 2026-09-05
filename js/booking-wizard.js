@@ -9,7 +9,7 @@ class BookingWizard {
     if (!this.form) return;
 
     this.currentStep = 1;
-    this.totalSteps = 4;
+    this.totalSteps = 5;
     this.formData = {};
 
     // Ler capacidade do atributo data se não fornecido
@@ -132,6 +132,9 @@ class BookingWizard {
       if (this.currentStep < this.totalSteps) {
         this.currentStep++;
         this.updateStepVisibility();
+        if (this.currentStep === this.totalSteps) {
+          this.updateSummary();
+        }
       }
     }
   }
@@ -146,15 +149,25 @@ class BookingWizard {
   validateStep(step) {
     const inputs = this.form.querySelectorAll(`[data-wizard-step="${step}"] [required]`);
     let isValid = true;
+    let errorMessages = [];
 
     inputs.forEach(input => {
       if (!input.value || (input.type === 'checkbox' && !input.checked && input.hasAttribute('required'))) {
         input.classList.add('error');
         isValid = false;
+        const label = input.previousElementSibling?.textContent || input.getAttribute('data-i18n') || input.name;
+        errorMessages.push(label);
       } else {
         input.classList.remove('error');
       }
     });
+
+    if (!isValid && errorMessages.length > 0) {
+      const errorMsg = window.I18N
+        ? window.I18N.t('booking.requiredFields')
+        : 'Por favor, preencha os campos obrigatórios';
+      setTimeout(() => alert(errorMsg), 50);
+    }
 
     // Step 1: Validate dates
     if (step === 1) {
@@ -260,6 +273,38 @@ class BookingWizard {
     } else {
       babyKitDetails.style.display = 'none';
     }
+  }
+
+  updateSummary() {
+    const summaryContent = document.getElementById('summaryContent');
+    if (!summaryContent) return;
+
+    const formData = new FormData(this.form);
+    const dateRange = formData.get('dateRange') || '';
+    const [checkIn, checkOut] = dateRange.split(' — ').map(d => d.trim());
+    const adults = parseInt(formData.get('adults')) || 1;
+    const children = parseInt(formData.get('children')) || 0;
+    const totalGuests = adults + children;
+
+    let servicesHtml = '';
+    if (formData.get('wantsTransfer')) {
+      const transferLabel = window.I18N ? window.I18N.t('booking.transfer') : 'Transfer';
+      servicesHtml += `<li>${transferLabel}: ${parseInt(formData.get('transferPeople')) || 1} ${window.I18N ? window.I18N.t('booking.people') : 'pessoas'}</li>`;
+    }
+    if (formData.get('wantsBabyKit')) {
+      const babyKitLabel = window.I18N ? window.I18N.t('booking.babyKit') : 'Baby Kit';
+      servicesHtml += `<li>${babyKitLabel}: ${parseInt(formData.get('babyKitQuantity')) || 1}</li>`;
+    }
+
+    summaryContent.innerHTML = `
+      <div style="background: #f5f5f5; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+        <h4 style="margin-top: 0; color: #333;">Resumo da sua reserva</h4>
+        <p><strong>Período:</strong> ${checkIn} — ${checkOut}</p>
+        <p><strong>Hóspedes:</strong> ${totalGuests} ${totalGuests === 1 ? 'pessoa' : 'pessoas'}</p>
+        ${servicesHtml ? `<p><strong>Serviços:</strong></p><ul style="margin: 5px 0; padding-left: 20px;">${servicesHtml}</ul>` : '<p><strong>Serviços:</strong> Nenhum serviço adicional</p>'}
+        <p><strong>Contacto:</strong> ${formData.get('visitorName')} (${formData.get('visitorEmail')})</p>
+      </div>
+    `;
   }
 
   handleSubmit(e) {
