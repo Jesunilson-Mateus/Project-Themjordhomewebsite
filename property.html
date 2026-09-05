@@ -191,6 +191,16 @@
 
           <div data-transfer-details style="display:none; margin-top:12px; padding:12px; background:rgba(0,0,0,0.03); border-radius:6px;">
             <div class="side-field">
+              <label data-i18n="booking.transfer.people">Quantas pessoas</label>
+              <select name="transferPeople">
+                <option value="1">1 pessoa</option>
+                <option value="2">2 pessoas</option>
+                <option value="3">3 pessoas</option>
+                <option value="4">4 pessoas</option>
+                <option value="5">5+ pessoas</option>
+              </select>
+            </div>
+            <div class="side-field" style="margin-top:10px;">
               <label data-i18n="booking.transfer.vehicle">Veículo</label>
               <select name="transferType">
                 <option value="car" data-i18n="booking.transfer.carOption">Carro — 25€</option>
@@ -212,7 +222,17 @@
             <input type="checkbox" name="wantsBabyKit">
             <span data-i18n="booking.babyKit.need">Preciso de kit de bebé — 25€</span>
           </label>
-          <p class="side-note" style="display:none; margin-top:8px;" data-baby-kit-note data-i18n="booking.babyKit.note">Pago em dinheiro no check-in ao concierge. Já estará preparado no apartamento.</p>
+          <div data-baby-kit-details style="display:none; margin-top:10px; padding:10px; background:rgba(0,0,0,0.03); border-radius:6px;">
+            <div class="side-field">
+              <label data-i18n="booking.babyKit.quantity">Quantos kits</label>
+              <select name="babyKitQuantity">
+                <option value="1">1 kit</option>
+                <option value="2">2 kits</option>
+                <option value="3">3 kits</option>
+              </select>
+            </div>
+            <p class="side-note" style="margin-top:8px;" data-i18n="booking.babyKit.note">Pago em dinheiro no check-in ao concierge. Já estará preparado no apartamento.</p>
+          </div>
         </div>
 
         <!-- Step 4: Contact -->

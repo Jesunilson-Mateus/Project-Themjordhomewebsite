@@ -35,12 +35,16 @@ class BookingWizard {
     // Setup conditional field visibility
     const childrenSelect = this.form.querySelector('[name="children"]');
     const transferCheckbox = this.form.querySelector('[name="wantsTransfer"]');
+    const babyKitCheckbox = this.form.querySelector('[name="wantsBabyKit"]');
 
     if (childrenSelect) {
       childrenSelect.addEventListener('change', () => this.updateBabyKitVisibility());
     }
     if (transferCheckbox) {
       transferCheckbox.addEventListener('change', () => this.updateTransferVisibility());
+    }
+    if (babyKitCheckbox) {
+      babyKitCheckbox.addEventListener('change', () => this.updateBabyKitQuantityVisibility());
     }
 
     // Setup number of guests note
@@ -180,6 +184,19 @@ class BookingWizard {
       transferDetails.style.display = 'block';
     } else {
       transferDetails.style.display = 'none';
+    }
+  }
+
+  updateBabyKitQuantityVisibility() {
+    const babyKitCheckbox = this.form.querySelector('[name="wantsBabyKit"]');
+    const babyKitDetails = this.form.querySelector('[data-baby-kit-details]');
+
+    if (!babyKitDetails || !babyKitCheckbox) return;
+
+    if (babyKitCheckbox.checked) {
+      babyKitDetails.style.display = 'block';
+    } else {
+      babyKitDetails.style.display = 'none';
     }
   }
 
