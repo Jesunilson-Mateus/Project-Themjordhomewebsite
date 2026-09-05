@@ -248,9 +248,11 @@ header:not(.scrolled):not(.solid) .owner-btn:hover{background:#fff; color:#1E202
   .slide-meta{flex-wrap:wrap; gap:14px 22px; margin-bottom:12px;}
 }
 @media (max-width:600px){
+  .hero .slide-content{padding:0 18px 220px;}
   .slide-title{font-size:clamp(30px,8vw,42px); line-height:1.03;}
-  .slide-meta{margin-top:14px; font-size:13px;}
+  .slide-meta{margin-top:14px; font-size:13px; margin-bottom:20px;}
   .slide-eyebrow{margin-bottom:10px;}
+  .slide-link{margin-top:40px;}
 }
 
 /* ---------- Floating booking bar (signature) ---------- */
