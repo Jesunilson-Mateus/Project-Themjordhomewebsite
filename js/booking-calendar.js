@@ -47,23 +47,25 @@ class BookingCalendar {
 
   initCalendar() {
     const today = new Date();
+    const separator = window.I18N ? window.I18N.t('booking.dateSeparator') : '—';
 
     window.bookingCalendar = flatpickr(this.inputElement, {
       mode: 'range',
       minDate: today,
-      dateFormat: 'dd/mm/yyyy',
+      dateFormat: 'dd-mm-yyyy',
       locale: 'pt',
       disable: this.reservedDates,
-      onClose: (selectedDates) => this.onDateSelect(selectedDates),
+      onClose: (selectedDates) => this.onDateSelect(selectedDates, separator),
       onChange: (selectedDates) => this.updateMinCheckoutDate(selectedDates),
     });
   }
 
-  onDateSelect(selectedDates) {
+  onDateSelect(selectedDates, separator = '—') {
     if (selectedDates.length === 2) {
       const checkIn = this.formatDate(selectedDates[0]);
       const checkOut = this.formatDate(selectedDates[1]);
       console.log('Booking selected:', { checkIn, checkOut });
+      // Flatpickr automatically formats the input with the range, so no need to manually set it
     }
   }
 
