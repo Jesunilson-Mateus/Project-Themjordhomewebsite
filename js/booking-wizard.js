@@ -11,6 +11,7 @@ class BookingWizard {
     this.currentStep = 1;
     this.totalSteps = 4;
     this.formData = {};
+    this.maxAdults = 2;
 
     this.init();
   }
@@ -24,9 +25,12 @@ class BookingWizard {
     const nextBtn = this.form.querySelector('[data-wizard-next]');
     const submitBtn = this.form.querySelector('[data-wizard-submit]');
 
-    if (prevBtn) prevBtn.addEventListener('click', () => this.previousStep());
-    if (nextBtn) nextBtn.addEventListener('click', () => this.nextStep());
+    if (prevBtn) prevBtn.addEventListener('click', (e) => { e.preventDefault(); this.previousStep(); });
+    if (nextBtn) nextBtn.addEventListener('click', (e) => { e.preventDefault(); this.nextStep(); });
     if (submitBtn) submitBtn.addEventListener('click', (e) => this.handleSubmit(e));
+
+    // Initialize adults/children selects
+    this.initGuestSelects();
 
     // Setup conditional field visibility
     const childrenSelect = this.form.querySelector('[name="children"]');
@@ -45,6 +49,33 @@ class BookingWizard {
       adultsSelect.addEventListener('change', () => this.updateGuestsNote());
       childrenSelect?.addEventListener('change', () => this.updateGuestsNote());
     }
+  }
+
+  initGuestSelects() {
+    const adultsSelect = this.form.querySelector('[name="adults"]');
+    const childrenSelect = this.form.querySelector('[name="children"]');
+
+    if (!adultsSelect || !childrenSelect) return;
+
+    // Populate adults (1-2)
+    for (let i = 1; i <= this.maxAdults; i++) {
+      const opt = document.createElement('option');
+      opt.value = i;
+      opt.textContent = i === 1 ? '1 adulto' : `${i} adultos`;
+      adultsSelect.appendChild(opt);
+    }
+
+    // Populate children (0-3)
+    for (let i = 0; i <= 3; i++) {
+      const opt = document.createElement('option');
+      opt.value = i;
+      if (i === 0) opt.textContent = 'Nenhuma';
+      else opt.textContent = i === 1 ? '1 criança' : `${i} crianças`;
+      childrenSelect.appendChild(opt);
+    }
+
+    adultsSelect.value = 1;
+    childrenSelect.value = 0;
   }
 
   updateStepVisibility() {
@@ -96,6 +127,16 @@ class BookingWizard {
         input.classList.remove('error');
       }
     });
+
+    // Step 2: Validate capacity (max 2 adults)
+    if (step === 2) {
+      const adultsSelect = this.form.querySelector('[name="adults"]');
+      const adults = parseInt(adultsSelect?.value) || 0;
+      if (adults > this.maxAdults) {
+        alert(`Capacidade máxima: ${this.maxAdults} adultos`);
+        isValid = false;
+      }
+    }
 
     return isValid;
   }

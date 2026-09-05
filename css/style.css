@@ -719,6 +719,16 @@ footer{background:var(--paper-2); border-top:1px solid var(--line-strong); paddi
   border-radius:var(--radius-sm); cursor:pointer; transition:background .25s ease;
 }
 .book-btn:hover{background:var(--green-bright);}
+.booking-nav{display:flex; gap:12px; align-items:center; margin-top:20px;}
+.booking-nav button{flex:1; padding:14px 16px; border:1px solid var(--line-strong); background:var(--card); color:var(--ink);
+  font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase;
+  border-radius:var(--radius-sm); cursor:pointer; transition:all .25s ease;}
+.booking-nav [data-wizard-next]{background:var(--azulejo-deep); color:#fff; border-color:var(--azulejo-deep);}
+.booking-nav [data-wizard-next]:hover{background:var(--green-bright); border-color:var(--green-bright);}
+.booking-nav [data-wizard-submit]{background:var(--azulejo-deep); color:#fff; border-color:var(--azulejo-deep); flex:1;}
+.booking-nav [data-wizard-submit]:hover{background:var(--green-bright); border-color:var(--green-bright);}
+.booking-nav [data-wizard-prev]{border-color:var(--line-strong);}
+.booking-nav [data-wizard-prev]:hover{background:var(--paper-2); border-color:var(--line-strong);}
 .booking-sidebar .fine-print{font-size:11.5px; opacity:.5; text-align:center; margin-top:14px; line-height:1.5;}
 .side-note{font-size:11.5px; opacity:.6; margin:6px 2px 0; line-height:1.4;}
 .side-note.is-warning{color:#B3402A; opacity:1;}
