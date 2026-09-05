@@ -208,7 +208,7 @@ header:not(.scrolled):not(.solid) .owner-btn:hover{background:#fff; color:#1E202
 .slide-meta b{color:#fff; font-weight:500;}
 .slide-link{
   display:inline-flex; align-items:center; gap:8px; margin-top:32px; color:#fff; position:relative; z-index:100;
-  font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.1em; text-transform:uppercase;
+  font-family:'IBM Plex Mono',monospace; font-size:12px; text-transform:uppercase;
   border-bottom:1px solid rgba(255,255,255,.5); padding-bottom:4px; transition:border-color .25s ease, opacity .25s ease;
   pointer-events:auto;
 }
@@ -225,14 +225,14 @@ header:not(.scrolled):not(.solid) .owner-btn:hover{background:#fff; color:#1E202
 .hero-pause::before{content:"⏸"; font-size:13px; line-height:1;}
 .hero-pause.is-paused::before{content:"▶"; margin-left:2px;}
 
-.hero-dots{position:absolute; bottom:130px; left:40px; z-index:2; display:flex; gap:10px; align-items:center;}
+.hero-dots{position:absolute; bottom:220px; left:40px; z-index:2; display:flex; gap:10px; align-items:center;}
 .hero-dots button{
   width:26px; height:2px; background:rgba(255,255,255,.35); border:none; cursor:pointer; padding:0; transition:.25s;
 }
 .hero-dots button.active{background:#fff; width:40px;}
 .hero-counter{
   color:#fff; font-family:'IBM Plex Mono',monospace; font-size:12px;
-  letter-spacing:.12em; opacity:.85; font-variant-numeric:tabular-nums;
+  opacity:.85; font-variant-numeric:tabular-nums;
 }
 
 /* Mobile: the generic `.wrap` padding overrides .slide-content's bottom
