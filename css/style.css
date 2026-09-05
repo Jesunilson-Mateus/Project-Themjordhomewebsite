@@ -131,10 +131,13 @@ nav.services a:hover::after{width:100%;}
 .lang-toggle button[data-lang]:focus-visible{outline:2px solid currentColor; outline-offset:2px; border-radius:2px;}
 .lang-toggle .active{border-bottom:1px solid currentColor;}
 .owner-btn{
-  border:1px solid currentColor; padding:9px 20px; font-size:12px;
+  border:1.5px solid currentColor; padding:9px 20px; font-size:12px;
   text-transform:uppercase; letter-spacing:.08em; border-radius:100px;
-  transition:background .25s ease, color .25s ease, transform .25s ease, box-shadow .25s ease;
+  transition:background .25s ease, color .25s ease, border-color .25s ease, transform .25s ease, box-shadow .25s ease;
 }
+/* On the light/solid header the button text is dark ink on cream — a plain
+   currentColor border reads too faint there, so pin it to the brand teal. */
+header.scrolled .owner-btn, header.solid .owner-btn{ border-color:var(--azulejo-deep); }
 .theme-toggle{background:none; border:none; padding:0; margin:0; cursor:pointer; color:inherit; display:flex; align-items:center; justify-content:center;}
 .theme-toggle svg{width:17px; height:17px; display:block;}
 .theme-toggle .icon-moon{display:none;}
