@@ -244,8 +244,8 @@ header:not(.scrolled):not(.solid) .owner-btn:hover{background:#fff; color:#1E202
    Restore room for them (higher specificity than `.wrap`) and let the
    quartos / hóspedes / m² row wrap instead of being clipped. */
 @media (max-width:940px){
-  .hero .slide-content{padding:0 22px 112px;}
-  .slide-meta{flex-wrap:wrap; gap:10px 18px;}
+  .hero .slide-content{padding:0 22px 140px;}
+  .slide-meta{flex-wrap:wrap; gap:14px 22px; margin-bottom:12px;}
 }
 @media (max-width:600px){
   .slide-title{font-size:clamp(30px,8vw,42px); line-height:1.03;}
