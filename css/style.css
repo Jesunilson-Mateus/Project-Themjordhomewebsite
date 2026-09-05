@@ -192,8 +192,7 @@ header:not(.scrolled):not(.solid) .owner-btn:hover{background:#fff; color:#1E202
 .ph-4{background:linear-gradient(135deg,#43514a 0%, #293630 55%, #151c19 100%);}
 .ph-5{background:linear-gradient(135deg,#5b5240 0%, #3a3327 55%, #1e1a13 100%);}
 .slide-bg .mark{
-  position:absolute; right:6%; top:12%; font-family:'Lora',serif; font-style:italic;
-  font-size:15vw; color:rgba(255,255,255,.06); line-height:1; pointer-events:none; user-select:none;
+  display:none;
 }
 
 .slide-content{position:relative; z-index:10; width:100%; padding:0 40px 128px;}
