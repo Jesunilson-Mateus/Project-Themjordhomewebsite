@@ -12,6 +12,11 @@ servico-concierge.html (seccao "Em imagens") espera estes 2 ficheiros aqui:
   concierge-1.jpg       - concierge / receção          (EM FALTA)
   concierge-2.jpg       - equipa num check-in           (OK, adicionado)
 
+servico-manutencao.html (seccao "Em imagens") espera estes 2 ficheiros aqui:
+
+  manutencao-1.jpg      - técnico em intervenção        (EM FALTA)
+  manutencao-2.jpg      - equipamento/painel revisto     (EM FALTA)
+
 Formato: JPG (fotos) largura ~1200 px; PNG para o icone (fundo transparente ok).
 Enquanto os ficheiros nao existirem, cada figura esconde-se sozinha na pagina.
 
