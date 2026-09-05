@@ -268,7 +268,6 @@ class BookingWizard {
     if (this.validateStep(this.totalSteps)) {
       // Collect form data
       const formData = new FormData(this.form);
-      console.log('Booking submitted:', Object.fromEntries(formData));
 
       // Show alert (replace with actual API call)
       const message = window.I18N

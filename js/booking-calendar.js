@@ -34,14 +34,12 @@ class BookingCalendar {
         this.formatDate(new Date(today.getTime() + 10 * 24 * 60 * 60 * 1000)),
       ];
 
-      console.log('Reserved dates loaded:', this.reservedDates);
-
       if (window.bookingCalendar) {
         window.bookingCalendar.close();
       }
       this.initCalendar();
     } catch (error) {
-      console.error('Error loading reservations:', error);
+      // Error loading reservations silently
     }
   }
 
@@ -67,7 +65,6 @@ class BookingCalendar {
       const checkIn = this.formatDateDisplay(selectedDates[0]);
       const checkOut = this.formatDateDisplay(selectedDates[1]);
       this.inputElement.value = `${checkIn} ${separator} ${checkOut}`;
-      console.log('Booking selected:', { checkIn, checkOut });
     }
   }
 
