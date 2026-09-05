@@ -55,8 +55,10 @@ class BookingCalendar {
       dateFormat: 'dd-mm-yyyy',
       locale: 'pt',
       disable: this.reservedDates,
-      onClose: (selectedDates) => this.onDateSelect(selectedDates, separator),
-      onChange: (selectedDates) => this.updateMinCheckoutDate(selectedDates),
+      onClose: (selectedDates) => {
+        this.onDateSelect(selectedDates, separator);
+        this.updateMinCheckoutDate(selectedDates);
+      },
     });
   }
 
