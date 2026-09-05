@@ -212,7 +212,7 @@ header:not(.scrolled):not(.solid) .owner-btn:hover{background:#fff; color:#1E202
 .slide-meta span{display:flex; align-items:center; gap:8px;}
 .slide-meta b{color:#fff; font-weight:500;}
 .slide-link{
-  display:inline-flex; align-items:center; gap:8px; margin-top:26px; color:#fff;
+  display:inline-flex; align-items:center; gap:8px; margin-top:32px; color:#fff; position:relative; z-index:3;
   font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.1em; text-transform:uppercase;
   border-bottom:1px solid rgba(255,255,255,.5); padding-bottom:4px; transition:border-color .25s ease, opacity .25s ease;
 }
