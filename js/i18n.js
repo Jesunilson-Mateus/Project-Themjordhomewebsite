@@ -24,7 +24,8 @@
   var UI = {
     'nav.stay': { pt: 'Alojamento', en: 'Accommodation', fr: 'Hébergement' },
     'nav.concierge': { pt: 'Concierge', en: 'Concierge', fr: 'Conciergerie' },
-    'nav.cleaning': { pt: 'Limpeza & Manutenção', en: 'Cleaning & Maintenance', fr: 'Ménage & Entretien' },
+    'nav.cleaning': { pt: 'Limpeza', en: 'Cleaning', fr: 'Ménage' },
+    'nav.maintenance': { pt: 'Manutenção', en: 'Maintenance', fr: 'Entretien' },
     'nav.about': { pt: 'Sobre', en: 'About', fr: 'À propos' },
     'nav.owners': { pt: 'Área de Proprietários', en: "Owners' Area", fr: 'Espace Propriétaires' },
     'aria.openMenu': { pt: 'Abrir menu', en: 'Open menu', fr: 'Ouvrir le menu' },
