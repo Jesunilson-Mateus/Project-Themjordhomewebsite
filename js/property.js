@@ -251,66 +251,15 @@ document.addEventListener('DOMContentLoaded', () => {
       childrenSel.appendChild(opt);
     }
     childrenSel.value = Math.min(prevChildren, max - 1);
-
-    updateGuestsNote(max);
-    updateBabyKitVisibility();
   }
 
-  /* Kit de bebé só é oferecido quando há pelo menos uma criança na reserva. */
-  function updateBabyKitVisibility() {
-    const childrenSel = document.getElementById('bookChildren');
-    const field = document.getElementById('babyKitField');
-    const note = document.getElementById('babyKitNote');
-    const checkbox = document.getElementById('wantsBabyKit');
-    if (!childrenSel || !field) return;
-    const hasChildren = (parseInt(childrenSel.value, 10) || 0) > 0;
-    field.hidden = !hasChildren;
-    if (note) note.hidden = !hasChildren;
-    if (!hasChildren && checkbox) checkbox.checked = false;
-  }
-
-  function updateGuestsNote(max) {
-    const note = document.getElementById('guestsNote');
-    const adultsSel = document.getElementById('bookAdults');
-    const childrenSel = document.getElementById('bookChildren');
-    if (!note || !adultsSel || !childrenSel) return;
-    const total = (parseInt(adultsSel.value, 10) || 0) + (parseInt(childrenSel.value, 10) || 0);
-    const over = total > max;
-    note.classList.toggle('is-warning', over);
-    note.textContent = fillTemplate(I18N.t(over ? 'booking.guests.over' : 'booking.guests.total'), { n: total, max });
-  }
 
   readMoreBtn.onclick = () => {
     const expanded = descEl.classList.toggle('clamped');
     readMoreBtn.textContent = expanded ? I18N.t('property.readMore') : I18N.t('property.showLess');
   };
 
-  const bookForm = document.getElementById('bookForm');
-  const bookAdultsSel = document.getElementById('bookAdults');
-  const bookChildrenSel = document.getElementById('bookChildren');
-  [bookAdultsSel, bookChildrenSel].forEach(sel => {
-    if (sel) sel.addEventListener('change', () => updateGuestsNote(prop.guests || 1));
-  });
-  if (bookChildrenSel) bookChildrenSel.addEventListener('change', updateBabyKitVisibility);
-
-  const wantsTransfer = document.getElementById('wantsTransfer');
-  const transferFields = document.getElementById('transferFields');
-  if (wantsTransfer && transferFields) {
-    wantsTransfer.addEventListener('change', () => {
-      transferFields.hidden = !wantsTransfer.checked;
-    });
-  }
-
-  bookForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const max = prop.guests || 1;
-    const total = (parseInt(bookAdultsSel && bookAdultsSel.value, 10) || 0) + (parseInt(bookChildrenSel && bookChildrenSel.value, 10) || 0);
-    if (total > max) {
-      alert(fillTemplate(I18N.t('booking.guests.overAlert'), { max }));
-      return;
-    }
-    alert(I18N.t('booking.alert'));
-  });
+  // Booking form is initialized by BookingWizard (js/booking-wizard.js) and BookingCalendar (js/booking-calendar.js)
 
   /* ---------- Guest reviews (aprovadas no painel; não dependem do idioma) ---------- */
   function renderReviews() {
