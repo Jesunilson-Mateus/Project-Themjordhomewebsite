@@ -62,10 +62,10 @@ class BookingCalendar {
 
   onDateSelect(selectedDates, separator = '—') {
     if (selectedDates.length === 2) {
-      const checkIn = this.formatDate(selectedDates[0]);
-      const checkOut = this.formatDate(selectedDates[1]);
+      const checkIn = this.formatDateDisplay(selectedDates[0]);
+      const checkOut = this.formatDateDisplay(selectedDates[1]);
+      this.inputElement.value = `${checkIn} ${separator} ${checkOut}`;
       console.log('Booking selected:', { checkIn, checkOut });
-      // Flatpickr automatically formats the input with the range, so no need to manually set it
     }
   }
 
@@ -81,6 +81,13 @@ class BookingCalendar {
     const month = String(date.getMonth() + 1).padStart(2, '0');
     const day = String(date.getDate()).padStart(2, '0');
     return `${year}-${month}-${day}`;
+  }
+
+  formatDateDisplay(date) {
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+    return `${day}-${month}-${year}`;
   }
 }
 
