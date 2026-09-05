@@ -102,9 +102,23 @@
     'booking.next': { pt: 'Seguinte →', en: 'Next →', fr: 'Suivant →' },
     'booking.transfer.note': { pt: 'Pago em dinheiro ao motorista na chegada.', en: 'Paid in cash to the driver on arrival.', fr: 'Payé en espèces au chauffeur à l\'arrivée.' },
     'booking.babyKit.note': { pt: 'Pago em dinheiro no check-in ao concierge. Já estará preparado no apartamento.', en: 'Paid in cash at check-in to concierge. Already prepared in the apartment.', fr: 'Payé en espèces à la réception au concierge. Déjà préparé dans l\'appartement.' },
+    'booking.error': { pt: 'Erro ao processar reserva. Tente novamente.', en: 'Error processing reservation. Please try again.', fr: 'Erreur lors du traitement de la réservation. Veuillez réessayer.' },
+    'booking.transfer': { pt: 'Transfer', en: 'Transfer', fr: 'Transfert' },
+    'booking.babyKit': { pt: 'Kit de bebé', en: 'Baby Kit', fr: 'Kit bébé' },
 
     'search.title': { pt: 'Resultados da Busca', en: 'Search Results', fr: 'Résultats de la Recherche' },
     'search.guests': { pt: 'hóspedes', en: 'guests', fr: 'voyageurs' },
+
+    'review.title': { pt: 'Deixe a sua avaliação', en: 'Leave your review', fr: 'Laissez votre avis' },
+    'review.thankYou': { pt: 'Obrigado pela sua avaliação!', en: 'Thank you for your review!', fr: 'Merci pour votre avis!' },
+    'review.submitted': { pt: 'A sua avaliação foi submetida com sucesso e será revisada em breve.', en: 'Your review has been submitted successfully and will be reviewed shortly.', fr: 'Votre avis a été soumis avec succès et sera examiné bientôt.' },
+    'review.rating': { pt: 'Como foi a sua estadia?', en: 'How was your stay?', fr: 'Comment s\'est passé votre séjour?' },
+    'review.title_label': { pt: 'Título da avaliação', en: 'Review title', fr: 'Titre de l\'avis' },
+    'review.text_label': { pt: 'Conte-nos mais sobre a sua experiência', en: 'Tell us more about your experience', fr: 'Parlez-nous de votre expérience' },
+    'review.name': { pt: 'Seu nome', en: 'Your name', fr: 'Votre nom' },
+    'review.country': { pt: 'País', en: 'Country', fr: 'Pays' },
+    'review.submit': { pt: 'Enviar avaliação', en: 'Submit review', fr: 'Envoyer l\'avis' },
+    'review.backHome': { pt: '← Voltar à página inicial', en: '← Back to home', fr: '← Retour à l\'accueil' },
 
     'validation.invalidDateFormat': { pt: 'Data inválida. Use dd-mm-yyyy', en: 'Invalid date format. Use dd-mm-yyyy', fr: 'Format de date invalide. Utilisez dd-mm-yyyy' },
     'validation.datePassed': { pt: 'Esta data já passou', en: 'This date has already passed', fr: 'Cette date est passée' },

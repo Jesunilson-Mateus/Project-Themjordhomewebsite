@@ -268,12 +268,61 @@ class BookingWizard {
     if (this.validateStep(this.totalSteps)) {
       // Collect form data
       const formData = new FormData(this.form);
+      const dateRange = formData.get('dateRange') || '';
+      const [checkIn, checkOut] = dateRange.split(' — ').map(d => d.trim());
+      const adults = parseInt(formData.get('adults')) || 1;
+      const children = parseInt(formData.get('children')) || 0;
+      const totalGuests = adults + children;
 
-      // Show alert (replace with actual API call)
-      const message = window.I18N
-        ? window.I18N.t('booking.alert')
-        : 'Sua reserva foi submetida! Em breve receberá confirmação.';
-      alert(message);
+      const services = [];
+      if (formData.get('wantsTransfer')) {
+        services.push({
+          name: window.I18N ? window.I18N.t('booking.transfer') : 'Transfer',
+          quantity: parseInt(formData.get('transferPeople')) || 1,
+          price: 0 // TODO: fetch actual price from property data
+        });
+      }
+      if (formData.get('wantsBabyKit')) {
+        services.push({
+          name: window.I18N ? window.I18N.t('booking.babyKit') : 'Baby Kit',
+          quantity: parseInt(formData.get('babyKitQuantity')) || 1,
+          price: 0 // TODO: fetch actual price from property data
+        });
+      }
+
+      const reservationData = {
+        propertyName: window.propertyName || 'Property',
+        propertySlug: window.propertySlug || 'property',
+        checkIn: checkIn,
+        checkOut: checkOut,
+        guestName: formData.get('visitorName') || 'Guest',
+        guestEmail: formData.get('visitorEmail') || '',
+        guestPhone: formData.get('visitorPhone') || '',
+        totalGuests: totalGuests,
+        services: services,
+        totalPrice: 0 // TODO: fetch actual price from property data
+      };
+
+      // Send confirmation email with review link
+      if (window.ReservationEmail) {
+        window.ReservationEmail.sendReservationConfirmation(reservationData).then(result => {
+          const message = window.I18N
+            ? window.I18N.t('booking.alert')
+            : 'Sua reserva foi submetida! Em breve receberá confirmação por email.';
+          alert(message);
+          // TODO: Redirect to confirmation page or reset form
+        }).catch(error => {
+          const errorMsg = window.I18N
+            ? window.I18N.t('booking.error')
+            : 'Erro ao processar reserva. Tente novamente.';
+          alert(errorMsg);
+        });
+      } else {
+        const message = window.I18N
+          ? window.I18N.t('booking.alert')
+          : 'Sua reserva foi submetida! Em breve receberá confirmação.';
+        alert(message);
+      }
     }
   }
 }
