@@ -48,7 +48,7 @@ class BookingCalendar {
   initCalendar() {
     const today = new Date();
 
-    flatpickr(this.inputElement, {
+    window.bookingCalendar = flatpickr(this.inputElement, {
       mode: 'range',
       minDate: today,
       dateFormat: 'dd/mm/yyyy',
@@ -57,8 +57,6 @@ class BookingCalendar {
       onClose: (selectedDates) => this.onDateSelect(selectedDates),
       onChange: (selectedDates) => this.updateMinCheckoutDate(selectedDates),
     });
-
-    window.bookingCalendar = flatpickr(this.inputElement);
   }
 
   onDateSelect(selectedDates) {
