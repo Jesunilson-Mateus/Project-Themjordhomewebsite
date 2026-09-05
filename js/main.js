@@ -59,7 +59,7 @@ function renderHeroSlides() {
       : `data-src="${escapeHtml(photo)}" loading="lazy"`;
     return `
       <div class="slide${i === 0 ? ' active' : ''}" data-index="${i}">
-        <div class="slide-bg"><img ${imgAttr} alt="${escapeHtml(p.name)}"><div class="mark">${i + 1}</div></div>
+        <div class="slide-bg"><img ${imgAttr} alt="${escapeHtml(p.name)}"></div>
         <div class="slide-content wrap">
           <div class="slide-eyebrow"><span class="dash"></span> ${escapeHtml(p.district)}, ${escapeHtml(p.city)}</div>
           <h1 class="slide-title">${lead}<em>${last}</em></h1>
