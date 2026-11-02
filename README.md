@@ -91,6 +91,12 @@ Ver `admin/LEIA-ME.txt` para as instruções completas de publicação, permiss�
 
 **Importante**: o painel precisa de um servidor com PHP (ver secção "Publicar o site" abaixo) — não funciona em hospedagem só de ficheiros estáticos como o GitHub Pages.
 
+## Guia para o engenheiro
+
+Tudo o que é preciso para publicar e ligar as integrações (Beds24, Stripe, Google Ads) está em
+[`docs/GUIA-TECNICO-LANCAMENTO-PT.pdf`](docs/GUIA-TECNICO-LANCAMENTO-PT.pdf) (versão francesa:
+[`docs/GUIDE-TECHNIQUE-LANCEMENT-FR.pdf`](docs/GUIDE-TECHNIQUE-LANCEMENT-FR.pdf)).
+
 ## Publicar o site
 
 O site em si (páginas públicas) é HTML/CSS/JS puro e funciona em qualquer hospedagem, incluindo hospedagem estática (GitHub Pages, Netlify, etc.). **Mas o painel de administração (`admin/`) precisa de um servidor com PHP** — o mesmo tipo de hospedagem onde já está o site atual (themajordhome.com), como cPanel, cPanel com PHP, ou qualquer hosting LAMP/PHP tradicional.
