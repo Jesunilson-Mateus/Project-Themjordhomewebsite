@@ -81,8 +81,28 @@
         <h1 data-i18n="collection.fullHeading">A coleção completa</h1>
         <span class="mono" id="directoryCount"></span>
       </div>
+      <!-- Pesquisa na coleção: filtra os cartões por nome, zona e nº de hóspedes (js/main.js) -->
+      <form class="collection-search" id="collectionSearch" role="search" autocomplete="off">
+        <div class="cs-field cs-query">
+          <label for="csQuery" data-i18n="collection.search.label">Procurar</label>
+          <input type="search" id="csQuery" placeholder="Nome do apartamento ou zona" data-i18n-placeholder="collection.search.placeholder">
+        </div>
+        <div class="cs-field">
+          <label for="csZone" data-i18n="collection.search.zone">Zona</label>
+          <select id="csZone"></select>
+        </div>
+        <div class="cs-field">
+          <label for="csGuests" data-i18n="collection.search.guests">Hóspedes</label>
+          <input type="number" id="csGuests" min="1" max="10" step="1" inputmode="numeric" placeholder="Qualquer número" data-i18n-placeholder="collection.search.anyGuests">
+        </div>
+        <div class="cs-status">
+          <span id="csCount" aria-live="polite"></span>
+          <button type="reset" class="cs-clear" id="csClear" data-i18n="collection.search.clear" hidden>Limpar</button>
+        </div>
+      </form>
       <div id="apartmentsMap" class="apartments-map"></div>
       <div id="directoryGroups"></div>
+      <p class="cs-empty" id="csEmpty" data-i18n="collection.search.empty" hidden>Nenhum apartamento corresponde à pesquisa.</p>
       <nav class="pager" id="directoryPager" aria-label="Paginação da coleção"></nav>
     </div>
   </div>

@@ -171,6 +171,15 @@
     'collection.fullHeading': { pt: 'A coleção completa', en: 'The full collection', fr: 'La collection complète' },
     'collection.countSuffix': { pt: 'moradas no Porto', en: 'addresses in Porto', fr: 'adresses à Porto' },
     'collection.page': { pt: 'Página', en: 'Page', fr: 'Page' },
+    'collection.search.label': { pt: 'Procurar', en: 'Search', fr: 'Rechercher' },
+    'collection.search.placeholder': { pt: 'Nome do apartamento ou zona', en: 'Apartment name or area', fr: 'Nom de l\'appartement ou quartier' },
+    'collection.search.zone': { pt: 'Zona', en: 'Area', fr: 'Quartier' },
+    'collection.search.anyZone': { pt: 'Todas as zonas', en: 'All areas', fr: 'Tous les quartiers' },
+    'collection.search.guests': { pt: 'Hóspedes', en: 'Guests', fr: 'Voyageurs' },
+    'collection.search.anyGuests': { pt: 'Qualquer número', en: 'Any number', fr: 'Peu importe' },
+    'collection.search.count': { pt: '{n} de {total} apartamentos', en: '{n} of {total} apartments', fr: '{n} sur {total} appartements' },
+    'collection.search.clear': { pt: 'Limpar', en: 'Clear', fr: 'Effacer' },
+    'collection.search.empty': { pt: 'Nenhum apartamento corresponde à pesquisa.', en: 'No apartment matches your search.', fr: 'Aucun appartement ne correspond à votre recherche.' },
     'common.from': { pt: 'desde', en: 'from', fr: 'dès' },
 
     'trust.eyebrow': { pt: "Porquê a TheMajord'Home", en: "Why TheMajord'Home", fr: "Pourquoi TheMajord'Home" },
@@ -1433,6 +1442,9 @@
     });
     root.querySelectorAll('[data-i18n-aria-label]').forEach(function (el) {
       el.setAttribute('aria-label', t(el.getAttribute('data-i18n-aria-label')));
+    });
+    root.querySelectorAll('[data-i18n-placeholder]').forEach(function (el) {
+      el.setAttribute('placeholder', t(el.getAttribute('data-i18n-placeholder')));
     });
     document.documentElement.setAttribute('lang', getLang());
   }

@@ -238,6 +238,79 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   observeReveal(document.querySelectorAll('.reveal:not(.apt-card):not(.district-group)'));
 
+  /* ---- Pesquisa na coleção: nome, zona e nº de hóspedes ----
+     index.html      → filtra os cartões já desenhados em #featuredGrid.
+     apartments.html → volta a desenhar a lista só com os resultados (sem
+                       paginação enquanto houver filtro). */
+  const normalize = (s) => String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+  // "Baixa · Trindade" pertence à zona "Baixa".
+  const zoneOf = (district) => String(district || '').split('·')[0].trim();
+  const MAX_SEARCH_GUESTS = 10;
+
+  function fillCollectionSearchOptions() {
+    const zoneSel = document.getElementById('csZone');
+    if (!zoneSel) return;
+    const all = getAllProperties();
+
+    const zones = [...new Set(all.map(p => zoneOf(p.district)))].sort((a, b) => a.localeCompare(b, 'pt'));
+    const prevZone = zoneSel.value;
+    zoneSel.innerHTML = `<option value="">${escapeHtml(I18N.t('collection.search.anyZone'))}</option>`
+      + zones.map(z => `<option value="${escapeHtml(z)}">${escapeHtml(z)}</option>`).join('');
+    zoneSel.value = zones.includes(prevZone) ? prevZone : '';
+  }
+
+  /* Lê os campos da barra. Nº de hóspedes exato (1–10): mostra os
+     apartamentos com capacidade para pelo menos esse número; acima de 10
+     passa a 10; vazio = qualquer número. */
+  function readCollectionFilter() {
+    if (!document.getElementById('collectionSearch')) return { active: false };
+    const q = normalize(document.getElementById('csQuery').value.trim());
+    const zone = document.getElementById('csZone').value;
+    const guestsInput = document.getElementById('csGuests');
+    let guests = parseInt(guestsInput.value, 10) || 0;
+    if (guests > MAX_SEARCH_GUESTS) { guests = MAX_SEARCH_GUESTS; guestsInput.value = guests; }
+    if (guestsInput.value !== '' && guests < 1) { guests = 0; guestsInput.value = ''; }
+    return { q, zone, guests, active: !!(q || zone || guests) };
+  }
+
+  function matchesCollectionFilter(f, search, zone, guests) {
+    return (!f.q || search.includes(f.q)) && (!f.zone || zone === f.zone) && (!f.guests || guests >= f.guests);
+  }
+
+  function showCollectionSearchStatus(f, shown, total) {
+    if (!document.getElementById('collectionSearch')) return;
+    document.getElementById('csCount').textContent = I18N.t('collection.search.count')
+      .replace('{n}', shown).replace('{total}', total);
+    document.getElementById('csClear').hidden = !f.active;
+    document.getElementById('csEmpty').hidden = shown > 0;
+  }
+
+  function applyCollectionSearch() {
+    const grid = document.getElementById('featuredGrid');
+    if (!grid) return;
+    const f = readCollectionFilter();
+    const cards = [...grid.querySelectorAll('.apt-card')];
+    let shown = 0;
+    cards.forEach(card => {
+      const match = matchesCollectionFilter(f, card.dataset.search, card.dataset.zone, +card.dataset.guests);
+      card.hidden = !match;
+      if (match) { shown++; card.classList.add('in'); }
+    });
+    showCollectionSearchStatus(f, shown, cards.length);
+  }
+
+  const collectionSearch = document.getElementById('collectionSearch');
+  if (collectionSearch) {
+    const onSearch = () => document.getElementById('directoryGroups')
+      ? renderCollection({ animate: false })
+      : applyCollectionSearch();
+    collectionSearch.addEventListener('submit', (e) => e.preventDefault());
+    collectionSearch.addEventListener('input', onSearch);
+    collectionSearch.addEventListener('change', onSearch);
+    // "reset" limpa os campos só depois do evento — filtrar no tick seguinte.
+    collectionSearch.addEventListener('reset', () => setTimeout(onSearch, 0));
+  }
+
   /* ---- Collection grid + directory (rendered from properties-data.js, localized) ---- */
   function renderCollection(opts) {
     opts = opts || {};
@@ -248,7 +321,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (grid) {
       const featured = getFeaturedProperties().map(p => I18N.getLocalizedProperty(p.slug, p));
       grid.innerHTML = featured.map(p => `
-        <a class="apt-card reveal" href="property.html?p=${encodeURIComponent(p.slug)}">
+        <a class="apt-card reveal" href="property.html?p=${encodeURIComponent(p.slug)}" data-search="${escapeHtml(normalize(p.name + ' ' + p.district))}" data-zone="${escapeHtml(zoneOf(p.district))}" data-guests="${p.guests || 0}">
           <div class="apt-photo">
             <span class="badge">${p.rating ? '★ ' + I18N.formatRating(p.rating) + ' · ' + p.reviews : I18N.t('collection.badgeFeatured')}</span>
             <img class="ph" src="${escapeHtml(p.heroImage)}" alt="${escapeHtml(p.name)}">
@@ -262,6 +335,8 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
         </a>
       `).join('');
+      fillCollectionSearchOptions();   // rótulos das listas na língua atual
+      applyCollectionSearch();
     }
 
     if (directoryGroups) {
@@ -272,7 +347,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const per = Math.ceil(all.length / PAGES);
       let page = parseInt(new URLSearchParams(window.location.search).get('page'), 10);
       if (!(page >= 1 && page <= PAGES)) page = 1;
-      const directory = all.slice((page - 1) * per, (page - 1) * per + per);
+      fillCollectionSearchOptions();   // rótulos das listas na língua atual
+      const filter = readCollectionFilter();
+      // Com pesquisa ativa mostram-se todos os resultados numa só lista.
+      const directory = filter.active
+        ? all.filter(p => matchesCollectionFilter(filter, normalize(p.name + ' ' + p.district), zoneOf(p.district), p.guests || 0))
+        : all.slice((page - 1) * per, (page - 1) * per + per);
+      showCollectionSearchStatus(filter, filter.active ? directory.length : all.length, all.length);
 
       const groups = {};
       const order = [];
@@ -308,13 +389,15 @@ document.addEventListener('DOMContentLoaded', () => {
       const countEl = document.getElementById('directoryCount');
       if (countEl) {
         countEl.textContent = all.length + ' ' + I18N.t('collection.countSuffix')
-          + ' · ' + I18N.t('collection.page') + ' ' + page + '/' + PAGES;
+          + (filter.active ? '' : ' · ' + I18N.t('collection.page') + ' ' + page + '/' + PAGES);
       }
 
       /* Pager (‹ 1 2 3 ›). Real hrefs so it works without JS / links are
-         shareable; JS upgrades it to an in-page switch, no full reload. */
+         shareable; JS upgrades it to an in-page switch, no full reload.
+         Escondido enquanto há pesquisa (os resultados vêm todos juntos). */
       const pager = document.getElementById('directoryPager');
-      if (pager) {
+      if (pager) pager.hidden = filter.active;
+      if (pager && !filter.active) {
         const cell = (n, label) => {
           if (n < 1 || n > PAGES) return `<span class="is-disabled">${label}</span>`;
           if (n === page) return `<span class="is-current" aria-current="page">${label}</span>`;
