@@ -224,6 +224,17 @@ textarea{resize:vertical; font-family:'Inter', sans-serif;}
 .upload-form label{flex:1; min-width:220px;}
 .upload-form input[type="file"]{margin-top:7px; width:100%; font-family:'Inter', sans-serif; font-size:13px;}
 
+/* Páginas de serviços: cartão de foto com legenda editável */
+.photo-card-fields{padding:10px 9px 0; display:flex; flex-direction:column; gap:9px;}
+.photo-card-fields label{font-size:11.5px;}
+.photo-card-fields input[type="text"]{margin-top:4px; padding:7px 9px; font-size:12.5px;}
+.photo-card-fields input[type="file"]{margin-top:4px; width:100%; font-size:11.5px;}
+.photo-card-fields .hint{display:block; margin:2px 0 0; font-size:11px; text-transform:none; letter-spacing:0;}
+.photo-actions button[value="save"]{background:var(--green); border-color:var(--green); color:#fff;}
+.photo-actions button[value="save"]:hover{background:var(--green-bright); border-color:var(--green-bright);}
+.form-section .page-head{margin-bottom:16px;}
+.form-section .page-head h2{margin:0;}
+
 /* ---------- Users table ---------- */
 .table-scroll{overflow-x:auto;}
 .users-table{width:100%; min-width:520px; border-collapse:collapse; font-size:13.5px;}

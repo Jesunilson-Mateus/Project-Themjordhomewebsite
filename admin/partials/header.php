@@ -22,6 +22,7 @@ $__allUsers = load_users();
   <a class="admin-logo" href="dashboard.php">TheMajord'Home <span>painel</span></a>
   <nav class="admin-nav">
     <a href="dashboard.php">Apartamentos</a>
+    <a href="services.php">Serviços</a>
     <a href="reviews.php">Avaliações</a>
     <a href="users.php">Utilizadores</a>
     <a href="../index.html" target="_blank" rel="noopener">Ver site ↗</a>

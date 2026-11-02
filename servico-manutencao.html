@@ -219,12 +219,10 @@
   </div>
 </section>
 
-<!-- ===================== GALERIA =====================
-     As 2 primeiras figuras ficam à espera de fotos reais da equipa/rede de
-     manutenção. Colocar os ficheiros em img/servicos/ com estes nomes:
-       manutencao-1.jpg   (técnico em intervenção)
-       manutencao-2.jpg   (equipamento / painel revisto)
-     Enquanto não existirem, cada figura esconde-se sozinha (onerror). -->
+<!-- ===================== EM IMAGENS =====================
+     Galeria gerada a partir de data/service-galleries.json — editar no
+     painel (admin → Serviços) ou no JSON + node scripts/sync-data.js.
+     Alterações feitas aqui à mão perdem-se. -->
 <section class="services-strip">
   <div class="wrap">
     <div class="head">
@@ -232,12 +230,11 @@
       <p>Alojamentos geridos pela TheMajord'Home no Porto.</p>
     </div>
     <div class="service-gallery reveal">
-      <figure><img src="img/servicos/manutencao-1.jpg" alt="Técnico da rede de manutenção da TheMajord'Home em intervenção" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Rede de profissionais de confiança</figcaption></figure>
-      <figure><img src="img/servicos/manutencao-2.jpg" alt="Equipamento revisto num alojamento" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Cada intervenção documentada</figcaption></figure>
-      <figure><img src="img/camilo-apartment/04-kitchen-detail.jpg" alt="Electrodomésticos revistos e a funcionar" loading="lazy"><figcaption>Electrodomésticos revistos e a funcionar</figcaption></figure>
-      <figure><img src="img/belleville-porto/03-kitchen.jpg" alt="Cozinhas mantidas a ponto" loading="lazy"><figcaption>Cozinhas mantidas a ponto</figcaption></figure>
-      <figure><img src="img/gardeny-porto/11-facade.jpg" alt="Acompanhamento do edifício e das áreas comuns" loading="lazy"><figcaption>Acompanhamento do edifício e das áreas comuns</figcaption></figure>
-      <figure><img src="img/history-porto/06-bathroom.jpg" alt="Canalização e climatização sob controlo" loading="lazy"><figcaption>Canalização e climatização sob controlo</figcaption></figure>
+      <figure><img src="img/torrinha-c-porto/05-kitchen-detail.jpg" alt="Máquina de café, chaleira e placa revistas na cozinha" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Cada intervenção documentada</figcaption></figure>
+      <figure><img src="img/camilo-apartment/04-kitchen-detail.jpg" alt="Electrodomésticos revistos e a funcionar" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Electrodomésticos revistos e a funcionar</figcaption></figure>
+      <figure><img src="img/belleville-porto/03-kitchen.jpg" alt="Cozinhas mantidas a ponto" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Cozinhas mantidas a ponto</figcaption></figure>
+      <figure><img src="img/gardeny-porto/11-facade.jpg" alt="Acompanhamento do edifício e das áreas comuns" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Acompanhamento do edifício e das áreas comuns</figcaption></figure>
+      <figure><img src="img/history-porto/06-bathroom.jpg" alt="Canalização e climatização sob controlo" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Canalização e climatização sob controlo</figcaption></figure>
     </div>
   </div>
 </section>

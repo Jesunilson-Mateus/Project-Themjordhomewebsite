@@ -1,0 +1,131 @@
+{
+    "gestao": {
+        "title": "Gestão de Alojamento",
+        "page": "servico-gestao.html",
+        "photos": [
+            {
+                "src": "img/fabrica-no-jardim/06-garden-facade.jpg",
+                "caption": "Cada imóvel visitado e fotografado pela equipa",
+                "alt": "Cada imóvel visitado e fotografado pela equipa"
+            },
+            {
+                "src": "img/boho-vintage-bonfim/01-living.jpg",
+                "caption": "Anúncios com fotografia e texto próprios",
+                "alt": "Anúncios com fotografia e texto próprios"
+            },
+            {
+                "src": "img/joy-porto/01-living.jpg",
+                "caption": "Presença simultânea em Booking, Airbnb e Abritel",
+                "alt": "Presença simultânea em Booking, Airbnb e Abritel"
+            },
+            {
+                "src": "img/gracy-porto/09-building-entrance.jpg",
+                "caption": "Um único ponto de contacto para o proprietário",
+                "alt": "Um único ponto de contacto para o proprietário"
+            },
+            {
+                "src": "img/mercadory-ribeira/01-living.jpg",
+                "caption": "Preços ajustados à procura e à época",
+                "alt": "Preços ajustados à procura e à época"
+            },
+            {
+                "src": "img/sky-de-loios-porto/06-living.jpg",
+                "caption": "Relatório mensal de ocupação e rendimento",
+                "alt": "Relatório mensal de ocupação e rendimento"
+            }
+        ]
+    },
+    "concierge": {
+        "title": "Concierge",
+        "page": "servico-concierge.html",
+        "photos": [
+            {
+                "src": "img/servicos/concierge-2.jpg",
+                "caption": "Check-in pessoal, à porta do alojamento",
+                "alt": "Equipa da TheMajord'Home num check-in"
+            },
+            {
+                "src": "img/torrinha-f-porto/20-building-street.jpg",
+                "caption": "Entrega de chaves à hora combinada",
+                "alt": "Fachada do prédio da Torrinha, nº 136, no Porto"
+            },
+            {
+                "src": "img/casa-senhorinha/02-street.jpg",
+                "caption": "Recomendações de quem vive no Porto",
+                "alt": "Rua do Porto junto a um alojamento"
+            },
+            {
+                "src": "img/loungy-porto/01-dining.jpg",
+                "caption": "Essenciais prontos à chegada",
+                "alt": "Mesa posta num alojamento"
+            },
+            {
+                "src": "img/cocoon-almada-porto/04-breakfast-nook.jpg",
+                "caption": "Cabaz de boas-vindas opcional",
+                "alt": "Cantinho de pequeno-almoço"
+            }
+        ]
+    },
+    "limpeza": {
+        "title": "Limpeza & Lavandaria",
+        "page": "servico-limpeza.html",
+        "photos": [
+            {
+                "src": "img/sky-de-loios-porto/03-bed-detail.jpg",
+                "caption": "Quartos preparados ao padrão de hotelaria",
+                "alt": "Quarto preparado com cama feita e toalhas dobradas"
+            },
+            {
+                "src": "img/torrinha-f-porto/04-linens.jpg",
+                "caption": "Enxoval lavado, engomado e em stock",
+                "alt": "Toalhas lavadas e enroladas sobre a cama"
+            },
+            {
+                "src": "img/torrinha-a-porto/05-bathroom-detail.jpg",
+                "caption": "Kit e consumíveis repostos entre estadias",
+                "alt": "Doseadores de gel e champô repostos na casa de banho"
+            },
+            {
+                "src": "img/belleville-porto/07-bathroom1.jpg",
+                "caption": "Casa de banho limpa a fundo",
+                "alt": "Casa de banho limpa a fundo"
+            },
+            {
+                "src": "img/torrinha-i-porto/05-linens.jpg",
+                "caption": "Verificação ponto a ponto antes do check-in",
+                "alt": "Essenciais repostos antes de cada check-in"
+            }
+        ]
+    },
+    "manutencao": {
+        "title": "Manutenção",
+        "page": "servico-manutencao.html",
+        "photos": [
+            {
+                "src": "img/torrinha-c-porto/05-kitchen-detail.jpg",
+                "caption": "Cada intervenção documentada",
+                "alt": "Máquina de café, chaleira e placa revistas na cozinha"
+            },
+            {
+                "src": "img/camilo-apartment/04-kitchen-detail.jpg",
+                "caption": "Electrodomésticos revistos e a funcionar",
+                "alt": "Electrodomésticos revistos e a funcionar"
+            },
+            {
+                "src": "img/belleville-porto/03-kitchen.jpg",
+                "caption": "Cozinhas mantidas a ponto",
+                "alt": "Cozinhas mantidas a ponto"
+            },
+            {
+                "src": "img/gardeny-porto/11-facade.jpg",
+                "caption": "Acompanhamento do edifício e das áreas comuns",
+                "alt": "Acompanhamento do edifício e das áreas comuns"
+            },
+            {
+                "src": "img/history-porto/06-bathroom.jpg",
+                "caption": "Canalização e climatização sob controlo",
+                "alt": "Canalização e climatização sob controlo"
+            }
+        ]
+    }
+}

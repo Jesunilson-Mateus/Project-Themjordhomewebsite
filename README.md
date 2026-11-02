@@ -10,8 +10,14 @@ majordhome-project/
 ├── property.html           → Template de página de apartamento (reutilizável)
 ├── css/
 │   └── style.css           → Toda a folha de estilo do site (partilhada)
+├── data/
+│   ├── properties.json     → Fonte de verdade: dados de todos os apartamentos
+│   └── translations.json   → Fonte de verdade: textos PT/FR de cada apartamento (+ amenity-*.json, nearby-labels.json)
+├── scripts/
+│   └── sync-data.js        → Recria as cópias dos dados nos .js a partir dos JSON
 ├── js/
-│   ├── properties-data.js  → Fonte única de dados de todos os apartamentos
+│   ├── properties-data.js  → Cópia gerada de data/properties.json (não editar à mão)
+│   ├── i18n.js              → Textos da interface + cópia gerada das traduções
 │   ├── main.js              → Interações da homepage (slideshow, menu, etc.)
 │   └── property.js          → Interações da página de apartamento (galeria, lightbox, etc.)
 └── img/
@@ -20,37 +26,48 @@ majordhome-project/
 
 ## Como adicionar um novo apartamento
 
-Só é preciso editar **um ficheiro**: `js/properties-data.js`.
+Os dados vivem em **`data/properties.json`** (e os textos em PT/FR em `data/translations.json`). Os ficheiros `js/properties-data.js` e `js/i18n.js` têm uma cópia desses dados que é gerada — não se editam à mão.
 
-Copia um bloco existente dentro do objeto `PROPERTIES` e ajusta os campos:
+1. Copia um bloco existente em `data/properties.json` e ajusta os campos:
 
-```js
+```json
 "nome-do-apartamento": {
-  name: "Nome do Apartamento",
-  subtitle: "Uma frase curta e editorial",
-  district: "Bairro",
-  city: "Porto",
-  country: "Portugal",
-  guests: 4,
-  bedrooms: 2,
-  beds: 3,
-  bathrooms: 1,
-  size_m2: 80,
-  rating: 4.9,        // ou null se não houver
-  reviews: 120,        // ou null
-  priceFrom: 150,       // ou remove a linha se não houver preço
-  featured: true,       // true = aparece na grelha "A coleção" com foto grande
-  heroImage: "img/.../foto-principal.jpg",
-  images: ["img/.../1.jpg", "img/.../2.jpg", "..."],
-  description: "Texto editorial sobre o apartamento.",
-  neighborhood: "Frase sobre a zona.",
-  nearby: [{ label: "Ponto de interesse", distance: "5 min a pé" }],
-  amenities: {
-    "Essentials": ["Wi-Fi", "Ar condicionado"],
-    "Kitchen": ["Frigorífico", "Fogão"]
-  }
+    "name": "Nome do Apartamento",
+    "subtitle": "Uma frase curta e editorial",
+    "district": "Bairro",
+    "city": "Porto",
+    "country": "Portugal",
+    "guests": 4,
+    "bedrooms": 2,
+    "beds": 3,
+    "bathrooms": 1,
+    "size_m2": 80,
+    "rating": 4.9,
+    "reviews": 120,
+    "featured": true,
+    "heroImage": "img/.../foto-principal.jpg",
+    "images": ["img/.../1.jpg", "img/.../2.jpg"],
+    "description": "Texto editorial sobre o apartamento.",
+    "neighborhood": "Frase sobre a zona.",
+    "nearby": [{ "label": "Ponto de interesse", "distance": "5 min walk" }],
+    "amenities": {
+        "Essentials": ["Wi-Fi", "Air conditioning"],
+        "Kitchen": ["Refrigerator", "Stovetop"]
+    }
 }
 ```
+
+(`rating` e `reviews` podem ser `null` se não houver.)
+
+2. Acrescenta as versões PT/FR do `subtitle`, `description` e `neighborhood` em `data/translations.json`, com a mesma chave.
+
+3. Atualiza as cópias nos `.js`:
+
+```
+node scripts/sync-data.js
+```
+
+Para só verificar se está tudo sincronizado, sem alterar nada: `node scripts/sync-data.js --check`. O script recusa-se a correr se houver entradas nos `.js` que faltam nos JSON (para não apagar nada sem querer).
 
 A chave do objeto (`"nome-do-apartamento"`) torna-se o URL da página:
 `property.html?p=nome-do-apartamento`
@@ -64,11 +81,11 @@ Depois liga a esse apartamento a partir de qualquer sítio com:
 - `featured: false` (ou omitido) → aparece na lista "A coleção completa", agrupado por bairro.
 - Sem `images` → a galeria mostra um fundo tonal elegante em vez de fotos partidas.
 
-**Nota:** desde que existe o painel de administração (ver secção seguinte), a forma normal de editar um apartamento passou a ser o painel, não este ficheiro à mão. Editar `properties-data.js` diretamente continua a funcionar (o painel lê sempre o ficheiro mais recente), mas qualquer alteração feita pelo painel reescreve este ficheiro automaticamente — por isso evita editar os dois ao mesmo tempo.
+**Nota:** no servidor, a forma normal de editar um apartamento é o painel de administração (ver secção seguinte). O painel grava nos JSON e regenera os `.js` sozinho, exatamente como o `scripts/sync-data.js`. Qualquer alteração feita diretamente nos `.js` perde-se na próxima gravação do painel.
 
 ## Painel de administração (para a equipa editar o site)
 
-A pasta `admin/` é um painel de gestão protegido por password onde a equipa pode editar, sem mexer em código: descrições (PT/EN/FR), comodidades, fotos e as regras da casa (check-in/check-out, alarmes). Fica acessível em `/admin/` depois do site estar publicado num servidor com PHP.
+A pasta `admin/` é um painel de gestão protegido por password onde a equipa pode editar, sem mexer em código: descrições (PT/EN/FR), comodidades, fotos e as regras da casa (check-in/check-out, alarmes) de cada apartamento, e as fotos e legendas das galerias "Em imagens" das páginas de serviços (separador **Serviços**; dados em `data/service-galleries.json`). Fica acessível em `/admin/` depois do site estar publicado num servidor com PHP.
 
 Ver `admin/LEIA-ME.txt` para as instruções completas de publicação, permissões de ficheiros, e as credenciais da primeira conta.
 
@@ -83,7 +100,7 @@ Para publicar com o painel a funcionar:
 2. Confirma que o PHP no servidor consegue **escrever** nas pastas `data/`, `data/backups/`, `img/` e no ficheiro `admin/users.json` (normalmente basta que o utilizador do PHP tenha permissão de escrita na pasta — pergunta ao teu alojamento se tiveres dúvidas sobre isto).
 3. Acede a `https://oteudominio.pt/admin/` e entra com as credenciais em `admin/LEIA-ME.txt`.
 
-Se só quiseres publicar as páginas públicas sem o painel (ex: numa hospedagem só estática), basta não copiar a pasta `admin/` — o resto do site funciona à mesma, só que a edição volta a ser manual em `properties-data.js`.
+Se só quiseres publicar as páginas públicas sem o painel (ex: numa hospedagem só estática), basta não copiar a pasta `admin/` — o resto do site funciona à mesma, só que a edição volta a ser manual: editar os JSON em `data/` e correr `node scripts/sync-data.js`.
 
 ## Notas técnicas
 

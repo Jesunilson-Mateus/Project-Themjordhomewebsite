@@ -14,6 +14,9 @@ define('TRANSLATIONS_JSON', DATA_DIR . '/translations.json');
 define('AMENITY_CATEGORIES_JSON', DATA_DIR . '/amenity-categories.json');
 define('AMENITY_ITEMS_JSON', DATA_DIR . '/amenity-items.json');
 define('AMENITY_CATALOG_JSON', DATA_DIR . '/amenity-catalog.json');
+define('SERVICE_GALLERIES_JSON', DATA_DIR . '/service-galleries.json');
+// Pasta (dentro de img/) onde ficam as fotos enviadas para as páginas de serviços.
+define('SERVICE_IMG_FOLDER', 'servicos');
 define('BACKUPS_DIR', DATA_DIR . '/backups');
 
 define('USERS_JSON', ADMIN_DIR . '/users.json');

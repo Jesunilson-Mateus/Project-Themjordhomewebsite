@@ -1,24 +1,21 @@
 Fotos das paginas de servicos.
 
-servico-limpeza.html (seccao "Em imagens") espera estes 4 ficheiros aqui:
+As galerias "Em imagens" das 4 paginas de servicos (gestao, concierge,
+limpeza, manutencao) editam-se no painel de administracao:
 
-  limpeza-equipa-1.jpg  - equipa a limpar (cozinha / bancada)
-  limpeza-equipa-2.jpg  - aspiracao de um quarto
-  lavandaria.jpg        - enxoval branco dobrado em prateleira / armazem
-  kit-limpeza.png       - icone do kit de limpeza + checklist
+  /admin/  ->  Servicos
 
-servico-concierge.html (seccao "Em imagens") espera estes 2 ficheiros aqui:
+La e possivel trocar cada foto, mudar a legenda e a descricao, mudar a
+ordem, apagar ou acrescentar fotos. As fotos enviadas pelo painel ficam
+guardadas nesta pasta.
 
-  concierge-1.jpg       - concierge / receção          (EM FALTA)
-  concierge-2.jpg       - equipa num check-in           (OK, adicionado)
+Sem painel (edicao manual): as galerias estao em data/service-galleries.json.
+Depois de editar, correr na raiz do projeto:
 
-servico-manutencao.html (seccao "Em imagens") espera estes 2 ficheiros aqui:
+  node scripts/sync-data.js
 
-  manutencao-1.jpg      - técnico em intervenção        (EM FALTA)
-  manutencao-2.jpg      - equipamento/painel revisto     (EM FALTA)
+Por agora, quase todas as fotos sao de apartamentos (pastas img/<apartamento>/).
+Apenas concierge-2.jpg e uma foto real da equipa.
 
-Formato: JPG (fotos) largura ~1200 px; PNG para o icone (fundo transparente ok).
-Enquanto os ficheiros nao existirem, cada figura esconde-se sozinha na pagina.
-
-Nota: confirmar que ha direitos de uso destas imagens antes de publicar
-(as enviadas eram de outras empresas / bancos de imagens).
+Nota: confirmar que ha direitos de uso das imagens antes de publicar
+(as fotos enviadas inicialmente eram de outras empresas / bancos de imagens).

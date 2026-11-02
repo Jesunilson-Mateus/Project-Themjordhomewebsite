@@ -152,6 +152,7 @@ function backup_data() {
     @mkdir($dir, 0775, true);
     if (file_exists(PROPERTIES_JSON)) copy(PROPERTIES_JSON, $dir . '/properties.json');
     if (file_exists(TRANSLATIONS_JSON)) copy(TRANSLATIONS_JSON, $dir . '/translations.json');
+    if (file_exists(SERVICE_GALLERIES_JSON)) copy(SERVICE_GALLERIES_JSON, $dir . '/service-galleries.json');
 
     // Não deixar acumular infinitamente: mantém só as últimas 60 cópias.
     $all = glob(BACKUPS_DIR . '/*', GLOB_ONLYDIR);
@@ -218,6 +219,54 @@ function regenerate_amenity_items_js($items) {
 
 function regenerate_amenity_categories_js($categories) {
     splice_js_object(I18N_JS, 'var AMENITY_CATEGORIES = {', $categories);
+}
+
+/* =========================================================================
+   Galerias das páginas de serviços (servico-*.html, secção "Em imagens")
+   data/service-galleries.json é a fonte de verdade; ao gravar, a galeria é
+   reescrita dentro do HTML da página, entre
+   <div class="service-gallery reveal"> e o </div> seguinte.
+   O scripts/sync-data.js gera exatamente o mesmo HTML — se mudares o
+   formato aqui, muda-o lá também.
+   ========================================================================= */
+
+function load_service_galleries() { return load_json(SERVICE_GALLERIES_JSON); }
+
+function service_gallery_html($photos, $eol) {
+    $lines = [];
+    foreach ($photos as $p) {
+        $lines[] = '      <figure><img src="' . h($p['src']) . '" alt="' . h($p['alt'] ?? '')
+            . '" loading="lazy" onerror="this.closest(\'figure\').remove()"><figcaption>'
+            . h($p['caption'] ?? '') . '</figcaption></figure>';
+    }
+    return implode($eol, $lines);
+}
+
+function regenerate_service_page($service) {
+    $path = ROOT_DIR . '/' . basename($service['page']);
+    $src = @file_get_contents($path);
+    if ($src === false) throw new Exception('Não encontrei ' . basename($path));
+
+    $open = '<div class="service-gallery reveal">';
+    $start = strpos($src, $open);
+    if ($start === false) throw new Exception('Não encontrei a galeria em ' . basename($path));
+    $start += strlen($open);
+    $end = strpos($src, '</div>', $start);
+    if ($end === false) throw new Exception('Galeria sem fecho em ' . basename($path));
+    // mantém a indentação da linha do </div>
+    $lineStart = strrpos(substr($src, 0, $end), "\n");
+    $indent = substr($src, $lineStart + 1, $end - $lineStart - 1);
+    $eol = strpos($src, "\r\n") !== false ? "\r\n" : "\n";
+
+    $body = $service['photos'] ? $eol . service_gallery_html($service['photos'], $eol) : '';
+    $newSrc = substr($src, 0, $start) . $body . $eol . $indent . substr($src, $end);
+    file_put_contents($path, $newSrc);
+}
+
+function persist_service_galleries($galleries, $changedKey) {
+    backup_data();
+    save_json(SERVICE_GALLERIES_JSON, $galleries);
+    regenerate_service_page($galleries[$changedKey]);
 }
 
 /* =========================================================================
