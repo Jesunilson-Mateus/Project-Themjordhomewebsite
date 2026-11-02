@@ -362,6 +362,9 @@ a.service-card{text-decoration:none; color:inherit;}
 .legal-page ul{margin:0 0 14px 20px;}
 .legal-page li{font-size:15px; line-height:1.7; opacity:.82; margin-bottom:8px;}
 .legal-page a{color:var(--green); text-decoration:underline; text-underline-offset:2px;}
+/* Botões dentro de páginas de texto (ex.: reserva.html) não herdam o estilo de ligação. */
+.legal-page a.cta-btn{color:#fff; text-decoration:none; margin-top:12px;}
+.legal-page p:has(> .cta-btn){opacity:1;}
 
 /* footer legal link */
 .footer-bottom a{opacity:.75; transition:opacity .2s ease;}
