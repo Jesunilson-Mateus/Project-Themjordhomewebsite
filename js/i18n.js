@@ -239,101 +239,353 @@
      Shared amenity vocabulary (category names + individual items)
      --------------------------------------------------------------------- */
   var AMENITY_CATEGORIES = {
-    'Essentials': { pt: 'Essenciais', fr: 'Essentiels' },
-    'Outdoor': { pt: 'Exterior', fr: 'Extérieur' },
-    'Kitchen': { pt: 'Cozinha', fr: 'Cuisine' },
-    'Entertainment': { pt: 'Entretenimento', fr: 'Divertissement' },
-    'Laundry': { pt: 'Lavandaria', fr: 'Buanderie' },
-    'Safety': { pt: 'Segurança', fr: 'Sécurité' },
-    'Accessibility': { pt: 'Acessibilidade', fr: 'Accessibilité' },
-    'Work': { pt: 'Trabalho', fr: 'Travail' }
-  };
+    "Essentials": {
+        "pt": "Essenciais",
+        "fr": "Essentiels"
+    },
+    "Outdoor": {
+        "pt": "Exterior",
+        "fr": "Extérieur"
+    },
+    "Kitchen": {
+        "pt": "Cozinha",
+        "fr": "Cuisine"
+    },
+    "Entertainment": {
+        "pt": "Entretenimento",
+        "fr": "Divertissement"
+    },
+    "Laundry": {
+        "pt": "Lavandaria",
+        "fr": "Buanderie"
+    },
+    "Safety": {
+        "pt": "Segurança",
+        "fr": "Sécurité"
+    },
+    "Accessibility": {
+        "pt": "Acessibilidade",
+        "fr": "Accessibilité"
+    },
+    "Work": {
+        "pt": "Trabalho",
+        "fr": "Travail"
+    }
+};
 
   var AMENITY_ITEMS = {
-    'Wi-Fi': { pt: 'Wi-Fi', fr: 'Wi-Fi' },
-    'Air conditioning': { pt: 'Ar condicionado', fr: 'Climatisation' },
-    'Fan': { pt: 'Ventoinha', fr: 'Ventilateur' },
-    'Heating': { pt: 'Aquecimento', fr: 'Chauffage' },
-    'Fresh linens': { pt: 'Roupa de cama lavada', fr: 'Linge de maison' },
-    'Hairdryer': { pt: 'Secador de cabelo', fr: 'Sèche-cheveux' },
-    'Private terrace': { pt: 'Terraço privado', fr: 'Terrasse privée' },
-    'Garden view': { pt: 'Vista para o jardim', fr: 'Vue sur le jardin' },
-    'Outdoor seating': { pt: 'Zona de estar exterior', fr: 'Coin salon extérieur' },
-    'Shared pool': { pt: 'Piscina partilhada', fr: 'Piscine partagée' },
-    'Coffee maker': { pt: 'Máquina de café', fr: 'Machine à café' },
-    'Refrigerator': { pt: 'Frigorífico', fr: 'Réfrigérateur' },
-    'Oven': { pt: 'Forno', fr: 'Four' },
-    'Stove': { pt: 'Fogão', fr: 'Plaques de cuisson' },
-    'Stovetop': { pt: 'Placa', fr: 'Plaque de cuisson' },
-    'Private garden': { pt: 'Jardim privado', fr: 'Jardin privé' },
-    'Dishwasher': { pt: 'Máquina de lavar loiça', fr: 'Lave-vaisselle' },
-    'TV': { pt: 'TV', fr: 'TV' },
-    'Washing machine': { pt: 'Máquina de lavar roupa', fr: 'Lave-linge' },
-    'Ironing board': { pt: 'Tábua de engomar', fr: 'Table à repasser' },
-    'Fire extinguisher': { pt: 'Extintor', fr: 'Extincteur' },
-    'First aid kit': { pt: 'Kit de primeiros socorros', fr: 'Trousse de premiers secours' },
-    'Private patio': { pt: 'Pátio privado', fr: 'Patio privé' },
-    'Microwave': { pt: 'Micro-ondas', fr: 'Micro-ondes' },
-    'Balcony': { pt: 'Varanda', fr: 'Balcon' },
-    'Terrace': { pt: 'Terraço', fr: 'Terrasse' },
-    'Collective garden': { pt: 'Jardim comum', fr: 'Jardin commun' },
-    'Garden': { pt: 'Jardim', fr: 'Jardin' },
-    'Kettle': { pt: 'Chaleira', fr: 'Bouilloire' },
-    'Toaster': { pt: 'Torradeira', fr: 'Grille-pain' },
-    'Private balcony': { pt: 'Varanda privada', fr: 'Balcon privé' },
-    'Elevator': { pt: 'Elevador', fr: 'Ascenseur' },
-    'Ocean-facing terrace': { pt: 'Terraço virado para o oceano', fr: "Terrasse face à l'océan" },
-    'Private courtyard': { pt: 'Pátio privativo', fr: 'Cour privée' },
-    'Exterior space': { pt: 'Espaço exterior', fr: 'Espace extérieur' },
-    'Fireplace': { pt: 'Lareira', fr: 'Cheminée' },
-    'Drying machine': { pt: 'Máquina de secar roupa', fr: 'Sèche-linge' },
-    'Iron': { pt: 'Ferro de engomar', fr: 'Fer à repasser' },
-    'Parking': { pt: 'Estacionamento', fr: 'Parking' },
-    'Dedicated workspace': { pt: 'Espaço de trabalho dedicado', fr: 'Espace de travail dédié' },
-    'Small terrace': { pt: 'Pequeno terraço', fr: 'Petite terrasse' },
-    'Patio': { pt: 'Pátio', fr: 'Patio' },
-    'Shared garden': { pt: 'Jardim partilhado', fr: 'Jardin partagé' }
-  };
+    "Wi-Fi": {
+        "pt": "Wi-Fi",
+        "fr": "Wi-Fi"
+    },
+    "Air conditioning": {
+        "pt": "Ar condicionado",
+        "fr": "Climatisation"
+    },
+    "Fan": {
+        "pt": "Ventoinha",
+        "fr": "Ventilateur"
+    },
+    "Heating": {
+        "pt": "Aquecimento",
+        "fr": "Chauffage"
+    },
+    "Fresh linens": {
+        "pt": "Roupa de cama lavada",
+        "fr": "Linge de maison"
+    },
+    "Hairdryer": {
+        "pt": "Secador de cabelo",
+        "fr": "Sèche-cheveux"
+    },
+    "Private terrace": {
+        "pt": "Terraço privado",
+        "fr": "Terrasse privée"
+    },
+    "Garden view": {
+        "pt": "Vista para o jardim",
+        "fr": "Vue sur le jardin"
+    },
+    "Outdoor seating": {
+        "pt": "Zona de estar exterior",
+        "fr": "Coin salon extérieur"
+    },
+    "Shared pool": {
+        "pt": "Piscina partilhada",
+        "fr": "Piscine partagée"
+    },
+    "Coffee maker": {
+        "pt": "Máquina de café",
+        "fr": "Machine à café"
+    },
+    "Refrigerator": {
+        "pt": "Frigorífico",
+        "fr": "Réfrigérateur"
+    },
+    "Oven": {
+        "pt": "Forno",
+        "fr": "Four"
+    },
+    "Stove": {
+        "pt": "Fogão",
+        "fr": "Plaques de cuisson"
+    },
+    "Stovetop": {
+        "pt": "Placa",
+        "fr": "Plaque de cuisson"
+    },
+    "Private garden": {
+        "pt": "Jardim privado",
+        "fr": "Jardin privé"
+    },
+    "Dishwasher": {
+        "pt": "Máquina de lavar loiça",
+        "fr": "Lave-vaisselle"
+    },
+    "TV": {
+        "pt": "TV",
+        "fr": "TV"
+    },
+    "Washing machine": {
+        "pt": "Máquina de lavar roupa",
+        "fr": "Lave-linge"
+    },
+    "Ironing board": {
+        "pt": "Tábua de engomar",
+        "fr": "Table à repasser"
+    },
+    "Fire extinguisher": {
+        "pt": "Extintor",
+        "fr": "Extincteur"
+    },
+    "First aid kit": {
+        "pt": "Kit de primeiros socorros",
+        "fr": "Trousse de premiers secours"
+    },
+    "Private patio": {
+        "pt": "Pátio privado",
+        "fr": "Patio privé"
+    },
+    "Microwave": {
+        "pt": "Micro-ondas",
+        "fr": "Micro-ondes"
+    },
+    "Balcony": {
+        "pt": "Varanda",
+        "fr": "Balcon"
+    },
+    "Terrace": {
+        "pt": "Terraço",
+        "fr": "Terrasse"
+    },
+    "Collective garden": {
+        "pt": "Jardim comum",
+        "fr": "Jardin commun"
+    },
+    "Garden": {
+        "pt": "Jardim",
+        "fr": "Jardin"
+    },
+    "Kettle": {
+        "pt": "Chaleira",
+        "fr": "Bouilloire"
+    },
+    "Toaster": {
+        "pt": "Torradeira",
+        "fr": "Grille-pain"
+    },
+    "Private balcony": {
+        "pt": "Varanda privada",
+        "fr": "Balcon privé"
+    },
+    "Elevator": {
+        "pt": "Elevador",
+        "fr": "Ascenseur"
+    },
+    "Ocean-facing terrace": {
+        "pt": "Terraço virado para o oceano",
+        "fr": "Terrasse face à l'océan"
+    },
+    "Private courtyard": {
+        "pt": "Pátio privativo",
+        "fr": "Cour privée"
+    },
+    "Exterior space": {
+        "pt": "Espaço exterior",
+        "fr": "Espace extérieur"
+    },
+    "Fireplace": {
+        "pt": "Lareira",
+        "fr": "Cheminée"
+    },
+    "Drying machine": {
+        "pt": "Máquina de secar roupa",
+        "fr": "Sèche-linge"
+    },
+    "Iron": {
+        "pt": "Ferro de engomar",
+        "fr": "Fer à repasser"
+    },
+    "Parking": {
+        "pt": "Estacionamento",
+        "fr": "Parking"
+    },
+    "Dedicated workspace": {
+        "pt": "Espaço de trabalho dedicado",
+        "fr": "Espace de travail dédié"
+    },
+    "Small terrace": {
+        "pt": "Pequeno terraço",
+        "fr": "Petite terrasse"
+    },
+    "Patio": {
+        "pt": "Pátio",
+        "fr": "Patio"
+    },
+    "Shared garden": {
+        "pt": "Jardim partilhado",
+        "fr": "Jardin partagé"
+    }
+};
 
   /* ---------------------------------------------------------------------
      "Nearby" points of interest — only the generic part is translated;
      proper nouns (street/square/market names) are left as-is.
      --------------------------------------------------------------------- */
   var NEARBY_LABELS = {
-    'São Bento train station': { pt: 'Estação de São Bento', fr: 'Gare de São Bento' },
-    'Ribeira riverfront': { pt: 'Ribeira, junto ao rio', fr: 'Ribeira, au bord du fleuve' },
-    'Trindade metro station': { pt: 'Estação de metro da Trindade', fr: 'Station de métro Trindade' },
-    'Lapa metro station': { pt: 'Estação de metro da Lapa', fr: 'Station de métro Lapa' },
-    'Porto airport': { pt: 'Aeroporto do Porto', fr: 'Aéroport de Porto' },
-    'Trindade metro': { pt: 'Metro da Trindade', fr: 'Métro Trindade' },
-    'Bolhão metro station': { pt: 'Estação de metro do Bolhão', fr: 'Station de métro Bolhão' },
-    'Bolhão metro': { pt: 'Metro do Bolhão', fr: 'Métro Bolhão' },
-    'Douro riverfront': { pt: 'Margem do Douro', fr: 'Bords du Douro' },
-    '24 de Agosto metro': { pt: 'Metro do 24 de Agosto', fr: 'Métro 24 de Agosto' },
-    'Galeria de Paris': { pt: 'Galeria de Paris', fr: 'Galeria de Paris' },
-    'Câmara Municipal & Aliados': { pt: 'Câmara Municipal e Aliados', fr: 'Câmara Municipal et Aliados' },
-    'Supermarket': { pt: 'Supermercado', fr: 'Supermarché' },
-    'Jardim de São Lázaro': { pt: 'Jardim de São Lázaro', fr: 'Jardin de São Lázaro' },
-    'Rua de Santa Catarina': { pt: 'Rua de Santa Catarina', fr: 'Rua de Santa Catarina' },
-    'Fontaínhas': { pt: 'Fontaínhas', fr: 'Fontaínhas' },
-    'Rotunda da Boavista': { pt: 'Rotunda da Boavista', fr: 'Rond-point de Boavista' },
-    'Casa da Música metro station': { pt: 'Estação de metro Casa da Música', fr: 'Station de métro Casa da Música' },
-    'Avenida da Boavista': { pt: 'Avenida da Boavista', fr: 'Avenida da Boavista' },
-    'Praia do Homem do Leme': { pt: 'Praia do Homem do Leme', fr: 'Plage du Homem do Leme' },
-    'Foz do Douro riverside': { pt: 'Marginal da Foz do Douro', fr: 'Bord de mer de Foz do Douro' },
-    'Passeio Alegre gardens': { pt: 'Jardins do Passeio Alegre', fr: 'Jardins du Passeio Alegre' },
-    'Douro river mouth': { pt: 'Foz do rio Douro', fr: "Embouchure du Douro" },
-    'Mercado do Bolhão': { pt: 'Mercado do Bolhão', fr: 'Marché du Bolhão' },
-    'Avenida dos Aliados': { pt: 'Avenida dos Aliados', fr: 'Avenida dos Aliados' },
-    'Rua do Almada': { pt: 'Rua do Almada', fr: 'Rua do Almada' },
-    'Bonfim metro station': { pt: 'Estação de metro do Bonfim', fr: 'Station de métro Bonfim' },
-    'Museu Nacional Soares dos Reis': { pt: 'Museu Nacional Soares dos Reis', fr: 'Musée National Soares dos Reis' },
-    'São Lázaro garden': { pt: 'Jardim de São Lázaro', fr: 'Jardin de São Lázaro' },
-    'Douro riverbank': { pt: 'Margem do Douro', fr: 'Rives du Douro' },
-    'Ribeira': { pt: 'Ribeira', fr: 'Ribeira' },
-    'Clérigos Tower': { pt: 'Torre dos Clérigos', fr: 'Tour des Clérigos' },
-    'Livraria Lello': { pt: 'Livraria Lello', fr: 'Livraria Lello' }
-  };
+    "São Bento train station": {
+        "pt": "Estação de São Bento",
+        "fr": "Gare de São Bento"
+    },
+    "Ribeira riverfront": {
+        "pt": "Ribeira, junto ao rio",
+        "fr": "Ribeira, au bord du fleuve"
+    },
+    "Trindade metro station": {
+        "pt": "Estação de metro da Trindade",
+        "fr": "Station de métro Trindade"
+    },
+    "Lapa metro station": {
+        "pt": "Estação de metro da Lapa",
+        "fr": "Station de métro Lapa"
+    },
+    "Porto airport": {
+        "pt": "Aeroporto do Porto",
+        "fr": "Aéroport de Porto"
+    },
+    "Trindade metro": {
+        "pt": "Metro da Trindade",
+        "fr": "Métro Trindade"
+    },
+    "Bolhão metro station": {
+        "pt": "Estação de metro do Bolhão",
+        "fr": "Station de métro Bolhão"
+    },
+    "Bolhão metro": {
+        "pt": "Metro do Bolhão",
+        "fr": "Métro Bolhão"
+    },
+    "Douro riverfront": {
+        "pt": "Margem do Douro",
+        "fr": "Bords du Douro"
+    },
+    "24 de Agosto metro": {
+        "pt": "Metro do 24 de Agosto",
+        "fr": "Métro 24 de Agosto"
+    },
+    "Galeria de Paris": {
+        "pt": "Galeria de Paris",
+        "fr": "Galeria de Paris"
+    },
+    "Câmara Municipal & Aliados": {
+        "pt": "Câmara Municipal e Aliados",
+        "fr": "Câmara Municipal et Aliados"
+    },
+    "Supermarket": {
+        "pt": "Supermercado",
+        "fr": "Supermarché"
+    },
+    "Jardim de São Lázaro": {
+        "pt": "Jardim de São Lázaro",
+        "fr": "Jardin de São Lázaro"
+    },
+    "Rua de Santa Catarina": {
+        "pt": "Rua de Santa Catarina",
+        "fr": "Rua de Santa Catarina"
+    },
+    "Fontaínhas": {
+        "pt": "Fontaínhas",
+        "fr": "Fontaínhas"
+    },
+    "Rotunda da Boavista": {
+        "pt": "Rotunda da Boavista",
+        "fr": "Rond-point de Boavista"
+    },
+    "Casa da Música metro station": {
+        "pt": "Estação de metro Casa da Música",
+        "fr": "Station de métro Casa da Música"
+    },
+    "Avenida da Boavista": {
+        "pt": "Avenida da Boavista",
+        "fr": "Avenida da Boavista"
+    },
+    "Praia do Homem do Leme": {
+        "pt": "Praia do Homem do Leme",
+        "fr": "Plage du Homem do Leme"
+    },
+    "Foz do Douro riverside": {
+        "pt": "Marginal da Foz do Douro",
+        "fr": "Bord de mer de Foz do Douro"
+    },
+    "Passeio Alegre gardens": {
+        "pt": "Jardins do Passeio Alegre",
+        "fr": "Jardins du Passeio Alegre"
+    },
+    "Douro river mouth": {
+        "pt": "Foz do rio Douro",
+        "fr": "Embouchure du Douro"
+    },
+    "Mercado do Bolhão": {
+        "pt": "Mercado do Bolhão",
+        "fr": "Marché du Bolhão"
+    },
+    "Avenida dos Aliados": {
+        "pt": "Avenida dos Aliados",
+        "fr": "Avenida dos Aliados"
+    },
+    "Rua do Almada": {
+        "pt": "Rua do Almada",
+        "fr": "Rua do Almada"
+    },
+    "Bonfim metro station": {
+        "pt": "Estação de metro do Bonfim",
+        "fr": "Station de métro Bonfim"
+    },
+    "Museu Nacional Soares dos Reis": {
+        "pt": "Museu Nacional Soares dos Reis",
+        "fr": "Musée National Soares dos Reis"
+    },
+    "São Lázaro garden": {
+        "pt": "Jardim de São Lázaro",
+        "fr": "Jardin de São Lázaro"
+    },
+    "Douro riverbank": {
+        "pt": "Margem do Douro",
+        "fr": "Rives du Douro"
+    },
+    "Ribeira": {
+        "pt": "Ribeira",
+        "fr": "Ribeira"
+    },
+    "Clérigos Tower": {
+        "pt": "Torre dos Clérigos",
+        "fr": "Tour des Clérigos"
+    },
+    "Livraria Lello": {
+        "pt": "Livraria Lello",
+        "fr": "Livraria Lello"
+    }
+};
 
   /* ---------------------------------------------------------------------
      Per-apartment content overlay (subtitle / description / neighborhood)
@@ -987,6 +1239,18 @@
             "neighborhood": "Rua da Torrinha 136, 4050-609 Porto. Miguel Bombarda est le quartier des galeries de Porto, un coin verdoyant et créatif près du musée Soares dos Reis et du jardin du Carregal, avec Baixa et le métro Trindade à quelques minutes à pied."
         }
     },
+    "torrinha-i-porto": {
+        "pt": {
+            "subtitle": "Um estúdio luminoso no bairro artístico de Miguel Bombarda",
+            "description": "O Torrinha I é um estúdio luminoso e bem equipado, num prédio renovado na Rua da Torrinha, no coração do bairro artístico de Miguel Bombarda, no Porto. Uma sala de estar confortável, uma cozinha compacta e uma cama de casal aconchegante fazem deste estúdio uma base calma e bem localizada para explorar a cidade a pé.",
+            "neighborhood": "Rua da Torrinha 136, 4050-609 Porto. Miguel Bombarda é o bairro das galerias do Porto, um recanto arborizado e criativo perto do Museu Soares dos Reis e do Jardim do Carregal, com a Baixa e o metro da Trindade a uma curta distância a pé."
+        },
+        "fr": {
+            "subtitle": "Un studio lumineux dans le quartier artistique de Miguel Bombarda",
+            "description": "Torrinha I est un studio lumineux et bien équipé, dans un immeuble rénové de la Rua da Torrinha, au cœur du quartier artistique de Miguel Bombarda, à Porto. Un salon confortable, une cuisine compacte et un lit double douillet font de ce studio une base calme et bien située pour explorer la ville à pied.",
+            "neighborhood": "Rua da Torrinha 136, 4050-609 Porto. Miguel Bombarda est le quartier des galeries de Porto, un coin verdoyant et créatif près du musée Soares dos Reis et du jardin du Carregal, avec Baixa et le métro Trindade à quelques minutes à pied."
+        }
+    },
     "so-gracy-porto": {
         "pt": {
             "subtitle": "Um estúdio de estilo vintage com uma cozinha verde-azulada marcante, no coração da Baixa",
@@ -1009,18 +1273,6 @@
             "subtitle": "Un studio duplex avec escalier en colimaçon et vue balcon sur la Baixa — 3e étage, sans ascenseur",
             "description": "Charmy Studio est un duplex lumineux au 3e étage d'un immeuble classique de la Baixa — accessible uniquement par les escaliers, sans ascenseur — où un escalier en colimaçon en fer forgé mène à un salon en mezzanine avec portes-fenêtres donnant sur les toits en azulejos de l'autre côté de la rue. Au rez-de-chaussée, un réfrigérateur rétro et une cuisine en marbre et laiton côtoient un lit confortable. Un canapé-lit est disponible pour un troisième voyageur, moyennant un supplément de 20€ par séjour.",
             "neighborhood": "Rua de Álvares Cabral 372, Porto. La Baixa est le centre historique de Porto — rues pavées, façades d'azulejos, et la plus grande concentration de cafés, boutiques et miradouros de la ville, avec la Rua do Almada et les Aliados à quelques minutes."
-        }
-    },
-    "torrinha-i-porto": {
-        "pt": {
-            "subtitle": "Um estúdio luminoso no bairro artístico de Miguel Bombarda",
-            "description": "O Torrinha I é um estúdio luminoso e bem equipado, num prédio renovado na Rua da Torrinha, no coração do bairro artístico de Miguel Bombarda, no Porto. Uma sala de estar confortável, uma cozinha compacta e uma cama de casal aconchegante fazem deste estúdio uma base calma e bem localizada para explorar a cidade a pé.",
-            "neighborhood": "Rua da Torrinha 136, 4050-609 Porto. Miguel Bombarda é o bairro das galerias do Porto, um recanto arborizado e criativo perto do Museu Soares dos Reis e do Jardim do Carregal, com a Baixa e o metro da Trindade a uma curta distância a pé."
-        },
-        "fr": {
-            "subtitle": "Un studio lumineux dans le quartier artistique de Miguel Bombarda",
-            "description": "Torrinha I est un studio lumineux et bien équipé, dans un immeuble rénové de la Rua da Torrinha, au cœur du quartier artistique de Miguel Bombarda, à Porto. Un salon confortable, une cuisine compacte et un lit double douillet font de ce studio une base calme et bien située pour explorer la ville à pied.",
-            "neighborhood": "Rua da Torrinha 136, 4050-609 Porto. Miguel Bombarda est le quartier des galeries de Porto, un coin verdoyant et créatif près du musée Soares dos Reis et du jardin du Carregal, avec Baixa et le métro Trindade à quelques minutes à pied."
         }
     },
     "loft-sto-antonio-porto": {

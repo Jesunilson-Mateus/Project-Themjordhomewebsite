@@ -35,6 +35,10 @@
     "pt": "Zona de estar exterior",
     "fr": "Coin salon extérieur"
   },
+  "Shared pool": {
+    "pt": "Piscina partilhada",
+    "fr": "Piscine partagée"
+  },
   "Coffee maker": {
     "pt": "Máquina de café",
     "fr": "Machine à café"
@@ -50,6 +54,14 @@
   "Stove": {
     "pt": "Fogão",
     "fr": "Plaques de cuisson"
+  },
+  "Stovetop": {
+    "pt": "Placa",
+    "fr": "Plaque de cuisson"
+  },
+  "Private garden": {
+    "pt": "Jardim privado",
+    "fr": "Jardin privé"
   },
   "Dishwasher": {
     "pt": "Máquina de lavar loiça",
