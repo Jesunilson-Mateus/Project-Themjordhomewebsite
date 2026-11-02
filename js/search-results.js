@@ -5,9 +5,16 @@
 
 class SearchResults {
   constructor() {
-    this.properties = window.properties || [];
+    // PROPERTIES é a const global de properties-data.js (chave = slug).
+    const all = typeof PROPERTIES !== 'undefined' ? PROPERTIES : {};
+    this.properties = Object.entries(all).map(([slug, p]) => ({ slug, ...p }));
     this.parseSearchParams();
-    this.filterResults();
+    this.availableByZone = {};
+    this.load();
+  }
+
+  async load() {
+    await this.filterResults();
     this.renderResults();
   }
 
@@ -16,68 +23,28 @@ class SearchResults {
     this.checkIn = params.get('checkIn');
     this.checkOut = params.get('checkOut');
     this.guests = parseInt(params.get('guests')) || 1;
-
-    // Parse date format dd-mm-yyyy to object
-    this.checkInDate = this.parseDate(this.checkIn);
-    this.checkOutDate = this.parseDate(this.checkOut);
   }
 
-  parseDate(dateStr) {
-    if (!dateStr) return null;
-    const parts = dateStr.split('-');
-    if (parts.length !== 3) return null;
-    const day = parseInt(parts[0]);
-    const month = parseInt(parts[1]);
-    const year = parseInt(parts[2]);
-    return new Date(year, month - 1, day);
-  }
-
-  filterResults() {
+  // Disponibilidade: BookingAPI.search (Beds24 em modo live, exemplo em mock).
+  async filterResults() {
     this.availableByZone = {};
+    const api = window.BookingAPI;
+    const checkIn = api && api.displayToIso(this.checkIn);
+    const checkOut = api && api.displayToIso(this.checkOut);
+    if (!checkIn || !checkOut || checkOut <= checkIn) return;
+
+    let available = [];
+    try {
+      ({ available } = await api.search({ checkIn, checkOut, adults: this.guests, children: 0 }));
+    } catch (e) {
+      return;
+    }
 
     this.properties.forEach(prop => {
-      if (!prop.guests || prop.guests < this.guests) {
-        return;
-      }
-
-      // Check availability (mock data for now)
-      // TODO: Integrate with Beds24 API
-      const isAvailable = this.checkAvailability(prop);
-
-      if (isAvailable) {
-        const zone = prop.zone || 'Sem zona';
-        if (!this.availableByZone[zone]) {
-          this.availableByZone[zone] = [];
-        }
-        this.availableByZone[zone].push(prop);
-      }
+      if (!available.includes(prop.slug) || (prop.guests || 0) < this.guests) return;
+      const zone = prop.district || 'Porto';
+      (this.availableByZone[zone] = this.availableByZone[zone] || []).push(prop);
     });
-  }
-
-  checkAvailability(prop) {
-    // Mock availability check
-    // TODO: Replace with Beds24 API call
-    if (!prop.reservedDates) return true;
-
-    const reserved = prop.reservedDates.map(d => new Date(d));
-    const searchRange = this.getDateRange();
-
-    for (let date of searchRange) {
-      if (reserved.some(r => r.getTime() === date.getTime())) {
-        return false;
-      }
-    }
-    return true;
-  }
-
-  getDateRange() {
-    const range = [];
-    let current = new Date(this.checkInDate);
-    while (current < this.checkOutDate) {
-      range.push(new Date(current));
-      current.setDate(current.getDate() + 1);
-    }
-    return range;
   }
 
   renderResults() {
@@ -124,8 +91,8 @@ class SearchResults {
   }
 
   renderPropertyCard(prop) {
-    const image = prop.images && prop.images[0] ? prop.images[0] : '';
-    const price = prop.price || '—';
+    const image = prop.heroImage || (prop.images && prop.images[0]) || '';
+    const priceLabel = prop.priceFrom ? `€${prop.priceFrom}` : (window.I18N ? window.I18N.t('property.priceOnRequest') : 'Preço sob consulta');
     const rating = prop.rating || '—';
     const reviews = prop.reviews || 0;
 
@@ -143,11 +110,11 @@ class SearchResults {
         </div>
         <div style="padding: 15px;">
           <h3 style="margin: 0 0 8px 0; font-size: 16px;">${prop.name}</h3>
-          <p style="margin: 0 0 10px 0; opacity: 0.7; font-size: 13px;">${prop.location || ''}</p>
+          <p style="margin: 0 0 10px 0; opacity: 0.7; font-size: 13px;">${prop.district || ''}, ${prop.city || ''}</p>
           <div style="display: flex; justify-content: space-between; align-items: center;">
             <div>
               ${rating !== '—' ? `<div style="font-size: 14px;">★ ${rating} <span style="opacity: 0.6;">(${reviews})</span></div>` : ''}
-              <div style="font-size: 15px; font-weight: 600; margin-top: 4px;">€${price}</div>
+              <div style="font-size: 15px; font-weight: 600; margin-top: 4px;">${priceLabel}</div>
             </div>
             <div style="text-align: right; font-size: 12px; color: #4F8864; font-weight: 500;">→</div>
           </div>

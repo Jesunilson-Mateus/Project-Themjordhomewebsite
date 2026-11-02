@@ -13,3 +13,7 @@ Thumbs.db
 
 # pasta de deploy (gerada, não versionar)
 dist/
+
+# API de reservas: chaves secretas e reservas reais — nunca para o repositório
+api/config.php
+data/reservations/

@@ -106,5 +106,5 @@ Se só quiseres publicar as páginas públicas sem o painel (ex: numa hospedagem
 
 - **Sem build step.** É HTML/CSS/JS puro — basta abrir `index.html` num browser ou publicar os ficheiros tal como estão.
 - **Imagens do Airbnb**: os apartamentos Sweety Porto, Casa B e So Trendy Porto usam fotos alojadas no CDN do Airbnb (`a0.muscache.com`). Se deixarem de aparecer no futuro, o mais seguro é descarregar essas fotos e colocá-las na pasta `img/`, tal como já foi feito para o Fábrica no Jardim.
-- **Beds24**: o botão "Verificar disponibilidade" está preparado (mas ainda não ligado) para a próxima fase de integração com o Beds24.
+- **Beds24 + Stripe**: disponibilidade, preços, reservas e pagamento estão preparados (pasta `api/` + `js/booking-api.js`), mas em modo `mock` até alguém ligar as contas. Guia completo em [`docs/INTEGRACAO-BEDS24-STRIPE.md`](docs/INTEGRACAO-BEDS24-STRIPE.md).
 - **Fonte**: Fraunces (serif editorial, Google Fonts) + Inter (texto) + IBM Plex Mono (detalhes/preços).

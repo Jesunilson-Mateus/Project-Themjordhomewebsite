@@ -275,99 +275,125 @@ class BookingWizard {
     }
   }
 
-  updateSummary() {
+  /* Junta os dados do formulário no formato do contrato da API
+     (POST reservations.php — ver docs/INTEGRACAO-BEDS24-STRIPE.md). */
+  collectReservation() {
+    const fd = new FormData(this.form);
+    const [checkInDisplay, checkOutDisplay] = (fd.get('dateRange') || '').split(' — ').map(d => d.trim());
+    const api = window.BookingAPI;
+    return {
+      property: new URLSearchParams(window.location.search).get('p') || '',
+      checkIn: api ? api.displayToIso(checkInDisplay) : checkInDisplay,
+      checkOut: api ? api.displayToIso(checkOutDisplay) : checkOutDisplay,
+      checkInDisplay,
+      checkOutDisplay,
+      adults: parseInt(fd.get('adults')) || 1,
+      children: parseInt(fd.get('children')) || 0,
+      guest: {
+        name: (fd.get('name') || '').trim(),
+        email: (fd.get('email') || '').trim(),
+        phone: (fd.get('phone') || '').trim()
+      },
+      // Pagos à parte no local (não entram no pagamento online).
+      extras: {
+        transfer: fd.get('wantsTransfer') ? {
+          people: parseInt(fd.get('transferPeople')) || 1,
+          vehicle: fd.get('transferType') || 'car',
+          flightNumber: (fd.get('flightNumber') || '').trim(),
+          flightArrival: fd.get('flightArrival') || ''
+        } : null,
+        babyKit: fd.get('wantsBabyKit') ? { quantity: parseInt(fd.get('babyKitQuantity')) || 1 } : null
+      },
+      notes: (fd.get('notes') || '').trim(),
+      lang: window.I18N ? window.I18N.getLang() : 'pt'
+    };
+  }
+
+  async updateSummary() {
     const summaryContent = document.getElementById('summaryContent');
     if (!summaryContent) return;
 
-    const formData = new FormData(this.form);
-    const dateRange = formData.get('dateRange') || '';
-    const [checkIn, checkOut] = dateRange.split(' — ').map(d => d.trim());
-    const adults = parseInt(formData.get('adults')) || 1;
-    const children = parseInt(formData.get('children')) || 0;
-    const totalGuests = adults + children;
+    const t = (k) => window.I18N ? window.I18N.t(k) : k;
+    const esc = (s) => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[c]));
+    const r = this.collectReservation();
+    const totalGuests = r.adults + r.children;
 
     let servicesHtml = '';
-    if (formData.get('wantsTransfer')) {
-      const transferLabel = window.I18N ? window.I18N.t('booking.transfer') : 'Transfer';
-      servicesHtml += `<li>${transferLabel}: ${parseInt(formData.get('transferPeople')) || 1} ${window.I18N ? window.I18N.t('booking.people') : 'pessoas'}</li>`;
-    }
-    if (formData.get('wantsBabyKit')) {
-      const babyKitLabel = window.I18N ? window.I18N.t('booking.babyKit') : 'Baby Kit';
-      servicesHtml += `<li>${babyKitLabel}: ${parseInt(formData.get('babyKitQuantity')) || 1}</li>`;
-    }
+    if (r.extras.transfer) servicesHtml += `<li>${t('booking.transfer')}: ${r.extras.transfer.people} ${t('booking.people')}</li>`;
+    if (r.extras.babyKit) servicesHtml += `<li>${t('booking.babyKit')}: ${r.extras.babyKit.quantity}</li>`;
 
     summaryContent.innerHTML = `
       <div style="background: #f5f5f5; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
-        <h4 style="margin-top: 0; color: #333;">Resumo da sua reserva</h4>
-        <p><strong>Período:</strong> ${checkIn} — ${checkOut}</p>
-        <p><strong>Hóspedes:</strong> ${totalGuests} ${totalGuests === 1 ? 'pessoa' : 'pessoas'}</p>
-        ${servicesHtml ? `<p><strong>Serviços:</strong></p><ul style="margin: 5px 0; padding-left: 20px;">${servicesHtml}</ul>` : '<p><strong>Serviços:</strong> Nenhum serviço adicional</p>'}
-        <p><strong>Contacto:</strong> ${formData.get('visitorName')} (${formData.get('visitorEmail')})</p>
+        <h4 style="margin-top: 0; color: #333;">${t('booking.summary.title')}</h4>
+        <p><strong>${t('booking.summary.dates')}:</strong> ${esc(r.checkInDisplay)} — ${esc(r.checkOutDisplay)}</p>
+        <p><strong>${t('booking.guestsLabel')}:</strong> ${totalGuests}</p>
+        ${servicesHtml
+          ? `<p><strong>${t('booking.summary.services')}:</strong></p><ul style="margin: 5px 0; padding-left: 20px;">${servicesHtml}</ul><p style="font-size:12px; opacity:.7;">${t('booking.summary.extrasNote')}</p>`
+          : `<p><strong>${t('booking.summary.services')}:</strong> ${t('booking.summary.noServices')}</p>`}
+        <p><strong>${t('booking.summary.contact')}:</strong> ${esc(r.guest.name)} (${esc(r.guest.email)})</p>
+        <p id="summaryPrice" style="margin-bottom:0;">${t('booking.summary.loading')}</p>
       </div>
     `;
+
+    // Preço: vem sempre do servidor (Beds24). Sem preço → "confirmado por email".
+    const priceEl = document.getElementById('summaryPrice');
+    try {
+      const quote = await window.BookingAPI.getQuote(r);
+      if (quote && quote.total != null) {
+        const nights = t('booking.summary.nights').replace('{n}', quote.nights);
+        priceEl.innerHTML = `<strong>${t('booking.summary.total')}:</strong> ${window.I18N.formatPrice(quote.total)} € · ${nights}`;
+      } else {
+        priceEl.textContent = t('booking.summary.onRequest');
+      }
+    } catch (err) {
+      priceEl.textContent = err.code === 'unavailable' ? t('booking.unavailable') : t('booking.summary.onRequest');
+    }
   }
 
-  handleSubmit(e) {
+  async handleSubmit(e) {
     e.preventDefault();
+    if (!this.validateStep(this.totalSteps) || this.submitting) return;
 
-    if (this.validateStep(this.totalSteps)) {
-      // Collect form data
-      const formData = new FormData(this.form);
-      const dateRange = formData.get('dateRange') || '';
-      const [checkIn, checkOut] = dateRange.split(' — ').map(d => d.trim());
-      const adults = parseInt(formData.get('adults')) || 1;
-      const children = parseInt(formData.get('children')) || 0;
-      const totalGuests = adults + children;
+    const t = (k) => window.I18N ? window.I18N.t(k) : k;
+    const submitBtn = this.form.querySelector('[data-wizard-submit]');
+    const label = submitBtn ? submitBtn.textContent : '';
+    const r = this.collectReservation();
+    const { checkInDisplay, checkOutDisplay, ...payload } = r;
 
-      const services = [];
-      if (formData.get('wantsTransfer')) {
-        services.push({
-          name: window.I18N ? window.I18N.t('booking.transfer') : 'Transfer',
-          quantity: parseInt(formData.get('transferPeople')) || 1,
-          price: 0 // TODO: fetch actual price from property data
-        });
-      }
-      if (formData.get('wantsBabyKit')) {
-        services.push({
-          name: window.I18N ? window.I18N.t('booking.babyKit') : 'Baby Kit',
-          quantity: parseInt(formData.get('babyKitQuantity')) || 1,
-          price: 0 // TODO: fetch actual price from property data
-        });
+    this.submitting = true;
+    if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = t('booking.sending'); }
+
+    try {
+      const result = await window.BookingAPI.createReservation(payload);
+
+      // Modo live com pagamento online → página de pagamento do Stripe.
+      if (result.checkoutUrl) {
+        window.location.href = result.checkoutUrl;
+        return;
       }
 
-      const reservationData = {
-        propertyName: window.propertyName || 'Property',
-        propertySlug: window.propertySlug || 'property',
-        checkIn: checkIn,
-        checkOut: checkOut,
-        guestName: formData.get('visitorName') || 'Guest',
-        guestEmail: formData.get('visitorEmail') || '',
-        guestPhone: formData.get('visitorPhone') || '',
-        totalGuests: totalGuests,
-        services: services,
-        totalPrice: 0 // TODO: fetch actual price from property data
-      };
-
-      // Send confirmation email with review link
-      if (window.ReservationEmail) {
-        window.ReservationEmail.sendReservationConfirmation(reservationData).then(result => {
-          const message = window.I18N
-            ? window.I18N.t('booking.alert')
-            : 'Sua reserva foi submetida! Em breve receberá confirmação por email.';
-          alert(message);
-          // TODO: Redirect to confirmation page or reset form
-        }).catch(error => {
-          const errorMsg = window.I18N
-            ? window.I18N.t('booking.error')
-            : 'Erro ao processar reserva. Tente novamente.';
-          alert(errorMsg);
+      // Sem pagamento online (pedido de reserva): no modo mock mantém-se o
+      // email de exemplo; no modo live o servidor é que envia os emails.
+      if (window.BookingAPI.mode === 'mock' && window.ReservationEmail) {
+        await window.ReservationEmail.sendReservationConfirmation({
+          propertyName: (typeof PROPERTIES !== 'undefined' && PROPERTIES[r.property] || {}).name || r.property,
+          propertySlug: r.property,
+          checkIn: checkInDisplay,
+          checkOut: checkOutDisplay,
+          guestName: r.guest.name,
+          guestEmail: r.guest.email,
+          guestPhone: r.guest.phone,
+          totalGuests: r.adults + r.children,
+          services: [],
+          totalPrice: 0
         });
-      } else {
-        const message = window.I18N
-          ? window.I18N.t('booking.alert')
-          : 'Sua reserva foi submetida! Em breve receberá confirmação.';
-        alert(message);
       }
+      alert(t('booking.requestSent'));
+    } catch (err) {
+      alert(err && err.code === 'unavailable' ? t('booking.unavailable') : t('booking.error'));
+    } finally {
+      this.submitting = false;
+      if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = label; }
     }
   }
 }

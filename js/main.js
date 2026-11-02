@@ -198,14 +198,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ---- Booking bar (placeholder — will call Beds24-backed API later) ---- */
-  const bookingBar = document.getElementById('bookingBar');
-  if (bookingBar) {
-    bookingBar.addEventListener('submit', function (e) {
-      e.preventDefault();
-      alert(I18N.t('booking.alert'));
-    });
-  }
+  /* ---- Booking bar: a submissão é tratada em js/booking-bar.js (abre a
+     página de resultados, que pergunta a disponibilidade à BookingAPI) ---- */
 
   /* ---- Mobile menu ---- */
   const menuToggle = document.getElementById('menuToggle');

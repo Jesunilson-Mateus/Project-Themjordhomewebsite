@@ -1,6 +1,6 @@
 /* =========================================================================
    THEMAJORD'HOME — Booking Calendar Manager
-   Manages calendar with Beds24 availability data
+   Calendário de datas com a disponibilidade do Beds24 (via BookingAPI)
    ========================================================================= */
 
 class BookingCalendar {
@@ -16,30 +16,23 @@ class BookingCalendar {
     this.initCalendar();
   }
 
-  // Fetch reservations from Beds24 (or mock data for now)
+  // Noites ocupadas vindas do Beds24 (via BookingAPI — ver js/booking-api.js).
+  // Pede ~18 meses para a frente; os dias devolvidos não podem ser escolhidos.
   async loadReservations() {
+    if (!window.BookingAPI) return;
     try {
-      // TODO: Replace with actual Beds24 API call
-      // const response = await fetch(`/api/beds24/availability/${this.propertySlug}`);
-      // const data = await response.json();
-      // this.reservedDates = data.reserved_dates;
-
-      // Mock data for demonstration
       const today = new Date();
-      this.reservedDates = [
-        this.formatDate(new Date(today.getTime() + 2 * 24 * 60 * 60 * 1000)),
-        this.formatDate(new Date(today.getTime() + 3 * 24 * 60 * 60 * 1000)),
-        this.formatDate(new Date(today.getTime() + 8 * 24 * 60 * 60 * 1000)),
-        this.formatDate(new Date(today.getTime() + 9 * 24 * 60 * 60 * 1000)),
-        this.formatDate(new Date(today.getTime() + 10 * 24 * 60 * 60 * 1000)),
-      ];
+      const until = new Date(today.getFullYear(), today.getMonth() + 18, today.getDate());
+      const data = await window.BookingAPI.getAvailability(this.propertySlug, this.formatDate(today), this.formatDate(until));
+      this.reservedDates = data.unavailable || [];
 
       if (window.bookingCalendar) {
-        window.bookingCalendar.close();
+        window.bookingCalendar.destroy();
       }
       this.initCalendar();
     } catch (error) {
-      // Error loading reservations silently
+      // Sem disponibilidade o calendário fica aberto; o servidor volta a
+      // confirmar as datas quando a reserva é submetida.
     }
   }
 
@@ -50,9 +43,13 @@ class BookingCalendar {
     window.bookingCalendar = flatpickr(this.inputElement, {
       mode: 'range',
       minDate: today,
-      dateFormat: 'dd-mm-yyyy',
+      dateFormat: 'd-m-Y',   // tokens do flatpickr → dd-mm-yyyy
       locale: 'pt',
-      disable: this.reservedDates,
+      // Date objects (as strings "YYYY-MM-DD" seriam lidas com o dateFormat acima).
+      disable: this.reservedDates.map(d => {
+        const [y, m, day] = d.split('-').map(Number);
+        return new Date(y, m - 1, day);
+      }),
       onClose: (selectedDates) => {
         this.onDateSelect(selectedDates, separator);
         this.updateMinCheckoutDate(selectedDates);
