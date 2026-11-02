@@ -192,17 +192,23 @@ header:not(.scrolled):not(.solid) .owner-btn:hover{background:#fff; color:#1E202
 }
 
 .slide-content{position:relative; z-index:10; width:100%; padding:0 40px 128px;}
+/* Verde dos destaques sobre as fotos do slideshow: mais carregado que
+   --green-bright (que é pensado para fundos lisos) e igual nos dois temas,
+   porque o fundo é sempre uma fotografia. A sombra mantém-no legível em
+   fotos claras. */
+.hero{--hero-green:#2FCB7A; --hero-green-shadow:0 1px 2px rgba(0,0,0,.55), 0 2px 18px rgba(0,0,0,.45);}
 .slide-eyebrow{
-  color:var(--green-bright); font-family:'IBM Plex Mono',monospace; font-size:12px;
+  color:var(--hero-green); font-family:'IBM Plex Mono',monospace; font-size:13px; font-weight:600;
   letter-spacing:.14em; text-transform:uppercase; margin-bottom:14px; display:flex; gap:10px; align-items:center;
+  text-shadow:var(--hero-green-shadow);
 }
-.slide-eyebrow .dash{width:26px; height:1px; background:var(--green-bright);}
+.slide-eyebrow .dash{width:26px; height:2px; background:var(--hero-green); box-shadow:0 1px 3px rgba(0,0,0,.5);}
 .slide-title{
   color:#fff; font-family:'Lora', serif; font-weight:400;
   font-size:clamp(40px, 6.4vw, 88px); line-height:.98; max-width:820px;
 }
 /* Branco + verde como o logótipo: a palavra em destaque fica verde. */
-.slide-title em{color:var(--green-bright); font-style:italic;}
+.slide-title em{color:var(--hero-green); font-style:italic; text-shadow:var(--hero-green-shadow);}
 .slide-meta{display:flex; gap:28px; margin-top:22px; color:rgba(255,255,255,.85); font-size:14px;}
 .slide-meta span{display:flex; align-items:center; gap:8px;}
 .slide-meta b{color:#fff; font-weight:500;}
