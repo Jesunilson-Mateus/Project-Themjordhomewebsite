@@ -33,7 +33,7 @@ require __DIR__ . '/partials/header.php';
 ?>
 
 <div class="page-head">
-  <h1><?= h($prop['name'] ?? $slug) ?></h1>
+  <h1><?= h($prop['name'] ?? $slug) ?> <?= active_badge($prop) ?></h1>
   <a href="../property.html?p=<?= urlencode($slug) ?>" target="_blank" rel="noopener" class="btn btn-ghost">Ver no site ↗</a>
 </div>
 
@@ -44,6 +44,14 @@ require __DIR__ . '/partials/header.php';
 
   <section class="form-section">
     <h2>Informação geral</h2>
+    <label class="active-switch">
+      <input type="checkbox" name="active" value="1" <?= property_is_active($prop) ? 'checked' : '' ?>>
+      <span class="active-switch-track" aria-hidden="true"></span>
+      <span class="active-switch-text">
+        <strong>Apartamento ativo</strong>
+        <span class="hint">Desligado: o apartamento deixa de aparecer no site (coleção, pesquisa, mapa) e não pode ser reservado. Os dados e as fotos ficam guardados.</span>
+      </span>
+    </label>
     <div class="field-row">
       <label>Nome do apartamento
         <input type="text" name="name" value="<?= h($prop['name'] ?? '') ?>" required>

@@ -85,7 +85,7 @@ Depois liga a esse apartamento a partir de qualquer sítio com:
 
 ## Painel de administração (para a equipa editar o site)
 
-A pasta `admin/` é um painel de gestão protegido por password onde a equipa pode editar, sem mexer em código: descrições (PT/EN/FR), comodidades, fotos e as regras da casa (check-in/check-out, alarmes) de cada apartamento, e as fotos e legendas das galerias "Em imagens" das páginas de serviços (separador **Serviços**; dados em `data/service-galleries.json`). Fica acessível em `/admin/` depois do site estar publicado num servidor com PHP.
+A pasta `admin/` é um painel de gestão protegido por password onde a equipa pode editar, sem mexer em código: descrições (PT/EN/FR), comodidades, fotos e as regras da casa (check-in/check-out, alarmes) de cada apartamento, se cada apartamento está **ativo** (visível e reservável no site) ou **inativo** (escondido, com os dados guardados), o **modo manutenção** (o site público passa a mostrar `manutencao.html`), e as fotos e legendas das galerias "Em imagens" das páginas de serviços (separador **Serviços**; dados em `data/service-galleries.json`). Fica acessível em `/admin/` depois do site estar publicado num servidor com PHP.
 
 Ver `admin/LEIA-ME.txt` para as instruções completas de publicação, permissões de ficheiros, e as credenciais da primeira conta.
 
@@ -97,16 +97,15 @@ Tudo o que é preciso para publicar e ligar as integrações (Beds24, Stripe, Go
 [`docs/GUIA-TECNICO-LANCAMENTO-PT.pdf`](docs/GUIA-TECNICO-LANCAMENTO-PT.pdf) (versão francesa:
 [`docs/GUIDE-TECHNIQUE-LANCEMENT-FR.pdf`](docs/GUIDE-TECHNIQUE-LANCEMENT-FR.pdf)).
 
-## Publicar o site
+## Publicar, atualizar e cópias de segurança
 
-O site em si (páginas públicas) é HTML/CSS/JS puro e funciona em qualquer hospedagem, incluindo hospedagem estática (GitHub Pages, Netlify, etc.). **Mas o painel de administração (`admin/`) precisa de um servidor com PHP** — o mesmo tipo de hospedagem onde já está o site atual (themajordhome.com), como cPanel, cPanel com PHP, ou qualquer hosting LAMP/PHP tradicional.
+O site precisa de um alojamento com **PHP 8.1+** e Apache (como o do site atual, themajordhome.com):
+o painel de administração, a API de reservas, a página 404 e o modo manutenção dependem disso.
+Um alojamento só de ficheiros estáticos não serve.
 
-Para publicar com o painel a funcionar:
-1. Copia todos os ficheiros desta pasta (mantendo a estrutura) para o servidor, incluindo `admin/`, `data/` e `js/`.
-2. Confirma que o PHP no servidor consegue **escrever** nas pastas `data/`, `data/backups/`, `img/` e no ficheiro `admin/users.json` (normalmente basta que o utilizador do PHP tenha permissão de escrita na pasta — pergunta ao teu alojamento se tiveres dúvidas sobre isto).
-3. Acede a `https://oteudominio.pt/admin/` e entra com as credenciais em `admin/LEIA-ME.txt`.
-
-Se só quiseres publicar as páginas públicas sem o painel (ex: numa hospedagem só estática), basta não copiar a pasta `admin/` — o resto do site funciona à mesma, só que a edição volta a ser manual: editar os JSON em `data/` e correr `node scripts/sync-data.js`.
+Tudo está em [`DEPLOY.md`](DEPLOY.md): publicar pela primeira vez, **como atualizar sem perder o que
+a equipa editou no painel**, e **onde estão as cópias de segurança** — as automáticas do painel ficam
+no servidor em `data/backups/AAAA-MM-DD_HHMMSS/` (as últimas 60 gravações).
 
 ## Notas técnicas
 

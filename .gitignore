@@ -2,6 +2,7 @@
 admin/LEIA-ME.txt
 admin/users.json
 data/login-attempts.json
+data/maintenance.flag
 data/backups/
 
 # OS / editor
@@ -11,8 +12,9 @@ Thumbs.db
 # Estado interno de ferramentas de desenvolvimento
 .claude/
 
-# pasta de deploy (gerada, não versionar)
-dist/
+# Arquivo local de ficheiros que já não são usados (ver _arquivo/LEIA-ME.md).
+# Fica só neste computador: não vai para o GitHub nem para o servidor.
+_arquivo/
 
 # API de reservas: chaves secretas e reservas reais — nunca para o repositório
 api/config.php

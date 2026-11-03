@@ -16,7 +16,7 @@ api_run(function () {
 
     $available = [];
     foreach (load_site_properties() as $slug => $p) {
-        if ((int) ($p['guests'] ?? 0) < $guests) continue;
+        if (!property_is_active($p) || (int) ($p['guests'] ?? 0) < $guests) continue;
         if (is_live()) {
             // TODO (engenheiros): com 60 apartamentos isto são 60 pedidos ao
             // Beds24 por pesquisa (limite: 100 créditos / 5 min por conta).

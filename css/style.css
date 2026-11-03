@@ -373,6 +373,24 @@ a.service-card{text-decoration:none; color:inherit;}
 .legal-page a.cta-btn{color:#fff; text-decoration:none; margin-top:12px;}
 .legal-page p:has(> .cta-btn){opacity:1;}
 
+/* Páginas de estado: 404.html e manutencao.html */
+.status-page-body{max-width:640px; margin:0 auto; padding:70px 0 110px; text-align:center;}
+.status-page-body .eyebrow{font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--green); margin-bottom:18px;}
+.status-page-body h1{font-family:'Lora',serif; font-weight:400; font-size:clamp(34px,5vw,56px); line-height:1.08; margin-bottom:18px; color:var(--ink);}
+.status-page-body p{font-size:16px; line-height:1.7; opacity:.8; margin:0 auto 30px; max-width:520px;}
+.status-actions{display:flex; gap:22px; justify-content:center; align-items:center; flex-wrap:wrap;}
+.status-actions .cta-btn{color:#fff;}
+.status-link{font-family:'IBM Plex Mono',monospace; font-size:12.5px; letter-spacing:.08em; text-transform:uppercase; border-bottom:1px solid var(--ink); padding-bottom:3px; color:var(--ink);}
+.status-link:hover{opacity:.6;}
+.status-contact{margin-top:48px; padding-top:26px; border-top:1px solid var(--line); display:flex; flex-direction:column; gap:6px; font-size:14px;}
+.status-contact span{opacity:.6; margin-bottom:4px;}
+.status-contact a{color:var(--ink);}
+.status-contact a:hover{color:var(--green);}
+.maintenance-page{min-height:100vh; display:flex; flex-direction:column; background:var(--paper);}
+.maintenance-page .maintenance-top{position:static; display:flex; justify-content:space-between; align-items:center; padding:22px 40px; color:var(--ink);}
+.maintenance-page .status-page-body{flex:1; display:flex; flex-direction:column; justify-content:center; padding-top:20px;}
+@media (max-width:480px){ .maintenance-page .maintenance-top{padding:16px;} .status-page-body{padding:44px 0 70px;} }
+
 /* footer legal link */
 .footer-bottom a{opacity:.75; transition:opacity .2s ease;}
 .footer-bottom a:hover{opacity:1; text-decoration:underline;}

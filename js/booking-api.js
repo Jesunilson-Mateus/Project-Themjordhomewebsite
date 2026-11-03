@@ -101,7 +101,7 @@
       const nights = nightsBetween(checkIn, checkOut);
       const all = typeof PROPERTIES !== 'undefined' ? PROPERTIES : {};   // const global de properties-data.js
       const available = Object.keys(all).filter(slug => {
-        if ((all[slug].guests || 0) < guests) return false;
+        if (all[slug].active === false || (all[slug].guests || 0) < guests) return false;
         const busy = mockUnavailable(slug, checkIn, checkOut);
         return !nights.some(n => busy.includes(n));
       });

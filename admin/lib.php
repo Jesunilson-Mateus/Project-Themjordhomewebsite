@@ -135,13 +135,56 @@ function save_json($path, $data) {
 }
 
 function load_properties() { return load_json(PROPERTIES_JSON); }
+
+/* Ativo / inativo: um apartamento sem o campo "active" está ativo. Só se
+   grava "active": false — os ativos ficam sem o campo, como sempre estiveram.
+   Inativos desaparecem do site (coleção, pesquisa, mapa, reservas). */
+function property_is_active($prop) {
+    return ($prop['active'] ?? true) !== false;
+}
+
+/* =========================================================================
+   Modo manutenção (ver .htaccess na raiz e manutencao.html)
+   ========================================================================= */
+
+/** null se desligado; senão ['since' => ISO, 'by' => utilizador]. */
+function maintenance_status() {
+    if (!file_exists(MAINTENANCE_FLAG)) return null;
+    $data = json_decode((string) @file_get_contents(MAINTENANCE_FLAG), true);
+    return is_array($data) ? $data : ['since' => null, 'by' => null];
+}
+
+function set_maintenance($on) {
+    if ($on) {
+        file_put_contents(MAINTENANCE_FLAG, json_encode(['since' => date('c'), 'by' => current_user()]));
+    } elseif (file_exists(MAINTENANCE_FLAG)) {
+        unlink(MAINTENANCE_FLAG);
+    }
+}
+
+function active_badge($prop) {
+    return property_is_active($prop)
+        ? '<span class="status-badge status-active">Ativo</span>'
+        : '<span class="status-badge status-inactive">Inativo</span>';
+}
+
+function set_property_active(&$prop, $active) {
+    if ($active) {
+        unset($prop['active']);
+    } else {
+        $prop['active'] = false;
+    }
+}
 function load_translations() { return load_json(TRANSLATIONS_JSON); }
 function load_amenity_categories() { return load_json(AMENITY_CATEGORIES_JSON); }
 function load_amenity_items() { return load_json(AMENITY_ITEMS_JSON); }
 
 /**
  * Guarda uma cópia de segurança dos dados atuais antes de qualquer alteração,
- * para se puder recuperar caso algo corra mal.
+ * para se puder recuperar caso algo corra mal: todos os data/*.json
+ * (apartamentos, traduções, comodidades, galerias, avaliações…) e as contas
+ * do painel, em data/backups/AAAA-MM-DD_HHMMSS/. As fotos não são copiadas
+ * (apagar uma foto no painel só a retira do site; o ficheiro fica em img/).
  */
 function backup_data() {
     if (!is_dir(BACKUPS_DIR)) {
@@ -150,9 +193,11 @@ function backup_data() {
     $stamp = date('Y-m-d_His');
     $dir = BACKUPS_DIR . '/' . $stamp;
     @mkdir($dir, 0775, true);
-    if (file_exists(PROPERTIES_JSON)) copy(PROPERTIES_JSON, $dir . '/properties.json');
-    if (file_exists(TRANSLATIONS_JSON)) copy(TRANSLATIONS_JSON, $dir . '/translations.json');
-    if (file_exists(SERVICE_GALLERIES_JSON)) copy(SERVICE_GALLERIES_JSON, $dir . '/service-galleries.json');
+    foreach (glob(DATA_DIR . '/*.json') as $file) {
+        if (basename($file) === 'login-attempts.json') continue;   // registo técnico, sem valor
+        copy($file, $dir . '/' . basename($file));
+    }
+    if (file_exists(USERS_JSON)) copy(USERS_JSON, $dir . '/users.json');
 
     // Não deixar acumular infinitamente: mantém só as últimas 60 cópias.
     $all = glob(BACKUPS_DIR . '/*', GLOB_ONLYDIR);
@@ -201,6 +246,9 @@ function splice_js_object($filePath, $needle, $newData) {
         throw new Exception("Chavetas desequilibradas em " . basename($filePath));
     }
     $json = json_encode($newData, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    // Mesmas quebras de linha do ficheiro (igual a scripts/sync-data.js), para
+    // não deixar o ficheiro com quebras misturadas.
+    if (strpos($src, "\r\n") !== false) $json = str_replace("\n", "\r\n", $json);
     $newSrc = substr($src, 0, $openBrace) . $json . substr($src, $closeBrace + 1);
     file_put_contents($filePath, $newSrc);
 }
@@ -281,6 +329,7 @@ function load_reviews() {
 
 function save_reviews($reviews) {
     if (!is_dir(DATA_DIR)) @mkdir(DATA_DIR, 0775, true);
+    backup_data();
     file_put_contents(REVIEWS_JSON, json_encode($reviews, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
 }
 

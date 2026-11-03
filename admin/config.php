@@ -18,6 +18,11 @@ define('SERVICE_GALLERIES_JSON', DATA_DIR . '/service-galleries.json');
 // Pasta (dentro de img/) onde ficam as fotos enviadas para as páginas de serviços.
 define('SERVICE_IMG_FOLDER', 'servicos');
 define('BACKUPS_DIR', DATA_DIR . '/backups');
+// Modo manutenção: enquanto este ficheiro existir, o .htaccess da raiz responde
+// a todo o site público com manutencao.html (503). Ligado/desligado no painel.
+define('MAINTENANCE_FLAG', DATA_DIR . '/maintenance.flag');
+// Cookie que deixa quem ligou a manutenção continuar a ver o site normal.
+define('MAINTENANCE_PREVIEW_COOKIE', 'tmh_preview');
 
 define('USERS_JSON', ADMIN_DIR . '/users.json');
 define('REVIEWS_JSON', DATA_DIR . '/reviews.json');

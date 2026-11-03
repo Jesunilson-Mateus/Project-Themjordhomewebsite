@@ -25,6 +25,7 @@ $__allUsers = load_users();
     <a href="services.php">Serviços</a>
     <a href="reviews.php">Avaliações</a>
     <a href="users.php">Utilizadores</a>
+    <a href="maintenance.php">Manutenção</a>
     <a href="../index.html" target="_blank" rel="noopener">Ver site ↗</a>
   </nav>
   <div class="admin-user">
@@ -36,6 +37,9 @@ $__allUsers = load_users();
     <a href="logout.php">Sair</a>
   </div>
 </header>
+<?php if (maintenance_status()): ?>
+  <div class="maintenance-bar">O site está em <b>modo manutenção</b> — os visitantes não o veem. <a href="maintenance.php">Gerir</a></div>
+<?php endif; ?>
 <main class="admin-main">
 <?php if ($flash): ?>
   <div class="alert alert-<?= h($flash['type']) ?>"><?= h($flash['message']) ?></div>

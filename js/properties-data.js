@@ -4009,29 +4009,37 @@ const PROPERTIES = {
     }
 };
 
-/* Helper: read the ?p= query param and return the matching property */
+/* Helper: apartamento ativo? Sem o campo "active" conta como ativo; com
+   "active": false (painel → Apartamentos) desaparece de todo o site. */
+function isPropertyActive(p) {
+  return !!p && p.active !== false;
+}
+
+/* Helper: read the ?p= query param and return the matching property
+   (inativos contam como não encontrados) */
 function getPropertyFromQuery() {
   const params = new URLSearchParams(window.location.search);
   const slug = params.get('p');
-  return slug && PROPERTIES[slug] ? { slug, ...PROPERTIES[slug] } : null;
+  return slug && isPropertyActive(PROPERTIES[slug]) ? { slug, ...PROPERTIES[slug] } : null;
 }
 
 /* Helper: featured properties (with real photos) for the homepage grid */
 function getFeaturedProperties() {
   return Object.entries(PROPERTIES)
-    .filter(([, p]) => p.featured)
+    .filter(([, p]) => p.featured && isPropertyActive(p))
     .map(([slug, p]) => ({ slug, ...p }));
 }
 
 /* Helper: directory properties grouped by district, in original order */
 function getDirectoryProperties() {
   return Object.entries(PROPERTIES)
-    .filter(([, p]) => !p.featured)
+    .filter(([, p]) => !p.featured && isPropertyActive(p))
     .map(([slug, p]) => ({ slug, ...p }));
 }
 
 /* Helper: every property (featured + directory) — used by the full collection page */
 function getAllProperties() {
   return Object.entries(PROPERTIES)
+    .filter(([, p]) => isPropertyActive(p))
     .map(([slug, p]) => ({ slug, ...p }));
 }

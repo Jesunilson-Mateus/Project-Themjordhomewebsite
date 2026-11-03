@@ -441,6 +441,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const all = [];
     Object.keys(REVIEWS).forEach(slug => {
+      // avaliações de apartamentos inativos não aparecem (o link daria "não encontrado")
+      if (typeof PROPERTIES !== 'undefined' && !isPropertyActive(PROPERTIES[slug])) return;
       REVIEWS[slug].forEach(r => all.push(Object.assign({ slug }, r)));
     });
     if (!all.length) return;

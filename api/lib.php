@@ -68,10 +68,16 @@ function load_site_properties() {
 
 function require_property($slug) {
     $props = load_site_properties();
-    if (!is_string($slug) || !isset($props[$slug])) {
+    // Inativos (painel → "active": false) contam como inexistentes: não se reservam.
+    if (!is_string($slug) || !isset($props[$slug]) || !property_is_active($props[$slug])) {
         json_error('invalid_request', 'Alojamento desconhecido.', 400);
     }
     return $props[$slug];
+}
+
+/** Sem o campo "active" o apartamento conta como ativo (igual a js/properties-data.js). */
+function property_is_active($p) {
+    return ($p['active'] ?? true) !== false;
 }
 
 function valid_iso_date($s) {

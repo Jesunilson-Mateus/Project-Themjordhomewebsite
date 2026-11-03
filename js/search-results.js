@@ -7,7 +7,9 @@ class SearchResults {
   constructor() {
     // PROPERTIES é a const global de properties-data.js (chave = slug).
     const all = typeof PROPERTIES !== 'undefined' ? PROPERTIES : {};
-    this.properties = Object.entries(all).map(([slug, p]) => ({ slug, ...p }));
+    this.properties = Object.entries(all)
+      .filter(([, p]) => typeof isPropertyActive !== 'function' || isPropertyActive(p))   // inativos não aparecem
+      .map(([slug, p]) => ({ slug, ...p }));
     this.parseSearchParams();
     this.availableByZone = {};
     this.load();

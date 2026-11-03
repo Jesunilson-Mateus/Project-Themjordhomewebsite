@@ -169,6 +169,60 @@ h3{font-family:'IBM Plex Mono', monospace; font-size:11px; text-transform:upperc
 .apt-card-view{display:block; padding:10px 14px; font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.04em; text-transform:uppercase; border-top:1px solid var(--line); text-align:center; opacity:.7;}
 .apt-card-view:hover{opacity:1; background:var(--paper-2);}
 
+/* ---------- Ativo / inativo ---------- */
+.status-badge{
+  display:inline-block; font-family:'IBM Plex Mono', monospace; font-size:10.5px; font-weight:600;
+  letter-spacing:.06em; text-transform:uppercase; padding:4px 10px; border-radius:20px; vertical-align:middle;
+}
+.status-active{background:var(--success-bg); color:var(--success-ink); border:1px solid var(--green);}
+.status-inactive{background:var(--red-bg); color:var(--red); border:1px solid var(--red);}
+h1 .status-badge{font-size:11px; margin-left:8px; position:relative; top:-3px;}
+.apt-card-photo{position:relative;}
+.apt-card-photo .status-badge{position:absolute; top:10px; left:10px; box-shadow:0 2px 6px rgba(0,0,0,.18);}
+.apt-card-photo .status-active{background:var(--card);}
+.apt-card.is-inactive{border-style:dashed; border-color:var(--red);}
+.apt-card.is-inactive .apt-card-photo img{filter:grayscale(1); opacity:.7;}
+.apt-card.is-inactive .apt-card-name{opacity:.7;}
+.apt-card-actions{display:flex; align-items:stretch; border-top:1px solid var(--line); margin-top:auto;}
+.apt-card-actions .apt-card-view{flex:1; border-top:none;}
+.apt-card-view.is-muted{opacity:.45; cursor:default;}
+.apt-card-view.is-muted:hover{background:none;}
+.apt-card-actions form{display:flex; border-left:1px solid var(--line);}
+.toggle-btn{
+  border:none; background:none; cursor:pointer; padding:10px 14px; color:var(--red);
+  font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.04em; text-transform:uppercase;
+}
+.toggle-btn:hover{background:var(--red-bg);}
+.toggle-btn-on{color:var(--success-ink); font-weight:600;}
+.toggle-btn-on:hover{background:var(--success-bg);}
+
+.dash-filters{display:flex; gap:12px; align-items:center; flex-wrap:wrap;}
+.status-filter{display:flex; border:1px solid var(--line-strong); border-radius:var(--radius-sm); overflow:hidden; background:var(--card);}
+.status-filter button{
+  border:none; background:none; color:var(--ink); cursor:pointer; padding:10px 14px; font-size:13px;
+  font-family:'Inter', sans-serif; border-right:1px solid var(--line);
+}
+.status-filter button:last-child{border-right:none;}
+.status-filter button span{font-family:'IBM Plex Mono', monospace; font-size:11px; opacity:.55; margin-left:3px;}
+.status-filter button.is-on{background:var(--ink); color:var(--card);}
+.status-filter button.is-on span{opacity:.8;}
+
+/* Interruptor "Apartamento ativo" (página de edição) */
+.active-switch{display:flex; align-items:flex-start; gap:14px; padding:14px 16px; margin-bottom:20px; cursor:pointer;
+  border:1px solid var(--line-strong); border-radius:var(--radius-sm); background:var(--paper-2);
+  /* não herdar o estilo dos rótulos do formulário (mono, maiúsculas, esbatido) */
+  font-family:'Inter', sans-serif; text-transform:none; letter-spacing:0; font-weight:400; opacity:1;}
+.active-switch-text strong{font-weight:600; font-size:14.5px;}
+.active-switch-text .hint{font-size:12.5px; opacity:.7; line-height:1.45;}
+.active-switch input{position:absolute; opacity:0; width:1px; height:1px;}
+.active-switch-track{flex-shrink:0; width:42px; height:24px; border-radius:12px; background:var(--red); position:relative; transition:background .2s; margin-top:1px;}
+.active-switch-track::after{content:''; position:absolute; top:3px; left:3px; width:18px; height:18px; border-radius:50%; background:#fff; transition:transform .2s; box-shadow:0 1px 3px rgba(0,0,0,.3);}
+.active-switch input:checked + .active-switch-track{background:var(--green);}
+.active-switch input:checked + .active-switch-track::after{transform:translateX(18px);}
+.active-switch input:focus-visible + .active-switch-track{outline:2px solid var(--azulejo); outline-offset:2px;}
+.active-switch-text{display:flex; flex-direction:column; gap:4px; font-size:14px;}
+.active-switch-text .hint{margin:0;}
+
 /* ---------- Forms ---------- */
 .form-section{background:var(--card); border:1px solid var(--line); border-radius:var(--radius-md); padding:26px 28px; margin-bottom:24px; box-shadow:var(--shadow-sm);}
 .field-row{display:flex; gap:18px; flex-wrap:wrap; margin-bottom:16px;}
@@ -265,3 +319,10 @@ textarea{resize:vertical; font-family:'Inter', sans-serif;}
   .admin-main{padding:22px 14px 60px;}
   .field-row{flex-direction:column;}
 }
+
+/* ---------- Modo manutenção ---------- */
+.maintenance-bar{background:var(--red); color:#fff; text-align:center; padding:9px 16px; font-size:13.5px;}
+.maintenance-bar a{color:#fff; text-decoration:underline; margin-left:8px;}
+.maintenance-actions{margin-top:14px;}
+.plain-list{margin:0 0 18px 18px; line-height:1.8; font-size:14px;}
+.form-section h2 + .plain-list{margin-top:8px;}

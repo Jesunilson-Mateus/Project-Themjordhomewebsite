@@ -1,0 +1,41 @@
+# =========================================================================
+# TheMajord'Home — regras do servidor (Apache)
+# Assume o site na raiz do domínio (https://www.themajordhome.com/).
+# Em nginx estas regras têm de ser recriadas — ver docs/ (guia técnico).
+# =========================================================================
+
+# Página para endereços que não existem.
+ErrorDocument 404 /404.html
+
+# -------------------------------------------------------------------------
+# Modo manutenção — ligado/desligado no painel (/admin/ → Manutenção), que
+# cria/apaga data/maintenance.flag. Enquanto o ficheiro existir, todo o site
+# público responde com manutencao.html e o código 503 ("volta já"), que os
+# motores de busca entendem como temporário.
+# Continuam acessíveis: o painel, o webhook do Stripe, a própria página de
+# manutenção e os ficheiros de que ela precisa (css/js/img/fontes).
+# Quem ligou a manutenção recebe o cookie tmh_preview e continua a ver o site
+# (é só uma conveniência para testar, não é uma proteção).
+# -------------------------------------------------------------------------
+ErrorDocument 503 /manutencao.html
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Nunca servir: .git/ e outros ficheiros/pastas escondidos (exceto .well-known,
+    # usado pelos certificados HTTPS) nem o arquivo local _arquivo/.
+    RewriteRule (^|/)\.(?!well-known/) - [R=404,L]
+    RewriteRule ^_arquivo(/|$) - [R=404,L]
+
+    RewriteCond %{DOCUMENT_ROOT}/data/maintenance.flag -f
+    RewriteCond %{REQUEST_URI} !^/(manutencao\.html|admin/|api/stripe-webhook\.php|css/|js/|img/|favicon) [NC]
+    RewriteCond %{HTTP_COOKIE} !(^|;\s*)tmh_preview=1
+    RewriteRule ^ - [R=503,L]
+</IfModule>
+
+<IfModule mod_headers.c>
+    # Pede aos motores de busca e browsers que voltem a tentar daqui a 30 min.
+    Header always set Retry-After "1800" "expr=%{REQUEST_STATUS} == 503"
+    # As páginas de estado não devem ser indexadas.
+    Header always set X-Robots-Tag "noindex" "expr=%{REQUEST_STATUS} == 503 || %{REQUEST_STATUS} == 404"
+</IfModule>

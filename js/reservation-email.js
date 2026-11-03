@@ -9,16 +9,12 @@ class ReservationEmail {
     return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
   }
 
+  // Só usado no modo de exemplo (mock). As avaliações reais usam review.php?t=<token>,
+  // com o token criado no painel (Avaliações → gerar link); este token de exemplo não
+  // existe no servidor, por isso o link serve apenas para mostrar o formato do email.
   static getReviewLink(propertySlug, email, checkIn, checkOut, token) {
     const baseUrl = window.location.origin;
-    const params = new URLSearchParams({
-      property: propertySlug,
-      email: email,
-      checkIn: checkIn,
-      checkOut: checkOut,
-      token: token
-    });
-    return `${baseUrl}/leave-review.html?${params.toString()}`;
+    return `${baseUrl}/review.php?t=${encodeURIComponent(token)}`;
   }
 
   static async sendReservationConfirmation(reservationData) {

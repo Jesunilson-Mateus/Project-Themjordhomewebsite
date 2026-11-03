@@ -26,6 +26,7 @@ if ($action === 'update_details') {
 
     $prop['name'] = trim($_POST['name'] ?? $prop['name']);
     $prop['district'] = trim($_POST['district'] ?? $prop['district']);
+    set_property_active($prop, !empty($_POST['active']));
     foreach (['guests', 'bedrooms', 'beds', 'bathrooms'] as $numField) {
         if (isset($_POST[$numField]) && $_POST[$numField] !== '') {
             $prop[$numField] = max(0, (int) $_POST[$numField]);
@@ -129,6 +130,20 @@ if ($action === 'update_details') {
     apply_translation_overlay($translations, $slug, $_POST);
     persist_all($properties, $translations);
     redirect_with_message($backTo, 'success', 'Alterações guardadas.');
+}
+
+/* =========================================================================
+   1b) Ativar / desativar rapidamente (botão na lista de apartamentos)
+   ========================================================================= */
+if ($action === 'toggle_active') {
+    $prop = $properties[$slug];
+    $makeActive = ($_POST['active'] ?? '') === '1';
+    set_property_active($prop, $makeActive);
+    $properties[$slug] = $prop;
+    persist_all($properties, load_translations());
+    $name = $prop['name'] ?? $slug;
+    redirect_with_message('dashboard.php#apt-' . urlencode($slug), 'success',
+        $makeActive ? "\"$name\" está ativo e visível no site." : "\"$name\" está inativo e deixou de aparecer no site.");
 }
 
 /* =========================================================================

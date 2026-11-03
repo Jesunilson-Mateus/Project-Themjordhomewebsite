@@ -87,6 +87,7 @@ function initMap() {
 
   Object.keys(PROPERTIES).forEach(function (slug) {
     var p = PROPERTIES[slug];
+    if (typeof isPropertyActive === 'function' && !isPropertyActive(p)) return;   // inativos não aparecem
     var center = DISTRICT_CENTERS[p.district] || PORTO_FALLBACK;
     var jitter = jitterFromSlug(slug);
     var lat = center.lat + jitter.lat;
