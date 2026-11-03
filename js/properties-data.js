@@ -354,7 +354,6 @@ const PROPERTIES = {
         "beds": 2,
         "bathrooms": 1,
         "size_m2": 50,
-        "priceFrom": 228,
         "rating": null,
         "reviews": null,
         "price": null,
@@ -408,7 +407,6 @@ const PROPERTIES = {
         "beds": 4,
         "bathrooms": 3,
         "size_m2": null,
-        "priceFrom": null,
         "rating": null,
         "reviews": null,
         "price": null,
@@ -463,7 +461,6 @@ const PROPERTIES = {
         "beds": 2,
         "bathrooms": 2,
         "size_m2": null,
-        "priceFrom": null,
         "rating": null,
         "reviews": null,
         "price": null,
@@ -513,7 +510,6 @@ const PROPERTIES = {
         "beds": 1,
         "bathrooms": 2,
         "size_m2": null,
-        "priceFrom": null,
         "rating": null,
         "reviews": null,
         "price": null,
@@ -563,7 +559,6 @@ const PROPERTIES = {
         "beds": 1,
         "bathrooms": 1,
         "size_m2": null,
-        "priceFrom": null,
         "rating": null,
         "reviews": null,
         "price": null,
@@ -615,7 +610,6 @@ const PROPERTIES = {
         "beds": 1,
         "bathrooms": 1,
         "size_m2": null,
-        "priceFrom": null,
         "rating": null,
         "reviews": null,
         "price": null,
@@ -665,7 +659,6 @@ const PROPERTIES = {
         "beds": 2,
         "bathrooms": 2,
         "size_m2": null,
-        "priceFrom": null,
         "rating": null,
         "reviews": null,
         "price": null,
@@ -712,7 +705,7 @@ const PROPERTIES = {
         "country": "Portugal",
         "guests": 4,
         "bedrooms": 2,
-        "beds": 3,
+        "beds": 2,
         "bathrooms": 1,
         "size_m2": 71,
         "rating": null,
@@ -761,7 +754,7 @@ const PROPERTIES = {
         "city": "Porto",
         "country": "Portugal",
         "guests": 6,
-        "bedrooms": 2,
+        "bedrooms": 3,
         "beds": 4,
         "bathrooms": 3,
         "size_m2": 110,
@@ -785,7 +778,8 @@ const PROPERTIES = {
                 "Heating"
             ],
             "Outdoor": [
-                "Terrace"
+                "Terrace",
+                "Parking"
             ]
         },
         "heroImage": "img/comfy-porto/01-living.jpg",
@@ -850,7 +844,7 @@ const PROPERTIES = {
         "country": "Portugal",
         "guests": 4,
         "bedrooms": 2,
-        "beds": 2,
+        "beds": 1,
         "bathrooms": 2,
         "size_m2": null,
         "rating": 5,
@@ -902,7 +896,6 @@ const PROPERTIES = {
         "beds": 3,
         "bathrooms": 2,
         "size_m2": null,
-        "priceFrom": 266,
         "rating": null,
         "reviews": null,
         "price": null,
@@ -947,10 +940,9 @@ const PROPERTIES = {
         "country": "Portugal",
         "guests": 8,
         "bedrooms": 3,
-        "beds": 4,
+        "beds": 3,
         "bathrooms": 1,
         "size_m2": 125,
-        "priceFrom": 570,
         "rating": null,
         "reviews": null,
         "price": null,
@@ -1004,7 +996,6 @@ const PROPERTIES = {
         "beds": 3,
         "bathrooms": 2,
         "size_m2": 118,
-        "priceFrom": 342,
         "rating": null,
         "reviews": null,
         "price": null,
@@ -1076,6 +1067,9 @@ const PROPERTIES = {
                 "Wi-Fi",
                 "Air conditioning",
                 "Heating"
+            ],
+            "Sleeping": [
+                "Sofa bed"
             ]
         },
         "heroImage": "img/mercadory-ribeira/01-living.jpg",
@@ -1102,7 +1096,6 @@ const PROPERTIES = {
         "beds": 2,
         "bathrooms": 1,
         "size_m2": 40,
-        "priceFrom": 150.1,
         "rating": null,
         "reviews": null,
         "price": null,
@@ -1300,7 +1293,7 @@ const PROPERTIES = {
         "country": "Portugal",
         "guests": 4,
         "bedrooms": 1,
-        "beds": 2,
+        "beds": 1,
         "bathrooms": 1,
         "size_m2": null,
         "rating": null,
@@ -1347,6 +1340,9 @@ const PROPERTIES = {
                 "Fresh linens",
                 "Hairdryer"
             ],
+            "Sleeping": [
+                "Sofa bed"
+            ],
             "Kitchen": [
                 "Refrigerator",
                 "Coffee maker",
@@ -1374,7 +1370,7 @@ const PROPERTIES = {
         "country": "Portugal",
         "guests": 4,
         "bedrooms": 1,
-        "beds": 2,
+        "beds": 1,
         "bathrooms": 1,
         "size_m2": null,
         "rating": null,
@@ -1421,6 +1417,9 @@ const PROPERTIES = {
                 "Fresh linens",
                 "Hairdryer"
             ],
+            "Sleeping": [
+                "Sofa bed"
+            ],
             "Kitchen": [
                 "Refrigerator",
                 "Coffee maker",
@@ -1448,7 +1447,7 @@ const PROPERTIES = {
         "country": "Portugal",
         "guests": 4,
         "bedrooms": 1,
-        "beds": 2,
+        "beds": 1,
         "bathrooms": 1,
         "size_m2": null,
         "rating": null,
@@ -1494,6 +1493,9 @@ const PROPERTIES = {
                 "Heating",
                 "Fresh linens",
                 "Hairdryer"
+            ],
+            "Sleeping": [
+                "Sofa bed"
             ],
             "Outdoor": [
                 "Shared garden"
@@ -2600,6 +2602,9 @@ const PROPERTIES = {
                 "Fresh linens",
                 "Hairdryer"
             ],
+            "Sleeping": [
+                "Sofa bed"
+            ],
             "Outdoor": [
                 "Balcony",
                 "Collective garden"
@@ -2762,6 +2767,9 @@ const PROPERTIES = {
                 "Fresh linens",
                 "Hairdryer"
             ],
+            "Sleeping": [
+                "Sofa bed"
+            ],
             "Outdoor": [
                 "Balcony"
             ],
@@ -2867,7 +2875,7 @@ const PROPERTIES = {
         "checkOut": "11:00"
     },
     "beauty-porto": {
-        "name": "Beauty",
+        "name": "Beauty Porto",
         "subtitle": "A cosy studio on Largo dos Lóios, moments from the Clérigos Tower",
         "district": "Baixa",
         "city": "Porto",
@@ -2890,7 +2898,7 @@ const PROPERTIES = {
             "img/beauty-porto/05-bedroom.jpg",
             "img/beauty-porto/06-street.jpg"
         ],
-        "description": "Beauty is a cosy 38m² studio on Largo dos Lóios, with a French balcony overlooking the square, a compact dining corner and a warmly lit bathroom. With a lift to the building's upper floors, it's a comfortable and central pied-à-terre for two.",
+        "description": "Beauty Porto is a cosy 38m² studio on Largo dos Lóios, with a French balcony overlooking the square, a compact dining corner and a warmly lit bathroom. With a lift to the building's upper floors, it's a comfortable and central pied-à-terre for two.",
         "neighborhood": "Largo dos Lóios 15, 2D, 4000-030 Porto. Largo dos Lóios sits right in the historic centre, in the shadow of the Clérigos Tower — the granite bell tower built by Nicolau Nasoni, with its 225-step climb and views over the whole city. São Bento train station and the Baixa shopping streets are all within easy reach.",
         "nearby": [
             {
@@ -3098,7 +3106,7 @@ const PROPERTIES = {
         "checkOut": "11:00"
     },
     "loungy-porto": {
-        "name": "Loungy",
+        "name": "Loungy Porto",
         "subtitle": "A two-bedroom with fireplace on the historic Rua Dom João IV",
         "district": "Bonfim",
         "city": "Porto",
@@ -3121,7 +3129,7 @@ const PROPERTIES = {
             "img/loungy-porto/05-bedroom.jpg",
             "img/loungy-porto/06-bathroom.jpg"
         ],
-        "description": "Loungy is a spacious two-bedroom apartment on Rua Dom João IV, with a wood-burning fireplace in the living room, a dining area for four, and an exterior space. Two full bathrooms, a washing machine and dishwasher, and air conditioning throughout make it a comfortable stay for two couples or a family.",
+        "description": "Loungy Porto is a spacious two-bedroom apartment on Rua Dom João IV, with a wood-burning fireplace in the living room, a dining area for four, and an exterior space. Two full bathrooms, a washing machine and dishwasher, and air conditioning throughout make it a comfortable stay for two couples or a family.",
         "neighborhood": "Rua Dom João IV is a historic street in Bonfim, named for the Restoration king who freed Portugal from Spanish rule in 1640. It's a residential stretch close to the everyday life of the neighbourhood, with the centre of Porto a short ride away.",
         "nearby": [
             {
@@ -3358,6 +3366,9 @@ const PROPERTIES = {
                 "Fresh linens",
                 "Hairdryer"
             ],
+            "Sleeping": [
+                "2 single sofa beds"
+            ],
             "Kitchen": [
                 "Refrigerator",
                 "Coffee maker",
@@ -3426,6 +3437,9 @@ const PROPERTIES = {
                 "Heating",
                 "Fresh linens",
                 "Hairdryer"
+            ],
+            "Sleeping": [
+                "2 single sofa beds"
             ],
             "Kitchen": [
                 "Refrigerator",
@@ -3500,6 +3514,9 @@ const PROPERTIES = {
                 "Heating",
                 "Fresh linens",
                 "Hairdryer"
+            ],
+            "Sleeping": [
+                "2 single sofa beds"
             ],
             "Kitchen": [
                 "Refrigerator",
@@ -3603,7 +3620,6 @@ const PROPERTIES = {
         "beds": 2,
         "bathrooms": 2,
         "size_m2": null,
-        "priceFrom": null,
         "rating": null,
         "reviews": null,
         "price": null,
@@ -3737,7 +3753,7 @@ const PROPERTIES = {
         "country": "Portugal",
         "guests": 3,
         "bedrooms": 0,
-        "beds": 2,
+        "beds": 1,
         "bathrooms": 1,
         "size_m2": null,
         "rating": null,
@@ -3777,6 +3793,9 @@ const PROPERTIES = {
                 "Wi-Fi",
                 "Air conditioning"
             ],
+            "Sleeping": [
+                "Sofa bed"
+            ],
             "Kitchen": [
                 "Refrigerator",
                 "Stovetop",
@@ -3800,7 +3819,7 @@ const PROPERTIES = {
         "country": "Portugal",
         "guests": 4,
         "bedrooms": 0,
-        "beds": 2,
+        "beds": 1,
         "bathrooms": 1,
         "size_m2": null,
         "rating": null,
@@ -3860,14 +3879,14 @@ const PROPERTIES = {
         "checkOut": "11:00"
     },
     "gardeny-porto": {
-        "name": "Gardeny",
+        "name": "Gardeny Porto",
         "subtitle": "A triplex townhouse with a private garden on a quiet street in Bonfim",
         "district": "Bonfim",
         "city": "Porto",
         "country": "Portugal",
         "guests": 6,
         "bedrooms": 3,
-        "beds": 3,
+        "beds": 2,
         "bathrooms": 2,
         "size_m2": null,
         "rating": 4.76,
@@ -3888,7 +3907,7 @@ const PROPERTIES = {
             "img/gardeny-porto/10-bathroom-two.jpg",
             "img/gardeny-porto/11-facade.jpg"
         ],
-        "description": "Gardeny is a triplex townhouse on a quiet street in Bonfim, with its own private garden — a rare find this close to the centre. The ground floor is an open living room and kitchen that spills out onto the garden, where a patch of grass, a swing, and a dining table sit under the trees, closed in by tiled walls for full privacy. A wood-burning stove and a cheerful yellow armchair anchor the living room. The second floor has a bedroom with its own bathroom, and the third has a second ensuite bedroom plus a small room with a sofa bed. It's a calm, homely base with genuine outdoor space, a short walk from Campo 24 de Agosto.",
+        "description": "Gardeny Porto is a triplex townhouse on a quiet street in Bonfim, with its own private garden — a rare find this close to the centre. The ground floor is an open living room and kitchen that spills out onto the garden, where a patch of grass, a swing, and a dining table sit under the trees, closed in by tiled walls for full privacy. A wood-burning stove and a cheerful yellow armchair anchor the living room. The second floor has a bedroom with its own bathroom, and the third has a second ensuite bedroom plus a small room with a sofa bed. It's a calm, homely base with genuine outdoor space, a short walk from Campo 24 de Agosto.",
         "neighborhood": "Travessa Monte dos Congregados 55, Porto. A quiet residential corner of Bonfim, close to Campo 24 de Agosto and a short walk from the shops and cafés of Rua de Costa Cabral.",
         "nearby": [
             {
@@ -4002,6 +4021,83 @@ const PROPERTIES = {
             ],
             "Safety": [
                 "Fire extinguisher"
+            ]
+        },
+        "checkIn": "16:00–23:00",
+        "checkOut": "11:00"
+    },
+    "refugio-no-porto": {
+        "name": "Refúgio no Porto",
+        "subtitle": "A bright one-bedroom flat with a glazed sunroom and garage parking, near Marquês",
+        "district": "Bonfim",
+        "city": "Porto",
+        "country": "Portugal",
+        "guests": 3,
+        "bedrooms": 1,
+        "beds": 1,
+        "bathrooms": 1,
+        "size_m2": null,
+        "rating": null,
+        "reviews": null,
+        "price": null,
+        "featured": true,
+        "heroImage": "img/refugio-no-porto/01-living.jpg",
+        "images": [
+            "img/refugio-no-porto/01-living.jpg",
+            "img/refugio-no-porto/02-living-tv.jpg",
+            "img/refugio-no-porto/03-living-dining.jpg",
+            "img/refugio-no-porto/04-sunroom.jpg",
+            "img/refugio-no-porto/05-sunroom-dining.jpg",
+            "img/refugio-no-porto/06-bedroom.jpg",
+            "img/refugio-no-porto/07-bedroom-desk.jpg",
+            "img/refugio-no-porto/08-bed-detail.jpg",
+            "img/refugio-no-porto/09-kitchen.jpg",
+            "img/refugio-no-porto/10-kitchen-counter.jpg",
+            "img/refugio-no-porto/11-laundry.jpg",
+            "img/refugio-no-porto/12-bathroom.jpg",
+            "img/refugio-no-porto/13-hallway.jpg"
+        ],
+        "description": "Refúgio no Porto is a bright, comfortable one-bedroom apartment on Rua da Fontinha, a few minutes from Marquês metro station. The living room pairs a sofa bed with a dining table and TV, and opens onto a glazed sunroom with a small table for breakfast. The bedroom has a 1.60 m double bed, a desk and air conditioning, and the fully equipped kitchen includes a washing machine, a Nespresso machine and an induction hob. A garage parking space makes it an easy base if you are travelling by car.",
+        "neighborhood": "Rua da Fontinha 47, Porto. A residential street close to Praça do Marquês, with its garden and metro station — line E goes straight to the airport in about 35 minutes and line A to the beaches — and an easy ride to Bolhão and the Baixa.",
+        "nearby": [],
+        "amenities": {
+            "Essentials": [
+                "Wi-Fi",
+                "Air conditioning",
+                "Heating",
+                "Fan",
+                "Fresh linens",
+                "Hairdryer"
+            ],
+            "Sleeping": [
+                "Sofa bed"
+            ],
+            "Outdoor": [
+                "Parking"
+            ],
+            "Kitchen": [
+                "Refrigerator",
+                "Stove",
+                "Oven",
+                "Microwave",
+                "Coffee maker",
+                "Kettle",
+                "Toaster"
+            ],
+            "Laundry": [
+                "Washing machine",
+                "Iron"
+            ],
+            "Entertainment": [
+                "TV",
+                "Wi-Fi"
+            ],
+            "Work": [
+                "Dedicated workspace"
+            ],
+            "Safety": [
+                "Fire extinguisher",
+                "First aid kit"
             ]
         },
         "checkIn": "16:00–23:00",

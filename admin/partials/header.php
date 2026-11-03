@@ -23,6 +23,7 @@ $__allUsers = load_users();
   <nav class="admin-nav">
     <a href="dashboard.php">Apartamentos</a>
     <a href="services.php">Serviços</a>
+    <a href="faq.php">FAQ</a>
     <a href="reviews.php">Avaliações</a>
     <a href="users.php">Utilizadores</a>
     <a href="maintenance.php">Manutenção</a>

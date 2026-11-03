@@ -12,12 +12,14 @@ majordhome-project/
 │   └── style.css           → Toda a folha de estilo do site (partilhada)
 ├── data/
 │   ├── properties.json     → Fonte de verdade: dados de todos os apartamentos
+│   ├── faq.json            → Fonte de verdade: perguntas frequentes (faq.html), PT/EN/FR
 │   └── translations.json   → Fonte de verdade: textos PT/FR de cada apartamento (+ amenity-*.json, nearby-labels.json)
 ├── scripts/
 │   └── sync-data.js        → Recria as cópias dos dados nos .js a partir dos JSON
 ├── js/
 │   ├── properties-data.js  → Cópia gerada de data/properties.json (não editar à mão)
 │   ├── i18n.js              → Textos da interface + cópia gerada das traduções
+│   ├── faq-data.js          → Cópia gerada de data/faq.json (não editar à mão)
 │   ├── main.js              → Interações da homepage (slideshow, menu, etc.)
 │   └── property.js          → Interações da página de apartamento (galeria, lightbox, etc.)
 └── img/
@@ -85,7 +87,7 @@ Depois liga a esse apartamento a partir de qualquer sítio com:
 
 ## Painel de administração (para a equipa editar o site)
 
-A pasta `admin/` é um painel de gestão protegido por password onde a equipa pode editar, sem mexer em código: descrições (PT/EN/FR), comodidades, fotos e as regras da casa (check-in/check-out, alarmes) de cada apartamento, se cada apartamento está **ativo** (visível e reservável no site) ou **inativo** (escondido, com os dados guardados), o **modo manutenção** (o site público passa a mostrar `manutencao.html`), e as fotos e legendas das galerias "Em imagens" das páginas de serviços (separador **Serviços**; dados em `data/service-galleries.json`). Fica acessível em `/admin/` depois do site estar publicado num servidor com PHP.
+A pasta `admin/` é um painel de gestão protegido por password onde a equipa pode editar, sem mexer em código: descrições (PT/EN/FR), comodidades, fotos e as regras da casa (check-in/check-out, alarmes) de cada apartamento, se cada apartamento está **ativo** (visível e reservável no site) ou **inativo** (escondido, com os dados guardados), o **modo manutenção** (o site público passa a mostrar `manutencao.html`), as fotos e legendas das galerias "Em imagens" das páginas de serviços (separador **Serviços**; dados em `data/service-galleries.json`), e as **perguntas frequentes** da página `faq.html` em PT/EN/FR (separador **FAQ**; dados em `data/faq.json` — as perguntas marcadas "a confirmar" não aparecem no site). Fica acessível em `/admin/` depois do site estar publicado num servidor com PHP.
 
 Ver `admin/LEIA-ME.txt` para as instruções completas de publicação, permissões de ficheiros, e as credenciais da primeira conta.
 

@@ -5,7 +5,7 @@
  * Documentação: https://beds24.com/api/v2 (Swagger interativo) e
  * https://wiki.beds24.com/index.php/Category:API_V2
  *
- * ⚠ PARA OS ENGENHEIROS: os caminhos e parâmetros seguem a documentação v2,
+ * ⚠ PARA O ENGENHEIRO: os caminhos e parâmetros seguem a documentação v2,
  * mas a FORMA EXATA DAS RESPOSTAS tem de ser confirmada no Swagger com a
  * conta real antes de passar para 'live' (pontos marcados "VERIFICAR").
  * Todas as funções lançam exceção se a resposta não tiver o formato
@@ -115,6 +115,34 @@ function beds24_offer_total($roomId, $checkIn, $checkOut, $adults, $children) {
         if (($o['unitsAvailable'] ?? 1) > 0 && isset($o['price'])) return (float) $o['price'];
     }
     return null;
+}
+
+/* =========================================================================
+   Preço "desde" (página do apartamento e resultados da pesquisa)
+   GET /inventory/rooms/calendar?roomId=&startDate=&endDate=&includePrices=true
+   Preço por noite configurado no Beds24 para cada período. O site mostra o
+   mais baixo dos próximos dias que ainda têm disponibilidade.
+   ========================================================================= */
+
+/** @return float|null preço por noite mais baixo entre $from e $to, ou null se não houver */
+function beds24_lowest_nightly_price($roomId, $from, $to) {
+    $res = beds24_http('GET', '/inventory/rooms/calendar', [
+        'roomId' => $roomId, 'startDate' => $from, 'endDate' => $to,
+        'includePrices' => 'true', 'includeNumAvail' => 'true',
+    ]);
+    // VERIFICAR: formato esperado { data: [ { roomId, calendar: [ { from, to, price1, numAvail }, … ] } ] }
+    // "price1" é o preço base por noite; se a conta usar outro campo de preço
+    // (price2…, preços por ocupação), ajustar aqui.
+    $ranges = $res['data'][0]['calendar'] ?? null;
+    if (!is_array($ranges)) throw new RuntimeException('Beds24 calendar: formato inesperado');
+
+    $min = null;
+    foreach ($ranges as $r) {
+        if (isset($r['numAvail']) && (int) $r['numAvail'] < 1) continue;   // noites já ocupadas
+        $price = (float) ($r['price1'] ?? 0);
+        if ($price > 0 && ($min === null || $price < $min)) $min = $price;
+    }
+    return $min;
 }
 
 /* =========================================================================

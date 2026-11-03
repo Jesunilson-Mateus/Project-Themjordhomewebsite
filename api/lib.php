@@ -149,6 +149,39 @@ function mock_unavailable($slug, $from = null, $to = null) {
    reserva do Beds24. A fonte de verdade das reservas continua o Beds24.
    ========================================================================= */
 
+/* =========================================================================
+   Preço "desde" de cada apartamento (Beds24), com cache em
+   data/reservations/.price-from.json. Em modo mock não há preços.
+   ========================================================================= */
+
+/** @return float|null preço por noite mais baixo dos próximos dias */
+function price_from_for($slug) {
+    if (!is_live()) return null;
+
+    $cfg = api_config()['beds24'];
+    $ttl = 3600 * (float) ($cfg['price_from_cache_hours'] ?? 6);
+    $cacheFile = RESERVATIONS_DIR . '/.price-from.json';
+    $cache = json_decode((string) @file_get_contents($cacheFile), true) ?: [];
+    if (isset($cache[$slug]) && ($cache[$slug]['at'] ?? 0) > time() - $ttl) {
+        return $cache[$slug]['price'];
+    }
+
+    try {
+        $days = (int) ($cfg['price_from_days'] ?? 90);
+        $price = beds24_lowest_nightly_price(beds24_room_for($slug), date('Y-m-d'), date('Y-m-d', strtotime("+$days days")));
+    } catch (Throwable $e) {
+        // Sem preço para este apartamento (ex.: ainda sem roomId) — o site
+        // mostra "Preço sob consulta". Não guarda em cache: tenta de novo.
+        error_log('[api/price-from] ' . $slug . ': ' . $e->getMessage());
+        return null;
+    }
+
+    $cache[$slug] = ['price' => $price, 'at' => time()];
+    if (!is_dir(RESERVATIONS_DIR)) @mkdir(RESERVATIONS_DIR, 0775, true);
+    file_put_contents($cacheFile, json_encode($cache), LOCK_EX);
+    return $price;
+}
+
 function new_reservation_id() {
     return 'TMH-' . date('ymd') . '-' . strtoupper(bin2hex(random_bytes(3)));
 }

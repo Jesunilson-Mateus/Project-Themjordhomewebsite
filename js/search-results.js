@@ -42,8 +42,15 @@ class SearchResults {
       return;
     }
 
+    // Preço "desde" de cada resultado (Beds24); sem preço → "Preço sob consulta".
+    let prices = {};
+    try {
+      if (available.length) ({ prices } = await api.getPricesFrom(available));
+    } catch (e) { /* mostra sem preço */ }
+
     this.properties.forEach(prop => {
       if (!available.includes(prop.slug) || (prop.guests || 0) < this.guests) return;
+      prop.priceFrom = prices[prop.slug] || null;
       const zone = prop.district || 'Porto';
       (this.availableByZone[zone] = this.availableByZone[zone] || []).push(prop);
     });
@@ -94,7 +101,9 @@ class SearchResults {
 
   renderPropertyCard(prop) {
     const image = prop.heroImage || (prop.images && prop.images[0]) || '';
-    const priceLabel = prop.priceFrom ? `€${prop.priceFrom}` : (window.I18N ? window.I18N.t('property.priceOnRequest') : 'Preço sob consulta');
+    const priceLabel = prop.priceFrom
+      ? `${window.I18N ? window.I18N.formatPrice(prop.priceFrom) : prop.priceFrom}€ ${window.I18N ? window.I18N.t('property.perNightFrom') : ''}`
+      : (window.I18N ? window.I18N.t('property.priceOnRequest') : 'Preço sob consulta');
     const rating = prop.rating || '—';
     const reviews = prop.reviews || 0;
 

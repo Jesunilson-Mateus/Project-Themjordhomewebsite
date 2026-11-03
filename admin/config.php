@@ -18,6 +18,8 @@ define('SERVICE_GALLERIES_JSON', DATA_DIR . '/service-galleries.json');
 // Pasta (dentro de img/) onde ficam as fotos enviadas para as páginas de serviços.
 define('SERVICE_IMG_FOLDER', 'servicos');
 define('BACKUPS_DIR', DATA_DIR . '/backups');
+// Perguntas frequentes (faq.html): data/faq.json → js/faq-data.js.
+define('FAQ_JSON', DATA_DIR . '/faq.json');
 // Modo manutenção: enquanto este ficheiro existir, o .htaccess da raiz responde
 // a todo o site público com manutencao.html (503). Ligado/desligado no painel.
 define('MAINTENANCE_FLAG', DATA_DIR . '/maintenance.flag');
@@ -30,6 +32,7 @@ define('REVIEWS_JSON', DATA_DIR . '/reviews.json');
 define('PROPERTIES_JS', ROOT_DIR . '/js/properties-data.js');
 define('I18N_JS', ROOT_DIR . '/js/i18n.js');
 define('REVIEWS_JS', ROOT_DIR . '/js/reviews-data.js');
+define('FAQ_JS', ROOT_DIR . '/js/faq-data.js');
 
 // Tamanho máximo por foto enviada (bytes) — 15 MB antes de redimensionar.
 define('MAX_UPLOAD_BYTES', 15 * 1024 * 1024);

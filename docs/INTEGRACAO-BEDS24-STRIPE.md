@@ -1,11 +1,12 @@
 # Integração Beds24 + Stripe — guia para quem vai ligar
 
 O site já está preparado para as reservas reais. Falta **ligar as contas**
-(Beds24 e Stripe), **confirmar 4 respostas da API do Beds24** e **mudar um
+(Beds24 e Stripe), **confirmar 5 respostas da API do Beds24** e **mudar um
 interruptor**. Este documento diz exatamente o quê e onde.
 
 > Estado atual: `mode: 'mock'` — o site funciona sem servidor, com
-> disponibilidade de exemplo, sem preços e sem pagamento.
+> disponibilidade de exemplo, sem preços e sem pagamento. Os anúncios mostram
+> "Preço sob consulta" até o Beds24 estar ligado.
 
 ---
 
@@ -16,6 +17,7 @@ interruptor**. Este documento diz exatamente o quê e onde.
  ───────────────────────                 ───────────────────                     ────────
  calendário ── GET availability.php ───▶ Beds24 /inventory/rooms/availability ─▶ Beds24
  pesquisa   ── GET search.php ─────────▶ (idem, por apartamento)
+ preço      ── GET price-from.php ─────▶ Beds24 /inventory/rooms/calendar  ("desde X € / noite", cache 6 h)
  resumo     ── GET quote.php ──────────▶ Beds24 /inventory/rooms/offers
  confirmar  ── POST reservations.php ──▶ 1. preço (offers, calculado no servidor)
                                          2. POST /bookings  status "request"  ──▶ Beds24 (bloqueia as datas)
@@ -43,14 +45,14 @@ interruptor**. Este documento diz exatamente o quê e onde.
 |---|---|
 | `js/booking-config.js` | **Interruptor** `mode: 'mock' \| 'live'` e `apiBase`. |
 | `js/booking-api.js` | Única camada do browser que fala com a API (contrato abaixo). Tem também o modo mock. |
-| `js/booking-calendar.js`, `js/booking-wizard.js`, `js/search-results.js`, `js/booking-result.js` | Usam só a `BookingAPI`. |
+| `js/booking-calendar.js`, `js/booking-wizard.js`, `js/search-results.js`, `js/booking-result.js`, `js/property.js` | Usam só a `BookingAPI`. |
 | `reserva.html` | Página para onde o Stripe devolve o cliente. |
 | `api/config.example.php` | Modelo da configuração → copiar para **`api/config.php`** (fora do git). |
-| `api/beds24.php` | Cliente Beds24 v2 (autenticação pronta; 4 respostas a confirmar — marcadas `VERIFICAR`). |
+| `api/beds24.php` | Cliente Beds24 v2 (autenticação pronta; 5 respostas a confirmar — marcadas `VERIFICAR`). |
 | `api/stripe.php` | Checkout Session + verificação da assinatura do webhook (pronto). |
-| `api/*.php` (resto) | Endpoints: `availability`, `search`, `quote`, `reservations`, `stripe-webhook`. |
-| `data/beds24-rooms.json` | **Mapa apartamento do site → `roomId` do Beds24** (60 entradas, por preencher). |
-| `data/reservations/` | Criada automaticamente. Reservas + cache do token. Fora do git, protegida por `data/.htaccess`. |
+| `api/*.php` (resto) | Endpoints: `availability`, `search`, `price-from`, `quote`, `reservations`, `stripe-webhook`. |
+| `data/beds24-rooms.json` | **Mapa apartamento do site → `roomId` do Beds24** (61 entradas, por preencher). |
+| `data/reservations/` | Criada automaticamente. Reservas + cache do token e dos preços "desde". Fora do git, protegida por `data/.htaccess`. |
 
 ---
 
@@ -81,6 +83,8 @@ interruptor**. Este documento diz exatamente o quê e onde.
    pontos `VERIFICAR` em `api/beds24.php`:
    - formato de `GET /inventory/rooms/availability`;
    - formato de `GET /inventory/rooms/offers` e qual oferta usar se houver várias;
+   - formato de `GET /inventory/rooms/calendar` com `includePrices` e qual campo de
+     preço usar (`price1` é o preço base por noite);
    - resposta de `POST /bookings` (id da reserva criada) e estados aceites
      (`request`, `confirmed`, `cancelled`);
    - campo de notas internas usado ao confirmar (`notes`).
@@ -106,7 +110,7 @@ interruptor**. Este documento diz exatamente o quê e onde.
 
 ### 2.5 Antes de produção (a decidir pelos engenheiros)
 - **Pesquisa** (`api/search.php`): hoje faz 1 pedido ao Beds24 por apartamento
-  (60 por pesquisa). O limite do Beds24 é ~100 créditos / 5 min por conta →
+  (61 por pesquisa). O limite do Beds24 é ~100 créditos / 5 min por conta →
   usar um pedido com vários `roomId` ou cache de ~10 min.
 - **Emails**: `send_reservation_emails()` usa `mail()` do PHP — trocar por SMTP
   ou serviço transacional para não ir para spam.
@@ -144,6 +148,16 @@ Datas sempre `YYYY-MM-DD`. Erros sempre:
 ```json
 { "available": ["fabrica-no-jardim", "casa-bonfim"] }
 ```
+
+### `GET api/price-from.php?property=<slug>[,<slug>…]`
+```json
+{ "currency": "EUR", "prices": { "joy-porto": 85, "camilo-apartment": null } }
+```
+Preço por noite mais baixo dos próximos 90 dias com disponibilidade (Beds24,
+`/inventory/rooms/calendar`), para "desde X € / noite" na página do
+apartamento e nos resultados da pesquisa. Guardado em cache 6 h
+(`beds24.price_from_days` e `beds24.price_from_cache_hours` em `api/config.php`).
+`null` (ou modo mock) → o site mostra "Preço sob consulta".
 
 ### `GET api/quote.php?property=&checkIn=&checkOut=&adults=&children=`
 ```json

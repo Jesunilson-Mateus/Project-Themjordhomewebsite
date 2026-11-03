@@ -25,6 +25,10 @@ return [
         // Estado com que a reserva é criada no Beds24 enquanto o cliente paga
         // (bloqueia as datas). Passa a 'confirmed' quando o Stripe confirma.
         'hold_status' => 'request',
+        // Preço "desde X € / noite": o mais baixo dos próximos N dias, guardado
+        // em cache durante X horas (para não pedir ao Beds24 a cada visita).
+        'price_from_days' => 90,
+        'price_from_cache_hours' => 6,
     ],
 
     'stripe' => [

@@ -170,5 +170,13 @@
   "Shared garden": {
     "pt": "Jardim partilhado",
     "fr": "Jardin partagé"
+  },
+  "Sofa bed": {
+    "pt": "Sofá-cama",
+    "fr": "Canapé-lit"
+  },
+  "2 single sofa beds": {
+    "pt": "2 sofás-cama de solteiro",
+    "fr": "2 canapés-lits simples"
   }
 }

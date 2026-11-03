@@ -3,7 +3,8 @@
    THEMAJORD'HOME — Sincronizar dados JSON → JS
 
    Os ficheiros em data/*.json são a fonte de verdade. O site lê cópias
-   desses dados embutidas em js/properties-data.js e js/i18n.js, e as
+   desses dados embutidas em js/properties-data.js, js/i18n.js e
+   js/faq-data.js, e as
    galerias "Em imagens" das páginas servico-*.html. Este script recria
    essas cópias a partir do JSON, da mesma forma que o painel admin
    (admin/lib.php), mantendo o resto dos ficheiros intacto.
@@ -28,6 +29,7 @@ const TARGETS = [
   { json: 'data/amenity-items.json',      js: 'js/i18n.js',            needle: 'var AMENITY_ITEMS = {' },
   { json: 'data/amenity-categories.json', js: 'js/i18n.js',            needle: 'var AMENITY_CATEGORIES = {' },
   { json: 'data/nearby-labels.json',      js: 'js/i18n.js',            needle: 'var NEARBY_LABELS = {' },
+  { json: 'data/faq.json',                js: 'js/faq-data.js',        needle: 'var FAQ = {' },
 ];
 
 /* Encontra a chaveta que fecha a que abre em `openPos`, ignorando chavetas

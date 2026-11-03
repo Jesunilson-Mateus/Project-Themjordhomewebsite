@@ -23,7 +23,7 @@ function load_users() {
 }
 
 function save_users($users) {
-    file_put_contents(USERS_JSON, json_encode($users, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+    file_put_contents(USERS_JSON, json_encode($users, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_INVALID_UTF8_SUBSTITUTE));
 }
 
 /* =========================================================================
@@ -129,9 +129,19 @@ function load_json($path) {
     return is_array($data) ? $data : [];
 }
 
+/* JSON formatado como o resto dos dados. Bytes que não são UTF-8 válido
+   (ex.: texto colado de outra codificação) passam a "�" — sem isto o
+   json_encode falhava e o ficheiro ficava vazio. */
+function encode_json($data) {
+    $json = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_INVALID_UTF8_SUBSTITUTE);
+    if ($json === false) {
+        throw new Exception('Não foi possível gravar os dados: ' . json_last_error_msg());
+    }
+    return $json;
+}
+
 function save_json($path, $data) {
-    $json = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
-    file_put_contents($path, $json);
+    file_put_contents($path, encode_json($data));
 }
 
 function load_properties() { return load_json(PROPERTIES_JSON); }
@@ -216,13 +226,24 @@ function backup_data() {
    código de apresentação).
    ========================================================================= */
 
+/* Ignora chavetas dentro de strings (ex.: um texto com "{"), como o
+   findMatchingBrace do scripts/sync-data.js. */
 function find_matching_brace($str, $openBracePos) {
     $depth = 0;
+    $quote = null;
     $len = strlen($str);
     for ($i = $openBracePos; $i < $len; $i++) {
-        if ($str[$i] === '{') {
+        $c = $str[$i];
+        if ($quote !== null) {
+            if ($c === '\\') $i++;
+            elseif ($c === $quote) $quote = null;
+            continue;
+        }
+        if ($c === '"' || $c === "'" || $c === '`') {
+            $quote = $c;
+        } elseif ($c === '{') {
             $depth++;
-        } elseif ($str[$i] === '}') {
+        } elseif ($c === '}') {
             $depth--;
             if ($depth === 0) return $i;
         }
@@ -245,7 +266,7 @@ function splice_js_object($filePath, $needle, $newData) {
     if ($closeBrace === -1) {
         throw new Exception("Chavetas desequilibradas em " . basename($filePath));
     }
-    $json = json_encode($newData, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    $json = encode_json($newData);
     // Mesmas quebras de linha do ficheiro (igual a scripts/sync-data.js), para
     // não deixar o ficheiro com quebras misturadas.
     if (strpos($src, "\r\n") !== false) $json = str_replace("\n", "\r\n", $json);
@@ -318,6 +339,32 @@ function persist_service_galleries($galleries, $changedKey) {
 }
 
 /* =========================================================================
+   Perguntas frequentes (faq.html)
+   data/faq.json é a fonte de verdade; js/faq-data.js tem a cópia que a
+   página lê. Cada secção ("guests", "owners") tem um título e uma lista de
+   perguntas {q: {pt,en,fr}, a: {pt,en,fr}, draft}. As perguntas com
+   "draft": true ficam "a confirmar" e não aparecem no site.
+   ========================================================================= */
+
+function load_faq() { return load_json(FAQ_JSON); }
+
+function persist_faq($faq) {
+    backup_data();
+    save_json(FAQ_JSON, $faq);
+    splice_js_object(FAQ_JS, 'var FAQ = {', $faq);
+}
+
+function faq_draft_count($faq) {
+    $n = 0;
+    foreach ($faq as $section) {
+        foreach ($section['items'] ?? [] as $item) {
+            if (!empty($item['draft'])) $n++;
+        }
+    }
+    return $n;
+}
+
+/* =========================================================================
    Avaliações de hóspedes
    ========================================================================= */
 
@@ -330,7 +377,7 @@ function load_reviews() {
 function save_reviews($reviews) {
     if (!is_dir(DATA_DIR)) @mkdir(DATA_DIR, 0775, true);
     backup_data();
-    file_put_contents(REVIEWS_JSON, json_encode($reviews, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+    file_put_contents(REVIEWS_JSON, json_encode($reviews, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_INVALID_UTF8_SUBSTITUTE));
 }
 
 /**

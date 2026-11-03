@@ -207,15 +207,25 @@ document.addEventListener('DOMContentLoaded', () => {
     houseRulesSection.style.display = '';
 
     /* Booking sidebar */
+    renderPriceLine();
+    populateGuestSelects(lp);
+  }
+
+  /* Preço "desde X € / noite": vem do Beds24 (api/price-from.php). Sem
+     Beds24 ligado (modo mock) ou sem preço → "Preço sob consulta". */
+  let priceFrom = null;
+  function renderPriceLine() {
     const priceLine = document.getElementById('priceLine');
-    if (lp.priceFrom) {
-      priceLine.innerHTML = `<span class="amt">${I18N.formatPrice(lp.priceFrom)}€</span><span class="unit">${I18N.t('property.perNightFrom')}</span>`;
+    if (priceFrom) {
+      priceLine.innerHTML = `<span class="amt">${I18N.formatPrice(priceFrom)}€</span><span class="unit">${I18N.t('property.perNightFrom')}</span>`;
     } else {
       priceLine.innerHTML = `<span class="amt" style="font-size:19px;">${I18N.t('property.priceOnRequest')}</span>`;
     }
-    // Preço final por reserva vem do Beds24 (ver README) — o que está aqui é só
-    // uma indicação de arranque enquanto a ligação em tempo real não entra.
-    populateGuestSelects(lp);
+  }
+  if (window.BookingAPI) {
+    BookingAPI.getPricesFrom([prop.slug])
+      .then(({ prices }) => { priceFrom = prices[prop.slug] || null; renderPriceLine(); })
+      .catch(() => {});
   }
 
   /* Substitui {chave} por valores num texto traduzido (I18N.t não tem

@@ -220,7 +220,7 @@
         "roomId": null
     },
     "beauty-porto": {
-        "name": "Beauty",
+        "name": "Beauty Porto",
         "propertyId": null,
         "roomId": null
     },
@@ -235,7 +235,7 @@
         "roomId": null
     },
     "loungy-porto": {
-        "name": "Loungy",
+        "name": "Loungy Porto",
         "propertyId": null,
         "roomId": null
     },
@@ -290,12 +290,17 @@
         "roomId": null
     },
     "gardeny-porto": {
-        "name": "Gardeny",
+        "name": "Gardeny Porto",
         "propertyId": null,
         "roomId": null
     },
     "gracy-porto": {
         "name": "Gracy Porto",
+        "propertyId": null,
+        "roomId": null
+    },
+    "refugio-no-porto": {
+        "name": "Refúgio no Porto",
         "propertyId": null,
         "roomId": null
     }

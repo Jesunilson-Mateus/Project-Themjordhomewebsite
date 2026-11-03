@@ -62,6 +62,10 @@
     getQuote: ({ property, checkIn, checkOut, adults, children }) =>
       request('quote.php', { query: { property, checkIn, checkOut, adults, children } }),
 
+    // Preço por noite mais baixo dos próximos dias (Beds24): { currency, prices: { slug: número | null } }
+    getPricesFrom: (properties) =>
+      request('price-from.php', { query: { property: properties.join(',') } }),
+
     createReservation: (reservation) =>
       request('reservations.php', { method: 'POST', body: reservation }),
 
@@ -111,6 +115,9 @@
     // Sem Beds24 não há preço: o site mostra "preço sob consulta".
     getQuote: ({ property, checkIn, checkOut }) =>
       delay({ property, currency: 'EUR', nights: nightsBetween(checkIn, checkOut).length, total: null }),
+
+    getPricesFrom: (properties) =>
+      delay({ currency: 'EUR', prices: Object.fromEntries(properties.map(slug => [slug, null])) }),
 
     createReservation: async (reservation) => {
       const busy = mockUnavailable(reservation.property, reservation.checkIn, reservation.checkOut);

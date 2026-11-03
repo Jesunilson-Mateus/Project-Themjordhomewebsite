@@ -1,0 +1,417 @@
+/* =========================================================================
+   THEMAJORD'HOME — Perguntas frequentes (faq.html)
+
+   Cópia gerada de data/faq.json — não editar à mão. Editar no painel
+   (admin → Perguntas frequentes) ou no JSON + node scripts/sync-data.js.
+   As perguntas com "draft": true ("a confirmar") não aparecem no site.
+   ========================================================================= */
+var FAQ = {
+    "guests": {
+        "title": {
+            "pt": "Hóspedes",
+            "en": "Guests",
+            "fr": "Voyageurs"
+        },
+        "items": [
+            {
+                "q": {
+                    "pt": "A que horas é o check-in e o check-out?",
+                    "en": "What are the check-in and check-out times?",
+                    "fr": "À quelle heure sont l'arrivée et le départ ?"
+                },
+                "a": {
+                    "pt": "O check-in é entre as 16h00 e as 23h00 e o check-out é até às 11h00. Também pode chegar mais tarde, com um custo extra (ver \"Posso chegar depois das 23h?\"). Os horários de cada apartamento estão na respetiva página, em \"Regras da casa\".",
+                    "en": "Check-in is between 4pm and 11pm, and check-out is by 11am. Later arrivals are possible for an extra fee (see \"Can I arrive after 11pm?\"). The times for each apartment are shown on its page, under \"House rules\".",
+                    "fr": "L'arrivée se fait entre 16h00 et 23h00 et le départ avant 11h00. Une arrivée plus tardive est possible moyennant un supplément (voir « Puis-je arriver après 23h ? »). Les horaires de chaque appartement figurent sur sa page, dans « Règlement intérieur »."
+                },
+                "draft": false
+            },
+            {
+                "q": {
+                    "pt": "Como funciona o check-in?",
+                    "en": "How does check-in work?",
+                    "fr": "Comment se passe l'arrivée ?"
+                },
+                "a": {
+                    "pt": "Poucos dias antes da chegada, enviamos as instruções e combinamos consigo a hora de chegada. No dia, recebemo-lo pessoalmente no apartamento, entregamos as chaves, mostramos a casa e o bairro e deixamos os contactos úteis.",
+                    "en": "A few days before your arrival, we send you the instructions and agree on your arrival time. On the day, we welcome you in person at the apartment, hand over the keys, show you around the home and the neighbourhood, and leave you our contacts.",
+                    "fr": "Quelques jours avant votre arrivée, nous vous envoyons les instructions et convenons avec vous de l'heure d'arrivée. Le jour venu, nous vous accueillons en personne à l'appartement, vous remettons les clés, vous faisons découvrir le logement et le quartier, et vous laissons nos contacts."
+                },
+                "draft": false
+            },
+            {
+                "q": {
+                    "pt": "Posso chegar depois das 23h?",
+                    "en": "Can I arrive after 11pm?",
+                    "fr": "Puis-je arriver après 23h ?"
+                },
+                "a": {
+                    "pt": "Sim. Os check-ins depois das 23h00 têm um custo de 20 €, e a partir da 01h00 de 40 €, pagos em dinheiro no check-in. Avise-nos da hora prevista de chegada antes da viagem.",
+                    "en": "Yes. Check-ins after 11pm cost €20, and from 1am €40, paid in cash at check-in. Please let us know your expected arrival time before your trip.",
+                    "fr": "Oui. Les arrivées après 23h00 coûtent 20 €, et à partir de 1h00, 40 €, payés en espèces à l'arrivée. Merci de nous indiquer votre heure d'arrivée prévue avant votre voyage."
+                },
+                "draft": false
+            },
+            {
+                "q": {
+                    "pt": "Posso chegar mais cedo ou deixar a bagagem?",
+                    "en": "Can I arrive early or drop off my luggage?",
+                    "fr": "Puis-je arriver plus tôt ou déposer mes bagages ?"
+                },
+                "a": {
+                    "pt": "Poucos dias antes da chegada, enviamos as informações sobre o check-in. É possível chegar antes das 16h00, mas não o podemos garantir — depende de o apartamento já estar pronto.\n\nPode sempre deixar as malas no nosso escritório, na Rua das Oliveirinhas, 18, antes do check-in e também depois do check-out.",
+                    "en": "A few days before your arrival, we send you the check-in information. Arriving before 4pm is possible, but we can't guarantee it — it depends on the apartment being ready.\n\nYou can always leave your luggage at our office, at Rua das Oliveirinhas 18, before check-in and after check-out too.",
+                    "fr": "Quelques jours avant votre arrivée, nous vous envoyons les informations d'arrivée. Il est possible d'arriver avant 16h00, mais sans garantie — cela dépend de la disponibilité de l'appartement.\n\nVous pouvez toujours déposer vos bagages à notre bureau, Rua das Oliveirinhas 18, avant l'arrivée et aussi après le départ."
+                },
+                "draft": false
+            },
+            {
+                "q": {
+                    "pt": "Como faço o check-out?",
+                    "en": "How do I check out?",
+                    "fr": "Comment se passe le départ ?"
+                },
+                "a": {
+                    "pt": "É simples: até às 11h00, apague as luzes, deite o lixo fora, deixe as chaves em cima da mesa e feche a porta. Não é preciso entregar as chaves a ninguém.",
+                    "en": "It's simple: by 11am, switch off the lights, take out the rubbish, leave the keys on the table and close the door behind you. There's no need to hand the keys to anyone.",
+                    "fr": "C'est simple : avant 11h00, éteignez les lumières, sortez les poubelles, laissez les clés sur la table et fermez la porte. Inutile de remettre les clés à quelqu'un."
+                },
+                "draft": false
+            },
+            {
+                "q": {
+                    "pt": "Como reservo e pago?",
+                    "en": "How do I book and pay?",
+                    "fr": "Comment réserver et payer ?"
+                },
+                "a": {
+                    "pt": "Escolha o apartamento, as datas e o número de hóspedes e siga os passos da reserva. O pagamento é feito com cartão, numa página de pagamento segura. [A CONFIRMAR: se se paga o valor total na reserva ou só um sinal; métodos de pagamento aceites.]",
+                    "en": "Choose the apartment, your dates and the number of guests, then follow the booking steps. Payment is made by card on a secure payment page. [TO CONFIRM: full amount or deposit at booking; accepted payment methods.]",
+                    "fr": "Choisissez l'appartement, vos dates et le nombre de voyageurs, puis suivez les étapes de réservation. Le paiement se fait par carte, sur une page de paiement sécurisée. [À CONFIRMER : montant total ou acompte à la réservation ; moyens de paiement acceptés.]"
+                },
+                "draft": true
+            },
+            {
+                "q": {
+                    "pt": "Qual é a política de cancelamento?",
+                    "en": "What is the cancellation policy?",
+                    "fr": "Quelle est la politique d'annulation ?"
+                },
+                "a": {
+                    "pt": "[A CONFIRMAR: até quantos dias antes da chegada se pode cancelar com reembolso total; o que acontece depois disso; como pedir o cancelamento.]",
+                    "en": "[TO CONFIRM: how many days before arrival a free cancellation is possible; what happens after that; how to cancel.]",
+                    "fr": "[À CONFIRMER : jusqu'à combien de jours avant l'arrivée l'annulation est gratuite ; ce qui se passe ensuite ; comment annuler.]"
+                },
+                "draft": true
+            },
+            {
+                "q": {
+                    "pt": "Há taxa turística?",
+                    "en": "Is there a tourist tax?",
+                    "fr": "Y a-t-il une taxe de séjour ?"
+                },
+                "a": {
+                    "pt": "Sim, a Câmara Municipal do Porto cobra uma taxa turística por pessoa e por noite. [A CONFIRMAR: valor atual, idade a partir da qual se paga, número máximo de noites, e se está incluída no preço ou é paga no check-in.]",
+                    "en": "Yes, Porto City Council charges a tourist tax per person per night. [TO CONFIRM: current amount, minimum age, maximum number of nights, and whether it is included in the price or paid at check-in.]",
+                    "fr": "Oui, la mairie de Porto perçoit une taxe de séjour par personne et par nuit. [À CONFIRMER : montant actuel, âge minimum, nombre maximum de nuits, et si elle est incluse dans le prix ou payée à l'arrivée.]"
+                },
+                "draft": true
+            },
+            {
+                "q": {
+                    "pt": "É pedida caução?",
+                    "en": "Is a security deposit required?",
+                    "fr": "Une caution est-elle demandée ?"
+                },
+                "a": {
+                    "pt": "[A CONFIRMAR: se é pedida caução, o valor, como é cobrada e quando é devolvida.]",
+                    "en": "[TO CONFIRM: whether a deposit is required, the amount, how it is taken and when it is returned.]",
+                    "fr": "[À CONFIRMER : si une caution est demandée, son montant, comment elle est prise et quand elle est restituée.]"
+                },
+                "draft": true
+            },
+            {
+                "q": {
+                    "pt": "Que serviços extra posso pedir?",
+                    "en": "What extra services can I request?",
+                    "fr": "Quels services supplémentaires puis-je demander ?"
+                },
+                "a": {
+                    "pt": "Ao reservar, pode pedir:\n• Transfer do aeroporto — carro 25 €, ou carrinha para grupos 50 €, pago em dinheiro ao motorista na chegada.\n• Kit de bebé — 25 €, com cadeira alta, banheira, roupa de cama, berço e toalhas. Fica preparado no apartamento e é pago em dinheiro no check-in.\n\nA equipa também trata de reservas em restaurantes, bilhetes, aluguer de carro e outros pedidos — basta falar connosco.",
+                    "en": "When booking, you can request:\n• Airport transfer — car €25, or van for groups €50, paid in cash to the driver on arrival.\n• Baby kit — €25, with high chair, bathtub, bed linen, crib and towels. It is set up in the apartment and paid in cash at check-in.\n\nOur team can also handle restaurant bookings, tickets, car rental and other requests — just ask.",
+                    "fr": "Lors de la réservation, vous pouvez demander :\n• Transfert aéroport — voiture 25 €, ou van pour les groupes 50 €, payé en espèces au chauffeur à l'arrivée.\n• Kit bébé — 25 €, avec chaise haute, baignoire, linge de lit, lit bébé et serviettes. Il est installé dans l'appartement et payé en espèces à l'arrivée.\n\nNotre équipe s'occupe aussi des réservations de restaurants, billets, location de voiture et autres demandes — il suffit de nous le dire."
+                },
+                "draft": false
+            },
+            {
+                "q": {
+                    "pt": "A roupa de cama e as toalhas estão incluídas?",
+                    "en": "Are bed linen and towels included?",
+                    "fr": "Le linge de lit et les serviettes sont-ils fournis ?"
+                },
+                "a": {
+                    "pt": "Sim. A roupa de cama, as toalhas e os essenciais (papel higiénico, sabonete, champô) estão sempre incluídos. Em estadias de mais de 7 noites, incluímos também toalhas e produtos extra; nas restantes, um jogo extra de toalhas custa 20 €.",
+                    "en": "Yes. Bed linen, towels and essentials (toilet paper, soap, shampoo) are always included. For stays of more than 7 nights, extra towels and toiletries are included too; for shorter stays, an extra set of towels costs €20.",
+                    "fr": "Oui. Le linge de lit, les serviettes et les essentiels (papier toilette, savon, shampoing) sont toujours fournis. Pour les séjours de plus de 7 nuits, des serviettes et produits supplémentaires sont aussi inclus ; pour les autres, un jeu de serviettes supplémentaire coûte 20 €."
+                },
+                "draft": false
+            },
+            {
+                "q": {
+                    "pt": "Há sofá-cama? Tem custo?",
+                    "en": "Is there a sofa bed? Is there a charge?",
+                    "fr": "Y a-t-il un canapé-lit ? Est-il payant ?"
+                },
+                "a": {
+                    "pt": "Alguns apartamentos têm sofá-cama, além das camas. Para saber se o apartamento que escolheu tem, fale connosco.\n\nNos apartamentos com uma só cama, o sofá-cama permite receber uma terceira pessoa: se forem 3 hóspedes, está incluído, sem custo extra. Se forem 2 e quiserem usar também o sofá-cama, custa 20 € por estadia, pagos em dinheiro no check-in.\n\nNas casas com mais de uma cama, usar o sofá-cama não tem custo.",
+                    "en": "Some apartments have a sofa bed in addition to the beds. To find out whether the apartment you chose has one, get in touch.\n\nIn apartments with a single bed, the sofa bed sleeps a third person: for 3 guests, it is included at no extra cost. For 2 guests who would also like to use the sofa bed, it costs €20 per stay, paid in cash at check-in.\n\nIn homes with more than one bed, using the sofa bed is free of charge.",
+                    "fr": "Certains appartements disposent d'un canapé-lit en plus des lits. Pour savoir si l'appartement que vous avez choisi en a un, contactez-nous.\n\nDans les appartements avec un seul lit, le canapé-lit permet d'accueillir une troisième personne : pour 3 voyageurs, il est inclus sans supplément. Pour 2 voyageurs qui souhaitent aussi utiliser le canapé-lit, il coûte 20 € par séjour, payés en espèces à l'arrivée.\n\nDans les logements avec plus d'un lit, l'utilisation du canapé-lit est gratuite."
+                },
+                "draft": false
+            },
+            {
+                "q": {
+                    "pt": "Há limpeza durante a estadia?",
+                    "en": "Is there cleaning during the stay?",
+                    "fr": "Le ménage est-il fait pendant le séjour ?"
+                },
+                "a": {
+                    "pt": "Se ficar mais de 7 noites, fazemos durante a estadia uma limpeza e um refresh total do apartamento. Em estadias mais curtas, fale connosco se precisar.",
+                    "en": "If you stay more than 7 nights, we carry out a cleaning and a full refresh of the apartment during your stay. For shorter stays, get in touch if you need one.",
+                    "fr": "Si vous restez plus de 7 nuits, nous effectuons pendant le séjour un ménage et un rafraîchissement complet de l'appartement. Pour les séjours plus courts, contactez-nous si besoin."
+                },
+                "draft": false
+            },
+            {
+                "q": {
+                    "pt": "Posso fumar no apartamento?",
+                    "en": "Can I smoke in the apartment?",
+                    "fr": "Puis-je fumer dans l'appartement ?"
+                },
+                "a": {
+                    "pt": "Não. Não é permitido fumar dentro dos apartamentos.",
+                    "en": "No. Smoking is not allowed inside the apartments.",
+                    "fr": "Non. Il est interdit de fumer à l'intérieur des appartements."
+                },
+                "draft": false
+            },
+            {
+                "q": {
+                    "pt": "São permitidos animais ou festas?",
+                    "en": "Are pets or parties allowed?",
+                    "fr": "Les animaux ou les fêtes sont-ils acceptés ?"
+                },
+                "a": {
+                    "pt": "[A CONFIRMAR: animais de estimação (sim / não / alguns apartamentos); festas e eventos; horário de silêncio.]",
+                    "en": "[TO CONFIRM: pets (yes / no / some apartments); parties and events; quiet hours.]",
+                    "fr": "[À CONFIRMER : animaux (oui / non / certains appartements) ; fêtes et événements ; heures de silence.]"
+                },
+                "draft": true
+            },
+            {
+                "q": {
+                    "pt": "Há estacionamento?",
+                    "en": "Is there parking?",
+                    "fr": "Y a-t-il un parking ?"
+                },
+                "a": {
+                    "pt": "A maioria dos apartamentos fica no centro histórico e não tem estacionamento próprio. Na página de cada apartamento, a lista de comodidades indica se há estacionamento. Se vier de carro, fale connosco e indicamos os parques mais próximos.",
+                    "en": "Most apartments are in the historic centre and don't have private parking. On each apartment's page, the list of amenities shows whether parking is available. If you're coming by car, get in touch and we'll point you to the nearest car parks.",
+                    "fr": "La plupart des appartements se trouvent dans le centre historique et n'ont pas de parking privé. Sur la page de chaque appartement, la liste des équipements indique si un parking est disponible. Si vous venez en voiture, contactez-nous et nous vous indiquerons les parkings les plus proches."
+                },
+                "draft": false
+            },
+            {
+                "q": {
+                    "pt": "Os apartamentos têm Wi-Fi?",
+                    "en": "Do the apartments have Wi-Fi?",
+                    "fr": "Les appartements ont-ils le Wi-Fi ?"
+                },
+                "a": {
+                    "pt": "Sim, todos os apartamentos têm Wi-Fi incluído. Os dados de acesso estão no guia da casa.",
+                    "en": "Yes, every apartment has Wi-Fi included. The login details are in the house guide.",
+                    "fr": "Oui, tous les appartements disposent du Wi-Fi inclus. Les identifiants se trouvent dans le guide du logement."
+                },
+                "draft": false
+            },
+            {
+                "q": {
+                    "pt": "Como falo com a equipa durante a estadia?",
+                    "en": "How do I reach the team during my stay?",
+                    "fr": "Comment joindre l'équipe pendant le séjour ?"
+                },
+                "a": {
+                    "pt": "Estamos disponíveis todos os dias, das 9h às 23h, pelo +351 910 239 900 ou por email, resa@themajordhome.com. Falamos português, inglês e francês.",
+                    "en": "We're available every day from 9am to 11pm on +351 910 239 900 or by email at resa@themajordhome.com. We speak Portuguese, English and French.",
+                    "fr": "Nous sommes disponibles tous les jours de 9h à 23h au +351 910 239 900 ou par email à resa@themajordhome.com. Nous parlons portugais, anglais et français."
+                },
+                "draft": false
+            },
+            {
+                "q": {
+                    "pt": "Como deixo uma avaliação?",
+                    "en": "How do I leave a review?",
+                    "fr": "Comment laisser un avis ?"
+                },
+                "a": {
+                    "pt": "Depois da estadia, enviamos-lhe por email um link pessoal para avaliar o apartamento. A sua opinião ajuda-nos a melhorar e aparece no site.",
+                    "en": "After your stay, we email you a personal link to review the apartment. Your feedback helps us improve and appears on the website.",
+                    "fr": "Après votre séjour, nous vous envoyons par email un lien personnel pour évaluer l'appartement. Votre avis nous aide à progresser et apparaît sur le site."
+                },
+                "draft": false
+            }
+        ]
+    },
+    "owners": {
+        "title": {
+            "pt": "Proprietários",
+            "en": "Owners",
+            "fr": "Propriétaires"
+        },
+        "items": [
+            {
+                "q": {
+                    "pt": "O que inclui a gestão do meu imóvel?",
+                    "en": "What does managing my property include?",
+                    "fr": "Que comprend la gestion de mon bien ?"
+                },
+                "a": {
+                    "pt": "Tratamos de tudo, do anúncio ao dia a dia: fotografia e texto do anúncio, calendário e preços, reservas e comunicação com os hóspedes, check-in, limpeza e lavandaria, manutenção, e um relatório mensal com a faturação. Tem um único ponto de contacto.",
+                    "en": "We handle everything, from the listing to day-to-day operations: photography and listing copy, calendar and pricing, bookings and guest communication, check-in, cleaning and laundry, maintenance, and a monthly report with invoicing. You have a single point of contact.",
+                    "fr": "Nous nous occupons de tout, de l'annonce au quotidien : photos et texte de l'annonce, calendrier et tarifs, réservations et communication avec les voyageurs, accueil, ménage et blanchisserie, entretien, et un rapport mensuel avec la facturation. Vous avez un interlocuteur unique."
+                },
+                "draft": false
+            },
+            {
+                "q": {
+                    "pt": "Em que plataformas fica o meu imóvel?",
+                    "en": "Which platforms will my property be listed on?",
+                    "fr": "Sur quelles plateformes mon bien sera-t-il publié ?"
+                },
+                "a": {
+                    "pt": "No Booking, no Airbnb e no Abritel, além do nosso próprio site — tudo ligado a um único calendário, para não haver reservas sobrepostas.",
+                    "en": "On Booking, Airbnb and Abritel, as well as our own website — all connected to a single calendar, so there are no double bookings.",
+                    "fr": "Sur Booking, Airbnb et Abritel, ainsi que sur notre propre site — le tout relié à un calendrier unique, pour éviter les doubles réservations."
+                },
+                "draft": false
+            },
+            {
+                "q": {
+                    "pt": "Quanto custa?",
+                    "en": "How much does it cost?",
+                    "fr": "Combien cela coûte-t-il ?"
+                },
+                "a": {
+                    "pt": "[A CONFIRMAR: percentagem de comissão e sobre que valor é calculada; o que está incluído; custos à parte (limpeza, lavandaria, consumíveis, reparações).]",
+                    "en": "[TO CONFIRM: commission rate and what it is calculated on; what is included; separate costs (cleaning, laundry, supplies, repairs).]",
+                    "fr": "[À CONFIRMER : taux de commission et base de calcul ; ce qui est inclus ; coûts à part (ménage, blanchisserie, consommables, réparations).]"
+                },
+                "draft": true
+            },
+            {
+                "q": {
+                    "pt": "A avaliação do imóvel tem custo?",
+                    "en": "Is the property assessment free?",
+                    "fr": "L'évaluation du bien est-elle payante ?"
+                },
+                "a": {
+                    "pt": "Não. Visitamos o imóvel (ou analisamos à distância) e damos-lhe uma estimativa realista do potencial de rendimento, sem compromisso.",
+                    "en": "No. We visit the property (or assess it remotely) and give you a realistic estimate of its earning potential, with no commitment.",
+                    "fr": "Non. Nous visitons le bien (ou l'évaluons à distance) et vous donnons une estimation réaliste de son potentiel de revenus, sans engagement."
+                },
+                "draft": false
+            },
+            {
+                "q": {
+                    "pt": "Qual é a duração do contrato?",
+                    "en": "How long is the contract?",
+                    "fr": "Quelle est la durée du contrat ?"
+                },
+                "a": {
+                    "pt": "[A CONFIRMAR: duração mínima; pré-aviso para terminar; se há penalizações.]",
+                    "en": "[TO CONFIRM: minimum term; notice period to end it; any penalties.]",
+                    "fr": "[À CONFIRMER : durée minimale ; préavis de résiliation ; pénalités éventuelles.]"
+                },
+                "draft": true
+            },
+            {
+                "q": {
+                    "pt": "Preciso de licença de Alojamento Local?",
+                    "en": "Do I need a short-term rental licence?",
+                    "fr": "Ai-je besoin d'une licence de location saisonnière ?"
+                },
+                "a": {
+                    "pt": "Sim. Em Portugal, o imóvel tem de estar registado como Alojamento Local (RNAL). [A CONFIRMAR: se a TheMajord'Home ajuda ou trata do registo, e as regras atuais no Porto.]",
+                    "en": "Yes. In Portugal, the property must be registered as Alojamento Local (RNAL). [TO CONFIRM: whether TheMajord'Home helps with or handles the registration, and the current rules in Porto.]",
+                    "fr": "Oui. Au Portugal, le bien doit être enregistré comme Alojamento Local (RNAL). [À CONFIRMER : si TheMajord'Home aide ou s'occupe de l'enregistrement, et les règles actuelles à Porto.]"
+                },
+                "draft": true
+            },
+            {
+                "q": {
+                    "pt": "Quem fica no meu imóvel? E se houver danos?",
+                    "en": "Who stays in my property? What if there is damage?",
+                    "fr": "Qui séjourne dans mon bien ? Et en cas de dommages ?"
+                },
+                "a": {
+                    "pt": "Cada reserva passa pelo nosso processo de verificação, para saber sempre quem fica em sua casa. Depois de cada estadia, a equipa inspeciona o imóvel com checklist e fotografias, e qualquer dano é comunicado de imediato. Durante as estadias que gerimos, o imóvel está coberto por um seguro de danos.",
+                    "en": "Every booking goes through our verification process, so you always know who is staying in your home. After each stay, our team inspects the property with a checklist and photos, and any damage is reported right away. During the stays we manage, the property is covered by damage insurance.",
+                    "fr": "Chaque réservation passe par notre processus de vérification, pour que vous sachiez toujours qui séjourne chez vous. Après chaque séjour, l'équipe inspecte le bien avec une checklist et des photos, et tout dommage vous est signalé immédiatement. Pendant les séjours que nous gérons, le bien est couvert par une assurance dommages."
+                },
+                "draft": false
+            },
+            {
+                "q": {
+                    "pt": "Como acompanho os resultados?",
+                    "en": "How do I follow the results?",
+                    "fr": "Comment suivre les résultats ?"
+                },
+                "a": {
+                    "pt": "Todos os meses recebe um relatório com a ocupação, o rendimento e as despesas, com a faturação tratada por nós.",
+                    "en": "Every month you receive a report with occupancy, revenue and expenses, with invoicing handled by us.",
+                    "fr": "Chaque mois, vous recevez un rapport avec le taux d'occupation, les revenus et les dépenses, la facturation étant prise en charge par nos soins."
+                },
+                "draft": false
+            },
+            {
+                "q": {
+                    "pt": "Quando recebo os rendimentos?",
+                    "en": "When do I receive the income?",
+                    "fr": "Quand est-ce que je perçois les revenus ?"
+                },
+                "a": {
+                    "pt": "[A CONFIRMAR: periodicidade dos pagamentos ao proprietário (por exemplo, mensal), forma de pagamento e o que é descontado.]",
+                    "en": "[TO CONFIRM: how often owners are paid (e.g. monthly), payment method and what is deducted.]",
+                    "fr": "[À CONFIRMER : fréquence des versements au propriétaire (par ex. mensuelle), mode de paiement et ce qui est déduit.]"
+                },
+                "draft": true
+            },
+            {
+                "q": {
+                    "pt": "Posso continuar a usar o meu imóvel?",
+                    "en": "Can I still use my property?",
+                    "fr": "Puis-je continuer à utiliser mon bien ?"
+                },
+                "a": {
+                    "pt": "[A CONFIRMAR: se o proprietário pode bloquear datas para uso próprio, com que antecedência e se há limites.]",
+                    "en": "[TO CONFIRM: whether owners can block dates for their own use, how far in advance and any limits.]",
+                    "fr": "[À CONFIRMER : si le propriétaire peut bloquer des dates pour son usage personnel, avec quel délai et dans quelles limites.]"
+                },
+                "draft": true
+            },
+            {
+                "q": {
+                    "pt": "Quem decide as reparações?",
+                    "en": "Who decides on repairs?",
+                    "fr": "Qui décide des réparations ?"
+                },
+                "a": {
+                    "pt": "Avarias urgentes com hóspedes em casa são resolvidas de imediato pela nossa rede de profissionais, para não perder reservas. Para obras e melhorias, apresentamos orçamentos comparados e é sempre o proprietário a decidir.",
+                    "en": "Urgent breakdowns with guests in the home are fixed straight away by our network of professionals, so no bookings are lost. For works and improvements, we present comparative quotes and the owner always decides.",
+                    "fr": "Les pannes urgentes, voyageurs sur place, sont réglées immédiatement par notre réseau de professionnels, pour ne perdre aucune réservation. Pour les travaux et améliorations, nous présentons des devis comparés et c'est toujours le propriétaire qui décide."
+                },
+                "draft": false
+            }
+        ]
+    }
+};
