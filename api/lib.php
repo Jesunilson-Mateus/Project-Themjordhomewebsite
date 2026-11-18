@@ -219,7 +219,7 @@ function public_reservation($r) {
 
 /* =========================================================================
    Emails (equipa + hóspede)
-   TODO (engenheiros): trocar mail() por um fornecedor SMTP/transacional
+   TODO (lançamento): trocar mail() por um fornecedor SMTP/transacional
    (ex.: o SMTP do alojamento, Postmark, Brevo…) para não cair em spam.
    ========================================================================= */
 

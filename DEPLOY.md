@@ -1,6 +1,6 @@
 # TheMajord'Home — Publicação, atualizações e cópias de segurança
 
-Guia completo para o engenheiro:
+Guia completo para quem vai lançar o site:
 [`docs/GUIA-TECNICO-LANCAMENTO-PT.pdf`](docs/GUIA-TECNICO-LANCAMENTO-PT.pdf) ·
 [`docs/GUIDE-TECHNIQUE-LANCEMENT-FR.pdf`](docs/GUIDE-TECHNIQUE-LANCEMENT-FR.pdf).
 API de reservas: [`docs/INTEGRACAO-BEDS24-STRIPE.md`](docs/INTEGRACAO-BEDS24-STRIPE.md).

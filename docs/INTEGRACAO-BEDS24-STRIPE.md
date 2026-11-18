@@ -108,7 +108,7 @@ interruptor**. Este documento diz exatamente o quê e onde.
    preços em tempo real "chegam em breve").
 4. Testar com chaves `sk_test_` e cartão `4242 4242 4242 4242` antes de passar às chaves live.
 
-### 2.5 Antes de produção (a decidir pelos engenheiros)
+### 2.5 Antes de produção (a decidir por quem lança o site)
 - **Pesquisa** (`api/search.php`): hoje faz 1 pedido ao Beds24 por apartamento
   (61 por pesquisa). O limite do Beds24 é ~100 créditos / 5 min por conta →
   usar um pedido com vários `roomId` ou cache de ~10 min.

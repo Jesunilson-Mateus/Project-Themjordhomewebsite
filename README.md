@@ -93,7 +93,7 @@ Ver `admin/LEIA-ME.txt` para as instruções completas de publicação, permiss�
 
 **Importante**: o painel precisa de um servidor com PHP (ver secção "Publicar o site" abaixo) — não funciona em hospedagem só de ficheiros estáticos como o GitHub Pages.
 
-## Guia para o engenheiro
+## Guia para quem vai lançar o site
 
 Ordem de leitura:
 

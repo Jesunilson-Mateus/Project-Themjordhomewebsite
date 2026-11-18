@@ -82,7 +82,7 @@ require __DIR__ . '/partials/header.php';
       <button type="submit" name="do" value="preview_on" class="btn">Ver o site normal neste browser</button>
     <?php endif; ?>
   </form>
-  <p class="hint" style="margin-top:14px;">Funciona em servidores Apache (o que está configurado no ficheiro <code>.htaccess</code> da raiz). Noutro tipo de servidor, o engenheiro tem de replicar a regra — ver o guia técnico.</p>
+  <p class="hint" style="margin-top:14px;">Funciona em servidores Apache (o que está configurado no ficheiro <code>.htaccess</code> da raiz). Noutro tipo de servidor, quem gere o alojamento tem de replicar a regra — ver o guia técnico.</p>
 </section>
 
 <?php require __DIR__ . '/partials/footer.php'; ?>

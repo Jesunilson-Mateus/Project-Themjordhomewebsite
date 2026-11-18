@@ -5,7 +5,7 @@
  * Documentação: https://beds24.com/api/v2 (Swagger interativo) e
  * https://wiki.beds24.com/index.php/Category:API_V2
  *
- * ⚠ PARA O ENGENHEIRO: os caminhos e parâmetros seguem a documentação v2,
+ * ⚠ PARA QUEM VAI LIGAR O BEDS24: os caminhos e parâmetros seguem a documentação v2,
  * mas a FORMA EXATA DAS RESPOSTAS tem de ser confirmada no Swagger com a
  * conta real antes de passar para 'live' (pontos marcados "VERIFICAR").
  * Todas as funções lançam exceção se a resposta não tiver o formato
@@ -184,7 +184,7 @@ function beds24_create_booking($r, $roomId, $status) {
 /** Muda o estado de uma reserva (ex.: request → confirmed / cancelled). */
 function beds24_set_booking_status($beds24Id, $status, $note = '') {
     $update = ['id' => (int) $beds24Id, 'status' => $status];
-    // TODO (engenheiros): registar também o pagamento do Stripe na reserva
+    // TODO (lançamento): registar também o pagamento do Stripe na reserva
     // (invoice item / payment) para o saldo aparecer pago no Beds24 —
     // ver no Swagger o campo "invoiceItems" de POST /bookings.
     // Nota interna (não "comments", que tem as notas do hóspede e seria substituído).
