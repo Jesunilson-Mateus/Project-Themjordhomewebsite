@@ -125,6 +125,6 @@ no servidor em `data/backups/AAAA-MM-DD_HHMMSS/` (as últimas 60 gravações).
 ## Notas técnicas
 
 - **Sem build step.** O site é HTML/CSS/JS puro; o painel, a API de reservas e o sitemap precisam de PHP. Para ver localmente: `php -S 127.0.0.1:8080 -t .` na raiz do projeto.
-- **Imagens do Airbnb**: os apartamentos Sweety Porto, Casa B e So Trendy Porto usam fotos alojadas no CDN do Airbnb (`a0.muscache.com`). Se deixarem de aparecer no futuro, o mais seguro é descarregar essas fotos e colocá-las na pasta `img/`, tal como já foi feito para o Fábrica no Jardim.
+- **Imagens**: todas as fotos dos apartamentos estão na pasta `img/<apartamento>/` (1440 px, sem dados EXIF).
 - **Beds24 + Stripe**: disponibilidade, preços, reservas e pagamento estão preparados (pasta `api/` + `js/booking-api.js`), mas em modo `mock` até alguém ligar as contas. Guia completo em [`docs/INTEGRACAO-BEDS24-STRIPE.md`](docs/INTEGRACAO-BEDS24-STRIPE.md).
 - **Fontes**: Lora (títulos), Inter (texto) e IBM Plex Mono (detalhes), via Google Fonts.

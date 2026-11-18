@@ -45,7 +45,7 @@
                 "alt": "Equipa da TheMajord'Home num check-in"
             },
             {
-                "src": "img/torrinha-f-porto/20-building-street.jpg",
+                "src": "img/torrinha-f-porto/10-building.jpg",
                 "caption": "Entrega de chaves à hora combinada",
                 "alt": "Fachada do prédio da Torrinha, nº 136, no Porto"
             },
@@ -76,12 +76,12 @@
                 "alt": "Quarto preparado com cama feita e toalhas dobradas"
             },
             {
-                "src": "img/torrinha-f-porto/04-linens.jpg",
+                "src": "img/torrinha-f-porto/07-linens.jpg",
                 "caption": "Enxoval lavado, engomado e em stock",
                 "alt": "Toalhas lavadas e enroladas sobre a cama"
             },
             {
-                "src": "img/torrinha-a-porto/05-bathroom-detail.jpg",
+                "src": "img/torrinha-a-porto/08-bathroom-detail.jpg",
                 "caption": "Kit e consumíveis repostos entre estadias",
                 "alt": "Doseadores de gel e champô repostos na casa de banho"
             },
@@ -91,7 +91,7 @@
                 "alt": "Casa de banho limpa a fundo"
             },
             {
-                "src": "img/torrinha-i-porto/05-linens.jpg",
+                "src": "img/torrinha-i-porto/09-linens.jpg",
                 "caption": "Verificação ponto a ponto antes do check-in",
                 "alt": "Essenciais repostos antes de cada check-in"
             }
@@ -102,7 +102,7 @@
         "page": "servico-manutencao.html",
         "photos": [
             {
-                "src": "img/torrinha-c-porto/05-kitchen-detail.jpg",
+                "src": "img/torrinha-c-porto/07-kitchen-detail.jpg",
                 "caption": "Cada intervenção documentada",
                 "alt": "Máquina de café, chaleira e placa revistas na cozinha"
             },
