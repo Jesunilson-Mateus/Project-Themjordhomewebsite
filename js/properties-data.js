@@ -236,7 +236,7 @@ const PROPERTIES = {
     },
     "so-trendy-porto": {
         "name": "So Trendy Porto",
-        "subtitle": "A duplex with a patio, a five-minute walk from Praça dos Poveiros",
+        "subtitle": "A duplex with a private terrace, a five-minute walk from Praça dos Poveiros",
         "district": "Bonfim",
         "city": "Porto",
         "country": "Portugal",
@@ -265,7 +265,7 @@ const PROPERTIES = {
             "img/so-trendy-porto/13-terrace-view.jpg",
             "img/so-trendy-porto/14-terrace-dining.jpg"
         ],
-        "description": "A guest-favourite duplex in Bonfim, with a private patio and two en-suite bedrooms. So Trendy Porto is a five-minute walk from the lively Praça dos Poveiros, well placed for exploring downtown Porto on foot.",
+        "description": "A guest-favourite duplex in Bonfim, with a private terrace and two en-suite bedrooms. So Trendy Porto is a five-minute walk from the lively Praça dos Poveiros, well placed for exploring downtown Porto on foot.",
         "neighborhood": "This part of Bonfim sits right against the Baixa, close to Poveiros and the Bolhão market — central without the crowds.",
         "nearby": [
             {
@@ -290,7 +290,7 @@ const PROPERTIES = {
                 "Hairdryer"
             ],
             "Outdoor": [
-                "Private patio"
+                "Private terrace"
             ],
             "Kitchen": [
                 "Coffee maker",
