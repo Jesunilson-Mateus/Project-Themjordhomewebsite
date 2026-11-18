@@ -13,7 +13,8 @@ const ICONS = {
   bath: '<path d="M4 12h16M4 12v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-6M7 12V6a2 2 0 0 1 2-2h1"/><circle cx="10" cy="6" r="0"/>',
   location: '<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/>',
   check: '<path d="M20 6 9 17l-5-5"/>',
-  pin: '<path d="M12 22s8-7.58 8-13A8 8 0 0 0 4 9c0 5.42 8 13 8 13z"/><circle cx="12" cy="9" r="2.5"/>'
+  pin: '<path d="M12 22s8-7.58 8-13A8 8 0 0 0 4 9c0 5.42 8 13 8 13z"/><circle cx="12" cy="9" r="2.5"/>',
+  camera: '<path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/>'
 };
 
 function svgIcon(name) {
@@ -64,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ${(i === thumbImgs.length - 1 && images.length > 5) ? `<div class="gallery-more">+${images.length - 5} fotos</div>` : ''}
       </div>
     `).join('')}
-    ${images.length > 1 ? `<div class="gallery-count-badge">${svgIcon('pin')} 1 / ${images.length}</div>` : ''}
+    ${images.length > 1 ? `<div class="gallery-count-badge">${svgIcon('camera')} 1 /${images.length}</div>` : ''}
   `;
 
   /* ---------- Lightbox ---------- */

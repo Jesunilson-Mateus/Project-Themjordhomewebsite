@@ -1,7 +1,8 @@
 # Google Ads, Analytics e publicação no Google — guia para quem vai ligar
 
-O código está preparado: falta **criar as contas, preencher 3 IDs e submeter o
-site no Google**. Nada do Google é carregado enquanto os IDs estiverem vazios.
+O código está preparado: falta **criar as contas, preencher os IDs e submeter o
+site no Google**. Nada do Google nem do Elfsight é carregado enquanto os IDs
+estiverem vazios.
 
 Ordem recomendada: publicar o site (ver [`DEPLOY.md`](../DEPLOY.md)) → ligar
 Beds24 e Stripe ([`INTEGRACAO-BEDS24-STRIPE.md`](INTEGRACAO-BEDS24-STRIPE.md))
@@ -13,9 +14,10 @@ Beds24 e Stripe ([`INTEGRACAO-BEDS24-STRIPE.md`](INTEGRACAO-BEDS24-STRIPE.md))
 
 | Ficheiro | O quê |
 |---|---|
-| `js/analytics-config.js` | **Os 3 IDs a preencher**: `ga4Id`, `adsId`, `adsConversionLabel`. |
+| `js/analytics-config.js` | **Os IDs a preencher**: `ga4Id`, `adsId`, `adsConversionLabel` e `elfsightReviewsId` (avaliações do Google). |
 | `js/analytics.js` | Carrega o Google (gtag.js) e liga-o ao aviso de cookies com o **Consent Mode v2**. Envia a conversão de reserva. Incluído em todas as páginas. |
 | `js/cookie-consent.js` | Aviso de cookies (Aceitar / Rejeitar), com `window.TMHConsent`. |
+| `js/google-reviews.js` | Avaliações do Google na página inicial (widget Elfsight), por baixo de "O que dizem os hóspedes"; só carrega depois de o visitante aceitar os cookies. |
 | `js/booking-result.js` | Na página de regresso do pagamento (`reserva.html`), chama `TMHAnalytics.bookingConversion()` quando a reserva fica `confirmed`. |
 | `robots.txt` | Bloqueia `/admin/`, `/api/`, `/data/`, páginas de resultado e de reserva; indica o sitemap. |
 | `sitemap.php` → `/sitemap.xml` | Sitemap gerado na hora: páginas do site + todos os apartamentos **ativos** (um apartamento desativado no painel sai sozinho). |
@@ -49,9 +51,10 @@ pagamento (`request`) não contam como conversão.
 
 ## 2. Passos — Google Analytics 4 e Google Ads
 
-1. Criar a propriedade **GA4** (analytics.google.com) com um fluxo de dados
-   Web para `https://www.themajordhome.com` → copiar o **ID de medição**
-   (`G-…`) para `ga4Id`.
+1. **GA4**: o site antigo já usa a propriedade `G-R9MSJV8KK4`. Para manter o
+   histórico, usar esse ID em `ga4Id` (e confirmar que o fluxo de dados Web é
+   `https://www.themajordhome.com`). Se a empresa preferir uma propriedade nova,
+   criá-la em analytics.google.com e copiar o **ID de medição** (`G-…`).
 2. Na conta **Google Ads**: Objetivos → Conversões → Nova ação de conversão →
    Website → configurar manualmente:
    - categoria **Compra**, nome "Reserva";
@@ -87,7 +90,28 @@ pagamento (`request`) não contam como conversão.
 
 ---
 
-## 4. Antes de lançar campanhas
+## 4. Avaliações do Google (Elfsight)
+
+O site antigo mostra as avaliações do Perfil da Empresa no Google com um widget
+**Elfsight** ("Google Reviews", conta da TheMajord'Home). O site novo tem o
+espaço preparado na página inicial, mas desligado.
+
+1. Em `js/analytics-config.js`, preencher `elfsightReviewsId` com o ID do widget
+   do site antigo: `7cde6675-7bac-4745-a0f5-702a9bc66652` (é o código que aparece depois de
+   `elfsight-app-`).
+2. Na conta Elfsight: confirmar o plano (o gratuito tem limite de visualizações
+   e mostra a marca Elfsight), autorizar o domínio do site novo se houver
+   restrição de domínios e escolher os filtros (ex.: só 4 e 5 estrelas).
+3. Acrescentar o Elfsight à `politica-privacidade.html` (serviço externo que
+   carrega as avaliações e as fotos dos autores).
+
+Comportamento: com o campo vazio, a secção não aparece. Com o ID preenchido, o
+widget só é carregado depois de o visitante aceitar os cookies; antes disso
+aparece uma nota com o botão "Gerir cookies".
+
+---
+
+## 5. Antes de lançar campanhas
 
 - **Política de privacidade e cookies**: `politica-privacidade.html` (PT/EN/FR), ligada
   no rodapé e no aviso de cookies. Descreve o GA4, o Google Ads, o Stripe e os cookies;

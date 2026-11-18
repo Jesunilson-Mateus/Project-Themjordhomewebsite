@@ -48,7 +48,7 @@ interruptor**. Este documento diz exatamente o quê e onde.
 | `js/booking-calendar.js`, `js/booking-wizard.js`, `js/search-results.js`, `js/booking-result.js`, `js/property.js` | Usam só a `BookingAPI`. |
 | `reserva.html` | Página para onde o Stripe devolve o cliente. |
 | `api/config.example.php` | Modelo da configuração → copiar para **`api/config.php`** (fora do git). |
-| `api/beds24.php` | Cliente Beds24 v2 (autenticação pronta; 5 respostas a confirmar — marcadas `VERIFICAR`). |
+| `api/beds24.php` | Cliente Beds24 v2 (autenticação pronta; 6 pontos a confirmar — marcados `VERIFICAR`). |
 | `api/stripe.php` | Checkout Session + verificação da assinatura do webhook (pronto). |
 | `api/*.php` (resto) | Endpoints: `availability`, `search`, `price-from`, `quote`, `reservations`, `stripe-webhook`. |
 | `data/beds24-rooms.json` | **Mapa apartamento do site → `roomId` do Beds24** (61 entradas, por preencher). |
@@ -71,22 +71,26 @@ interruptor**. Este documento diz exatamente o quê e onde.
    com permissões de leitura de inventário/propriedades e leitura/escrita de
    reservas. Expira em 24 h.
 2. Trocar o código por um **refresh token** (uma vez):
-   `GET https://beds24.com/api/v2/authentication/setup` com o cabeçalho `code: <invite code>`
-   (confirmar no Swagger se é GET ou POST).
+   `GET https://beds24.com/api/v2/authentication/setup` com o cabeçalho `code: <invite code>`,
+   por exemplo `curl -H "code: <invite code>" https://beds24.com/api/v2/authentication/setup`.
+   Da resposta, copiar o campo `refreshToken`.
 3. Pôr o refresh token em `api/config.php` → `beds24.refresh_token`.
    O resto (tokens de 24 h, cache) é automático. ⚠ O refresh token expira se
    não for usado durante 30 dias.
-4. Preencher **`data/beds24-rooms.json`** com o `roomId` (e `propertyId`) de
-   cada apartamento. Os IDs aparecem no painel do Beds24 e em `GET /properties`
-   (com os quartos incluídos — ver o parâmetro no Swagger).
+4. Preencher **`data/beds24-rooms.json`** com o `roomId` de cada apartamento
+   (`propertyId` é opcional, só informativo). Os IDs aparecem no painel do Beds24
+   e em `GET /properties` (com os quartos incluídos — ver o parâmetro no Swagger).
+   Este ficheiro edita-se à mão (o painel do site não o altera). Um apartamento
+   sem `roomId` não aparece na pesquisa e não pode ser reservado online; ao criar
+   um apartamento novo no painel, acrescentar a entrada com o mesmo slug.
 5. **Confirmar no Swagger** (https://beds24.com/api/v2) com a conta real os
    pontos `VERIFICAR` em `api/beds24.php`:
    - formato de `GET /inventory/rooms/availability`;
    - formato de `GET /inventory/rooms/offers` e qual oferta usar se houver várias;
    - formato de `GET /inventory/rooms/calendar` com `includePrices` e qual campo de
      preço usar (`price1` é o preço base por noite);
-   - resposta de `POST /bookings` (id da reserva criada) e estados aceites
-     (`request`, `confirmed`, `cancelled`);
+   - resposta de `POST /bookings` (id da reserva criada);
+   - estados aceites (`request`, `confirmed`, `cancelled`);
    - campo de notas internas usado ao confirmar (`notes`).
 6. (Recomendado) Registar o pagamento do Stripe na reserva do Beds24
    (`invoiceItems`) para o saldo aparecer pago — `TODO` em `beds24_set_booking_status()`.
@@ -98,25 +102,32 @@ interruptor**. Este documento diz exatamente o quê e onde.
    **`checkout.session.completed`** e **`checkout.session.expired`** →
    copiar o *signing secret* (`whsec_…`) para `stripe.webhook_secret`.
 3. `stripe.charge_percent`: 100 = cobra tudo; 30 = sinal de 30 %.
+   `stripe.checkout_minutes`: validade da página de pagamento (mínimo do Stripe: 30).
 4. `stripe.enabled = false` → sem pagamento online: as reservas ficam como
    pedido (`request`) no Beds24 e a equipa confirma por email.
 
-### 2.4 Ligar
+### 2.4 Emails de reserva
+`api/config.php` → `mail.from` (remetente) e `mail.team` (caixa da equipa que
+recebe cada reserva). Por omissão: `resa@themajordhome.com`.
+
+### 2.5 Ligar
 1. `api/config.php`: `mode => 'live'`, `site_url` correto.
 2. `js/booking-config.js`: `mode: 'live'`.
-3. Atualizar o texto `property.finePrint` em `js/i18n.js` (ainda diz que os
-   preços em tempo real "chegam em breve").
+3. Trocar o texto `property.finePrint` em `js/i18n.js` (PT/EN/FR), que no modo
+   de exemplo diz que os preços em tempo real "chegam em breve".
 4. Testar com chaves `sk_test_` e cartão `4242 4242 4242 4242` antes de passar às chaves live.
 
-### 2.5 Antes de produção (a decidir por quem lança o site)
-- **Pesquisa** (`api/search.php`): hoje faz 1 pedido ao Beds24 por apartamento
+### 2.6 Antes de produção (a decidir por quem lança o site)
+- **Pesquisa** (`api/search.php`): faz 1 pedido ao Beds24 por apartamento
   (61 por pesquisa). O limite do Beds24 é ~100 créditos / 5 min por conta →
   usar um pedido com vários `roomId` ou cache de ~10 min.
 - **Emails**: `send_reservation_emails()` usa `mail()` do PHP — trocar por SMTP
   ou serviço transacional para não ir para spam.
 - **Anti-spam** no `POST reservations.php` (limite por IP / captcha), porque
   cada pedido cria uma reserva em espera no Beds24.
-- **Política de cancelamento / reembolsos**: hoje não há reembolsos automáticos.
+- **Política de cancelamento / reembolsos**: a política está nas condições gerais
+  (`condicoes-gerais.html`); os reembolsos fazem-se no painel do Stripe, não há
+  reembolsos automáticos.
 - **Webhooks do Beds24**: não são necessários (a disponibilidade é lida em
   tempo real), mas podem servir para avisar de cancelamentos vindos de outros canais.
 - **Alternativa mais simples**: o Beds24 tem integração nativa com o Stripe e

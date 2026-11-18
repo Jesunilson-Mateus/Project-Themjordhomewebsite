@@ -285,18 +285,38 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('csEmpty').hidden = shown > 0;
   }
 
+  /* Telemóvel/tablet (index.html): sem pesquisa ativa mostra só os primeiros
+     MOBILE_STEP apartamentos e o botão "Ver mais apartamentos" acrescenta
+     outros tantos. Com pesquisa ativa mostra todos os resultados. */
+  const MOBILE_STEP = 8;
+  const compactCollection = window.matchMedia('(max-width:860px)');
+  let mobileLimit = MOBILE_STEP;
+
   function applyCollectionSearch() {
     const grid = document.getElementById('featuredGrid');
     if (!grid) return;
     const f = readCollectionFilter();
     const cards = [...grid.querySelectorAll('.apt-card')];
+    const limit = (!f.active && compactCollection.matches) ? mobileLimit : Infinity;
     let shown = 0;
+    let visible = 0;
     cards.forEach(card => {
       const match = matchesCollectionFilter(f, card.dataset.search, card.dataset.zone, +card.dataset.guests);
       card.hidden = !match;
       if (match) { shown++; card.classList.add('in'); }
+      const over = match && visible >= limit;
+      card.classList.toggle('cs-over', over);
+      if (match && !over) visible++;
     });
+    const more = document.getElementById('csMore');
+    if (more) more.hidden = visible >= shown;
     showCollectionSearchStatus(f, shown, cards.length);
+  }
+
+  const csMore = document.getElementById('csMore');
+  if (csMore) {
+    csMore.addEventListener('click', () => { mobileLimit += MOBILE_STEP; applyCollectionSearch(); });
+    compactCollection.addEventListener('change', applyCollectionSearch);
   }
 
   const collectionSearch = document.getElementById('collectionSearch');

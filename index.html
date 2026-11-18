@@ -185,6 +185,8 @@
       </div>
     </form>
     <div class="apt-grid" id="featuredGrid"></div>
+    <!-- Só no telemóvel/tablet: a coleção mostra 8 apartamentos de cada vez (js/main.js) -->
+    <div class="cs-more-wrap"><button type="button" class="cs-more" id="csMore" data-i18n="collection.showMore" hidden>Ver mais apartamentos</button></div>
     <p class="cs-empty" id="csEmpty" data-i18n="collection.search.empty" hidden>Nenhum apartamento corresponde à pesquisa.</p>
   </div>
 </section>
@@ -224,6 +226,17 @@
       <h2 data-i18n="testimonials.heading">Estadias que ficam na memória.</h2>
     </div>
     <div class="testimonials-grid reveal" id="testimonialsGrid"></div>
+    <!-- Avaliações do Google (widget Elfsight). Escondido até haver
+         elfsightReviewsId em js/analytics-config.js; só carrega depois de o
+         visitante aceitar os cookies (js/google-reviews.js). -->
+    <div class="google-reviews" id="googleReviews" hidden>
+      <h3 data-i18n="googleReviews.heading">Avaliações no Google</h3>
+      <div class="google-reviews-widget" hidden></div>
+      <div class="google-reviews-consent" hidden>
+        <p data-i18n="googleReviews.consent">As avaliações do Google são mostradas por um serviço externo. Para as ver, aceite os cookies.</p>
+        <button type="button" class="cs-more" data-i18n="googleReviews.manage">Gerir cookies</button>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -304,6 +317,7 @@
 <script src="js/cookie-consent.js"></script>
 <script src="js/analytics-config.js"></script>
 <script src="js/analytics.js"></script>
+<script src="js/google-reviews.js"></script>
 <script src="js/booking-bar.js"></script>
 <script src="js/main.js"></script>
 

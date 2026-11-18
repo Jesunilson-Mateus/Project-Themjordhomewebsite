@@ -190,6 +190,10 @@
     'collection.search.anyGuests': { pt: 'Qualquer número', en: 'Any number', fr: 'Peu importe' },
     'collection.search.count': { pt: '{n} de {total} apartamentos', en: '{n} of {total} apartments', fr: '{n} sur {total} appartements' },
     'collection.search.clear': { pt: 'Limpar', en: 'Clear', fr: 'Effacer' },
+    'collection.showMore': { pt: 'Ver mais apartamentos', en: 'Show more apartments', fr: "Voir plus d'appartements" },
+    'googleReviews.heading': { pt: 'Avaliações no Google', en: 'Reviews on Google', fr: 'Avis sur Google' },
+    'googleReviews.consent': { pt: 'As avaliações do Google são mostradas por um serviço externo. Para as ver, aceite os cookies.', en: 'Google reviews are shown by an external service. To see them, please accept cookies.', fr: 'Les avis Google sont affichés par un service externe. Pour les voir, acceptez les cookies.' },
+    'googleReviews.manage': { pt: 'Gerir cookies', en: 'Manage cookies', fr: 'Gérer les cookies' },
     'collection.search.empty': { pt: 'Nenhum apartamento corresponde à pesquisa.', en: 'No apartment matches your search.', fr: 'Aucun appartement ne correspond à votre recherche.' },
     'common.from': { pt: 'desde', en: 'from', fr: 'dès' },
 
