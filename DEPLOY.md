@@ -22,13 +22,18 @@ API de reservas: [`docs/INTEGRACAO-BEDS24-STRIPE.md`](docs/INTEGRACAO-BEDS24-STR
    - a conta do painel (instruções em `admin/LEIA-ME.txt`, entregue à parte).
 4. Dar ao PHP permissão de escrita em `data/`, `img/`, `admin/users.json`, `js/properties-data.js`,
    `js/i18n.js`, `js/reviews-data.js`, `js/faq-data.js` e nas 4 páginas `servico-*.html`.
-5. Ligar Beds24 e Stripe em modo de teste, testar uma reserva completa e só depois passar a `live`.
+5. Ligar Beds24 e Stripe em modo de teste, testar uma reserva completa e só depois passar a `live`
+   ([`docs/INTEGRACAO-BEDS24-STRIPE.md`](docs/INTEGRACAO-BEDS24-STRIPE.md)).
+6. Com o HTTPS a funcionar, ativar no `.htaccess` a regra "Endereço canónico" (HTTPS + www).
+7. Google Analytics, Google Ads e Search Console: [`docs/GOOGLE-ADS-SEO.md`](docs/GOOGLE-ADS-SEO.md).
 
 ## Páginas de erro e manutenção
 
 O `.htaccess` da raiz:
 
 - mostra `404.html` para endereços que não existem;
+- serve `/sitemap.xml` (gerado por `sitemap.php`) e redireciona (301) os endereços do site antigo
+  (`/lang-pt/…`, `apartamentos.php`, `mentions-legales.php`, …) para as páginas novas;
 - quando o **modo manutenção** está ligado no painel (`/admin/` → Manutenção), responde a todo o site
   público com `manutencao.html` (código 503). O painel e o webhook do Stripe continuam a funcionar;
 - bloqueia `.git/`, outros ficheiros escondidos e `_arquivo/`.

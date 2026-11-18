@@ -1,0 +1,11 @@
+# TheMajord'Home — instruções para os motores de busca
+User-agent: *
+Disallow: /admin/
+Disallow: /api/
+Disallow: /data/
+Disallow: /_arquivo/
+Disallow: /reserva.html
+Disallow: /search-results.html
+Disallow: /review.php
+
+Sitemap: https://www.themajordhome.com/sitemap.xml

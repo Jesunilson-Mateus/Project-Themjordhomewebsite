@@ -706,7 +706,7 @@
         "price": null,
         "featured": true,
         "subtitle": "A charming apartment with a balcony on Avenida Camilo",
-        "description": "Charming apartment with a balcony on the beautiful Avenida Camilo, a 5-minute walk from 24 de Agosto metro station. Two elegantly styled bedrooms — one in blue and gold, the other in warm grey and teal — sit either side of a bright dining and living room.",
+        "description": "A charming, spacious and very bright apartment with a balcony on the beautiful Avenida Camilo, on the 2nd floor with a lift, a 5-minute walk from 24 de Agosto metro station (35 minutes to the airport). Two elegantly styled bedrooms — one in blue and gold, the other in warm grey and teal — each have a double bed with feather pillows and a wardrobe. The living room has a dining area, a comfortable sofa bed and a flat-screen TV, and the fully equipped kitchen includes a dishwasher, washing machine, oven, kettle and espresso machine. The balcony is perfect for a relaxed lunch, and a travel cot is available for babies (paid service).",
         "neighborhood": "Bonfim, close to Campo 24 de Agosto.",
         "nearby": [
             {
@@ -718,10 +718,33 @@
             "Essentials": [
                 "Wi-Fi",
                 "Air conditioning",
-                "Heating"
+                "Heating",
+                "Fresh linens",
+                "Hairdryer"
+            ],
+            "Sleeping": [
+                "Sofa bed"
             ],
             "Outdoor": [
                 "Balcony"
+            ],
+            "Kitchen": [
+                "Refrigerator",
+                "Oven",
+                "Dishwasher",
+                "Coffee maker",
+                "Kettle"
+            ],
+            "Laundry": [
+                "Washing machine",
+                "Iron"
+            ],
+            "Entertainment": [
+                "TV",
+                "Wi-Fi"
+            ],
+            "Accessibility": [
+                "Elevator"
             ]
         },
         "heroImage": "img/camilo-apartment/01-living-dining.jpg",

@@ -48,7 +48,11 @@
     try {
       const r = await window.BookingAPI.getReservation(id, token);
       showReservation(r);
-      if (r.status === 'confirmed') return show('booking.result.successTitle', 'booking.result.successText');
+      if (r.status === 'confirmed') {
+        // Conversão "Reserva" do Google Ads / GA4 (js/analytics.js; só com IDs e consentimento).
+        if (window.TMHAnalytics) window.TMHAnalytics.bookingConversion(r);
+        return show('booking.result.successTitle', 'booking.result.successText');
+      }
       if (r.status === 'request') return show('booking.result.requestTitle', 'booking.requestSent');
       if (r.status === 'cancelled' || r.status === 'expired') return show('booking.result.cancelledTitle', 'booking.result.cancelledText');
       // 'pending_payment': o webhook do Stripe ainda não chegou.

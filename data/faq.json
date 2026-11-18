@@ -34,6 +34,19 @@
             },
             {
                 "q": {
+                    "pt": "Que documentos tenho de apresentar no check-in?",
+                    "en": "What documents do I need at check-in?",
+                    "fr": "Quels documents dois-je présenter à l'arrivée ?"
+                },
+                "a": {
+                    "pt": "Os documentos de identificação (cartão de cidadão ou passaporte) de todos os hóspedes. É uma obrigação legal: temos de comunicar os dados às autoridades.",
+                    "en": "The identity documents (ID card or passport) of every guest. It is a legal requirement: we have to report the details to the authorities.",
+                    "fr": "Les pièces d'identité (carte d'identité ou passeport) de tous les voyageurs. C'est une obligation légale : nous devons transmettre ces données aux autorités."
+                },
+                "draft": false
+            },
+            {
+                "q": {
                     "pt": "Posso chegar depois das 23h?",
                     "en": "Can I arrive after 11pm?",
                     "fr": "Puis-je arriver après 23h ?"
@@ -65,9 +78,9 @@
                     "fr": "Comment se passe le départ ?"
                 },
                 "a": {
-                    "pt": "É simples: até às 11h00, apague as luzes, deite o lixo fora, deixe as chaves em cima da mesa e feche a porta. Não é preciso entregar as chaves a ninguém.",
-                    "en": "It's simple: by 11am, switch off the lights, take out the rubbish, leave the keys on the table and close the door behind you. There's no need to hand the keys to anyone.",
-                    "fr": "C'est simple : avant 11h00, éteignez les lumières, sortez les poubelles, laissez les clés sur la table et fermez la porte. Inutile de remettre les clés à quelqu'un."
+                    "pt": "É simples: até às 11h00, lave a loiça, apague as luzes, deite o lixo fora, deixe as chaves em cima da mesa e feche a porta. Não é preciso entregar as chaves a ninguém.",
+                    "en": "It's simple: by 11am, wash the dishes, switch off the lights, take out the rubbish, leave the keys on the table and close the door behind you. There's no need to hand the keys to anyone.",
+                    "fr": "C'est simple : avant 11h00, faites la vaisselle, éteignez les lumières, sortez les poubelles, laissez les clés sur la table et fermez la porte. Inutile de remettre les clés à quelqu'un."
                 },
                 "draft": false
             },
@@ -78,11 +91,11 @@
                     "fr": "Comment réserver et payer ?"
                 },
                 "a": {
-                    "pt": "Escolha o apartamento, as datas e o número de hóspedes e siga os passos da reserva. O pagamento é feito com cartão, numa página de pagamento segura. [A CONFIRMAR: se se paga o valor total na reserva ou só um sinal; métodos de pagamento aceites.]",
-                    "en": "Choose the apartment, your dates and the number of guests, then follow the booking steps. Payment is made by card on a secure payment page. [TO CONFIRM: full amount or deposit at booking; accepted payment methods.]",
-                    "fr": "Choisissez l'appartement, vos dates et le nombre de voyageurs, puis suivez les étapes de réservation. Le paiement se fait par carte, sur une page de paiement sécurisée. [À CONFIRMER : montant total ou acompte à la réservation ; moyens de paiement acceptés.]"
+                    "pt": "Escolha o apartamento, as datas e o número de hóspedes e siga os passos da reserva. O valor total é pago com cartão no dia da reserva, numa página de pagamento segura. Não é possível dividir o pagamento a menos de 60 dias da chegada.",
+                    "en": "Choose the apartment, your dates and the number of guests, then follow the booking steps. The full amount is paid by card on the day of booking, on a secure payment page. Split payment is not possible less than 60 days before arrival.",
+                    "fr": "Choisissez l'appartement, vos dates et le nombre de voyageurs, puis suivez les étapes de réservation. Le montant total est réglé par carte le jour de la réservation, sur une page de paiement sécurisée. Le paiement en plusieurs fois n'est pas possible à moins de 60 jours de l'arrivée."
                 },
-                "draft": true
+                "draft": false
             },
             {
                 "q": {
@@ -91,11 +104,11 @@
                     "fr": "Quelle est la politique d'annulation ?"
                 },
                 "a": {
-                    "pt": "[A CONFIRMAR: até quantos dias antes da chegada se pode cancelar com reembolso total; o que acontece depois disso; como pedir o cancelamento.]",
-                    "en": "[TO CONFIRM: how many days before arrival a free cancellation is possible; what happens after that; how to cancel.]",
-                    "fr": "[À CONFIRMER : jusqu'à combien de jours avant l'arrivée l'annulation est gratuite ; ce qui se passe ensuite ; comment annuler.]"
+                    "pt": "A taxa financeira de 3,5% sobre o valor total nunca é reembolsável. Para o resto:\n• Mais de 30 dias antes do check-in: reembolso do valor total.\n• Entre 30 e 15 dias antes: reembolso de 50%.\n• Reservas feitas a menos de 30 dias do check-in: reembolso total se cancelar nas 48 horas seguintes à reserva e pelo menos 15 dias antes da chegada.\n• 14 dias ou menos antes: sem reembolso.\n\nO cancelamento tem de ser comunicado antes do primeiro dia da reserva. Os detalhes estão nas Condições gerais, no rodapé do site.",
+                    "en": "The 3.5% financial fee on the total amount is never refundable. Otherwise:\n• More than 30 days before check-in: full refund.\n• Between 30 and 15 days before: 50% refund.\n• Bookings made less than 30 days before check-in: full refund if you cancel within 48 hours of booking and at least 15 days before arrival.\n• 14 days or less before: no refund.\n\nCancellations must be notified before the first day of the booking. Full details are in the Terms and conditions, in the site footer.",
+                    "fr": "Les frais financiers de 3,5 % sur le montant total ne sont jamais remboursables. Pour le reste :\n• Plus de 30 jours avant l'arrivée : remboursement total.\n• Entre 30 et 15 jours avant : remboursement de 50 %.\n• Réservations effectuées moins de 30 jours avant l'arrivée : remboursement total en cas d'annulation dans les 48 heures suivant la réservation et au moins 15 jours avant l'arrivée.\n• 14 jours ou moins avant : aucun remboursement.\n\nToute annulation doit être notifiée avant le premier jour de la réservation. Le détail figure dans les Conditions générales, en bas du site."
                 },
-                "draft": true
+                "draft": false
             },
             {
                 "q": {
@@ -104,11 +117,11 @@
                     "fr": "Y a-t-il une taxe de séjour ?"
                 },
                 "a": {
-                    "pt": "Sim, a Câmara Municipal do Porto cobra uma taxa turística por pessoa e por noite. [A CONFIRMAR: valor atual, idade a partir da qual se paga, número máximo de noites, e se está incluída no preço ou é paga no check-in.]",
-                    "en": "Yes, Porto City Council charges a tourist tax per person per night. [TO CONFIRM: current amount, minimum age, maximum number of nights, and whether it is included in the price or paid at check-in.]",
-                    "fr": "Oui, la mairie de Porto perçoit une taxe de séjour par personne et par nuit. [À CONFIRMER : montant actuel, âge minimum, nombre maximum de nuits, et si elle est incluse dans le prix ou payée à l'arrivée.]"
+                    "pt": "Sim. A Câmara Municipal do Porto cobra uma taxa turística de 3 € por noite e por pessoa, paga no check-in.",
+                    "en": "Yes. Porto City Council charges a tourist tax of €3 per night and per person, paid at check-in.",
+                    "fr": "Oui. La mairie de Porto perçoit une taxe de séjour de 3 € par nuit et par personne, payée à l'arrivée."
                 },
-                "draft": true
+                "draft": false
             },
             {
                 "q": {
@@ -117,11 +130,11 @@
                     "fr": "Une caution est-elle demandée ?"
                 },
                 "a": {
-                    "pt": "[A CONFIRMAR: se é pedida caução, o valor, como é cobrada e quando é devolvida.]",
-                    "en": "[TO CONFIRM: whether a deposit is required, the amount, how it is taken and when it is returned.]",
-                    "fr": "[À CONFIRMER : si une caution est demandée, son montant, comment elle est prise et quand elle est restituée.]"
+                    "pt": "Sim. No primeiro dia da estadia é feita uma pré-autorização no cartão bancário, de valor variável conforme o apartamento. Serve para cobrir eventuais danos e só é usada nesse caso.",
+                    "en": "Yes. On the first day of your stay, a pre-authorisation is placed on your bank card, for an amount that depends on the apartment. It covers any damage and is only used in that case.",
+                    "fr": "Oui. Le premier jour du séjour, une empreinte bancaire est prise sur votre carte, d'un montant variable selon l'appartement. Elle couvre d'éventuels dommages et n'est utilisée que dans ce cas."
                 },
-                "draft": true
+                "draft": false
             },
             {
                 "q": {
@@ -164,6 +177,19 @@
             },
             {
                 "q": {
+                    "pt": "Podem ficar mais pessoas do que as indicadas na reserva?",
+                    "en": "Can more people stay than stated in the booking?",
+                    "fr": "Peut-il y avoir plus de personnes que prévu dans la réservation ?"
+                },
+                "a": {
+                    "pt": "Avise-nos sempre se mais alguém ficar no apartamento. Cada pessoa a mais do que as indicadas na reserva tem um custo a partir de 15 € por noite.",
+                    "en": "Always let us know if anyone else is staying in the apartment. Each person beyond those stated in the booking costs from €15 per night.",
+                    "fr": "Prévenez-nous toujours si une autre personne séjourne dans l'appartement. Chaque personne en plus de celles indiquées dans la réservation coûte à partir de 15 € par nuit."
+                },
+                "draft": false
+            },
+            {
+                "q": {
                     "pt": "Há limpeza durante a estadia?",
                     "en": "Is there cleaning during the stay?",
                     "fr": "Le ménage est-il fait pendant le séjour ?"
@@ -195,11 +221,11 @@
                     "fr": "Les animaux ou les fêtes sont-ils acceptés ?"
                 },
                 "a": {
-                    "pt": "[A CONFIRMAR: animais de estimação (sim / não / alguns apartamentos); festas e eventos; horário de silêncio.]",
-                    "en": "[TO CONFIRM: pets (yes / no / some apartments); parties and events; quiet hours.]",
-                    "fr": "[À CONFIRMER : animaux (oui / non / certains appartements) ; fêtes et événements ; heures de silence.]"
+                    "pt": "Não. Não são aceites animais, incluindo animais de estimação, nem são permitidas festas. Pedimos também silêncio depois das 22h00, por respeito aos vizinhos.",
+                    "en": "No. Animals, including pets, are not allowed, and neither are parties. We also ask for quiet after 10pm, out of respect for the neighbours.",
+                    "fr": "Non. Les animaux, même de compagnie, ne sont pas acceptés et les fêtes sont interdites. Nous demandons aussi le silence après 22h00, par respect pour les voisins."
                 },
-                "draft": true
+                "draft": false
             },
             {
                 "q": {

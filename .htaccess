@@ -27,6 +27,24 @@ ErrorDocument 503 /manutencao.html
     RewriteRule (^|/)\.(?!well-known/) - [R=404,L]
     RewriteRule ^_arquivo(/|$) - [R=404,L]
 
+    # Endereço canónico: https://www.themajordhome.com/ — ATIVAR (tirar os #)
+    # só depois de o certificado HTTPS estar instalado, senão o site deixa de abrir.
+    # RewriteCond %{HTTPS} off [OR]
+    # RewriteCond %{HTTP_HOST} !^www\. [NC]
+    # RewriteRule ^ https://www.themajordhome.com%{REQUEST_URI} [R=301,L]
+
+    # Sitemap para o Google, gerado a partir dos apartamentos ativos.
+    RewriteRule ^sitemap\.xml$ sitemap.php [L]
+
+    # Endereços do site antigo → páginas novas (301 = mudança definitiva; o
+    # Google passa o histórico do endereço antigo para o novo).
+    RewriteRule ^(lang-[a-z]{2}/?|lang-[a-z]{2}/index\.php|index\.php)$ / [R=301,L,NC,QSD]
+    RewriteRule ^(lang-[a-z]{2}/)?redirect\.php$ / [R=301,L,NC,QSD]
+    RewriteRule ^(lang-[a-z]{2}/)?(apartamentos|apartments|appartements)\.php$ /apartments.html [R=301,L,NC,QSD]
+    RewriteRule ^(lang-[a-z]{2}/)?mentions-legales\.php$ /legal-notice.html [R=301,L,NC,QSD]
+    RewriteRule ^(lang-[a-z]{2}/)?politique-confidentialite\.php$ /legal-notice.html [R=301,L,NC,QSD]
+    RewriteRule ^(lang-[a-z]{2}/)?realestate\.php$ https://www.tmh-realestate.com/ [R=301,L,NC,QSD]
+
     RewriteCond %{DOCUMENT_ROOT}/data/maintenance.flag -f
     RewriteCond %{REQUEST_URI} !^/(manutencao\.html|admin/|api/stripe-webhook\.php|css/|js/|img/|favicon) [NC]
     RewriteCond %{HTTP_COOKIE} !(^|;\s*)tmh_preview=1

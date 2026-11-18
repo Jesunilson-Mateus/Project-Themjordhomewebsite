@@ -127,6 +127,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const lp = I18N.getLocalizedProperty(prop.slug, prop);
 
     document.title = `${lp.name} — TheMajord'Home`;
+    // Descrição para o Google (que executa o JavaScript ao indexar a página).
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute('content', [lp.subtitle, lp.district, 'Porto'].filter(Boolean).join(' · '));
     document.getElementById('breadcrumbName').textContent = lp.name;
 
     /* Header (name / subtitle / rating) */

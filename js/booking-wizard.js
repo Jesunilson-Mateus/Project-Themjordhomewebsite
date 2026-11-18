@@ -333,6 +333,7 @@ class BookingWizard {
         <p><strong>${t('booking.summary.contact')}:</strong> ${esc(r.guest.name)} (${esc(r.guest.email)})</p>
         <p id="summaryPrice" style="margin-bottom:0;">${t('booking.summary.loading')}</p>
       </div>
+      <p style="font-size:12px; opacity:.75; margin:-8px 0 16px;">${t('booking.summary.terms')} <a href="condicoes-gerais.html" target="_blank" rel="noopener" style="text-decoration:underline;">${t('footer.terms')}</a>.</p>
     `;
 
     // Preço: vem sempre do servidor (Beds24). Sem preço → "confirmado por email".

@@ -95,9 +95,18 @@ Ver `admin/LEIA-ME.txt` para as instruções completas de publicação, permiss�
 
 ## Guia para o engenheiro
 
-Tudo o que é preciso para publicar e ligar as integrações (Beds24, Stripe, Google Ads) está em
-[`docs/GUIA-TECNICO-LANCAMENTO-PT.pdf`](docs/GUIA-TECNICO-LANCAMENTO-PT.pdf) (versão francesa:
-[`docs/GUIDE-TECHNIQUE-LANCEMENT-FR.pdf`](docs/GUIDE-TECHNIQUE-LANCEMENT-FR.pdf)).
+Ordem de leitura:
+
+1. [`docs/GUIA-TECNICO-LANCAMENTO-PT.pdf`](docs/GUIA-TECNICO-LANCAMENTO-PT.pdf) (versão francesa:
+   [`docs/GUIDE-TECHNIQUE-LANCEMENT-FR.pdf`](docs/GUIDE-TECHNIQUE-LANCEMENT-FR.pdf)) — visão geral, o que está
+   feito, o que falta e checklist de lançamento.
+2. [`DEPLOY.md`](DEPLOY.md) — publicar o site, atualizar e cópias de segurança.
+3. [`docs/INTEGRACAO-BEDS24-STRIPE.md`](docs/INTEGRACAO-BEDS24-STRIPE.md) — ligar o Beds24 (disponibilidade,
+   preços, reservas) e o Stripe (pagamento).
+4. [`docs/GOOGLE-ADS-SEO.md`](docs/GOOGLE-ADS-SEO.md) — Google Analytics 4, Google Ads (consentimento e
+   conversão de reserva) e publicação no Google (Search Console, sitemap, endereços do site antigo).
+
+As credenciais (conta do painel, chaves) nunca estão no repositório: são entregues à parte.
 
 ## Publicar, atualizar e cópias de segurança
 

@@ -122,6 +122,7 @@
     'booking.summary.loading': { pt: 'A calcular o preço…', en: 'Calculating price…', fr: 'Calcul du prix…' },
     'booking.summary.onRequest': { pt: 'Preço confirmado pela nossa equipa por email.', en: 'Price confirmed by our team by email.', fr: 'Prix confirmé par notre équipe par email.' },
     'booking.summary.extrasNote': { pt: 'Transfer e kit de bebé são pagos à parte, no local.', en: 'Transfer and baby kit are paid separately, on site.', fr: 'Le transfert et le kit bébé sont payés à part, sur place.' },
+    'booking.summary.terms': { pt: 'Ao confirmar, aceita as', en: 'By confirming, you accept the', fr: 'En confirmant, vous acceptez les' },
     'booking.requestSent': { pt: 'Pedido de reserva enviado! A nossa equipa confirma a disponibilidade e o preço por email.', en: 'Booking request sent! Our team will confirm availability and price by email.', fr: 'Demande de réservation envoyée ! Notre équipe confirmera la disponibilité et le prix par email.' },
     'booking.unavailable': { pt: 'Estas datas já não estão disponíveis. Escolha outras datas.', en: 'These dates are no longer available. Please choose other dates.', fr: 'Ces dates ne sont plus disponibles. Veuillez choisir d\'autres dates.' },
     'booking.result.successTitle': { pt: 'Reserva confirmada', en: 'Booking confirmed', fr: 'Réservation confirmée' },
@@ -261,6 +262,7 @@
     'footer.contact': { pt: 'Contacto', en: 'Contact', fr: 'Contact' },
     'footer.copyright': { pt: "© 2026 TheMajord'Home. Todos os direitos reservados.", en: "© 2026 TheMajord'Home. All rights reserved.", fr: "© 2026 TheMajord'Home. Tous droits réservés." },
     'footer.legal': { pt: 'Aviso legal', en: 'Legal Notice', fr: 'Mentions légales' },
+    'footer.terms': { pt: 'Condições gerais', en: 'Terms and conditions', fr: 'Conditions générales' },
 
     'breadcrumb.collection': { pt: 'A coleção', en: 'The Collection', fr: 'La Collection' },
     'notFound.title': { pt: 'Apartamento não encontrado', en: 'Apartment not found', fr: 'Appartement introuvable' },
@@ -804,12 +806,12 @@
     "camilo-apartment": {
         "pt": {
             "subtitle": "Um apartamento encantador com varanda na Avenida Camilo",
-            "description": "Apartamento encantador com varanda na bela Avenida Camilo, a 5 minutos a pé da estação de metro do 24 de Agosto. Dois quartos com decoração cuidada — um em azul e dourado, o outro em cinza quente e turquesa — junto a uma sala de estar e jantar luminosa.",
+            "description": "Um apartamento encantador, espaçoso e muito luminoso, com varanda, na bela Avenida Camilo, num 2.º andar com elevador, a 5 minutos a pé da estação de metro do 24 de Agosto (35 minutos até ao aeroporto). Dois quartos com decoração cuidada — um em azul e dourado, o outro em cinza quente e turquesa — têm cada um cama de casal com almofadas de penas e roupeiro. A sala inclui zona de refeições, um sofá-cama confortável e televisão de ecrã plano, e a cozinha totalmente equipada tem máquina de lavar loiça, máquina de lavar roupa, forno, chaleira e máquina de café expresso. A varanda é ideal para descansar e almoçar, e há berço de viagem para bebés (serviço pago).",
             "neighborhood": "Bonfim, perto do Campo 24 de Agosto."
         },
         "fr": {
             "subtitle": "Un appartement charmant avec balcon sur l'Avenida Camilo",
-            "description": "Appartement charmant avec balcon sur la belle Avenida Camilo, à 5 minutes à pied de la station de métro 24 de Agosto. Deux chambres à la décoration soignée — l'une en bleu et or, l'autre en gris chaud et turquoise — de part et d'autre d'un salon-salle à manger lumineux.",
+            "description": "Un appartement charmant, spacieux et très lumineux, avec balcon, sur la belle Avenida Camilo, au 2e étage avec ascenseur, à 5 minutes à pied de la station de métro 24 de Agosto (35 minutes de l'aéroport). Deux chambres élégamment décorées — l'une en bleu et or, l'autre en gris chaud et turquoise — disposent chacune d'un lit double avec oreillers en plumes et d'une armoire. Le séjour comprend un coin repas, un canapé-lit confortable et une télévision à écran plat, et la cuisine entièrement équipée dispose d'un lave-vaisselle, d'un lave-linge, d'un four, d'une bouilloire et d'une machine à expresso. Le balcon est idéal pour se détendre et déjeuner, et un lit parapluie est disponible pour les bébés (service payant).",
             "neighborhood": "Bonfim, près du Campo 24 de Agosto."
         }
     },
