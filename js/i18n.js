@@ -145,7 +145,7 @@
     'maintenance.retry': { pt: 'Tentar de novo', en: 'Try again', fr: 'Réessayer' },
     'booking.result.back': { pt: 'Voltar ao alojamento', en: 'Back to the apartment', fr: 'Retour au logement' },
 
-    'search.title': { pt: 'Resultados da Busca', en: 'Search Results', fr: 'Résultats de la Recherche' },
+    'search.title': { pt: 'Resultados da pesquisa', en: 'Search results', fr: 'Résultats de la recherche' },
     'search.guests': { pt: 'hóspedes', en: 'guests', fr: 'voyageurs' },
 
     'review.title': { pt: 'Deixe a sua avaliação', en: 'Leave your review', fr: 'Laissez votre avis' },
@@ -263,6 +263,7 @@
     'footer.copyright': { pt: "© 2026 TheMajord'Home. Todos os direitos reservados.", en: "© 2026 TheMajord'Home. All rights reserved.", fr: "© 2026 TheMajord'Home. Tous droits réservés." },
     'footer.legal': { pt: 'Aviso legal', en: 'Legal Notice', fr: 'Mentions légales' },
     'footer.terms': { pt: 'Condições gerais', en: 'Terms and conditions', fr: 'Conditions générales' },
+    'footer.privacy': { pt: 'Política de privacidade', en: 'Privacy policy', fr: 'Politique de confidentialité' },
 
     'breadcrumb.collection': { pt: 'A coleção', en: 'The Collection', fr: 'La Collection' },
     'notFound.title': { pt: 'Apartamento não encontrado', en: 'Apartment not found', fr: 'Appartement introuvable' },
@@ -513,6 +514,10 @@
     "2 single sofa beds": {
         "pt": "2 sofás-cama de solteiro",
         "fr": "2 canapés-lits simples"
+    },
+    "Cookware": {
+        "pt": "Utensílios de cozinha",
+        "fr": "Ustensiles de cuisine"
     }
 };
 
@@ -652,6 +657,30 @@
     "Livraria Lello": {
         "pt": "Livraria Lello",
         "fr": "Livraria Lello"
+    },
+    "Porto City Hall": {
+        "pt": "Câmara Municipal do Porto",
+        "fr": "Hôtel de ville de Porto"
+    },
+    "Heroísmo metro": {
+        "pt": "Metro do Heroísmo",
+        "fr": "Métro Heroísmo"
+    },
+    "Campo 24 de Agosto": {
+        "pt": "Campo 24 de Agosto",
+        "fr": "Campo 24 de Agosto"
+    },
+    "Praça dos Poveiros": {
+        "pt": "Praça dos Poveiros",
+        "fr": "Praça dos Poveiros"
+    },
+    "Coliseu do Porto": {
+        "pt": "Coliseu do Porto",
+        "fr": "Coliseu do Porto"
+    },
+    "Rua Miguel Bombarda": {
+        "pt": "Rua Miguel Bombarda",
+        "fr": "Rua Miguel Bombarda"
     }
 };
 

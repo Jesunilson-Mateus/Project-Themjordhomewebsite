@@ -5,25 +5,29 @@ Site institucional da TheMajord'Home (gestão de alojamento local e concierge no
 ## Estrutura do projeto
 
 ```
-majordhome-project/
-├── index.html              → Homepage (hero, coleção, serviços, footer)
-├── property.html           → Template de página de apartamento (reutilizável)
-├── css/
-│   └── style.css           → Toda a folha de estilo do site (partilhada)
-├── data/
-│   ├── properties.json     → Fonte de verdade: dados de todos os apartamentos
-│   ├── faq.json            → Fonte de verdade: perguntas frequentes (faq.html), PT/EN/FR
-│   └── translations.json   → Fonte de verdade: textos PT/FR de cada apartamento (+ amenity-*.json, nearby-labels.json)
-├── scripts/
-│   └── sync-data.js        → Recria as cópias dos dados nos .js a partir dos JSON
+Project-Themjordhomewebsite/
+├── index.html, apartments.html, property.html     → Página inicial, coleção completa, página de cada apartamento
+├── proprietarios.html, servico-*.html              → Área de proprietários e as 4 páginas de serviços
+├── faq.html, condicoes-gerais.html, politica-privacidade.html, legal-notice.html
+├── search-results.html, reserva.html               → Resultados da pesquisa e regresso do pagamento
+├── 404.html, manutencao.html                       → Página não encontrada e modo manutenção
+├── review.php                                      → Formulário de avaliação (link enviado ao hóspede)
+├── sitemap.php, robots.txt, favicon.svg, .htaccess → Google, ícone e regras do servidor (Apache)
+├── css/style.css                                   → Folha de estilo de todo o site
 ├── js/
-│   ├── properties-data.js  → Cópia gerada de data/properties.json (não editar à mão)
-│   ├── i18n.js              → Textos da interface + cópia gerada das traduções
-│   ├── faq-data.js          → Cópia gerada de data/faq.json (não editar à mão)
-│   ├── main.js              → Interações da homepage (slideshow, menu, etc.)
-│   └── property.js          → Interações da página de apartamento (galeria, lightbox, etc.)
-└── img/
-    └── fabrica-no-jardim/  → Fotos reais do apartamento Fábrica no Jardim
+│   ├── properties-data.js, faq-data.js, reviews-data.js → Cópias geradas dos dados (não editar à mão)
+│   ├── i18n.js                  → Textos da interface (PT/EN/FR) + cópia gerada das traduções
+│   ├── main.js, property.js     → Página inicial / coleção e página de apartamento
+│   ├── booking-*.js, search-results.js → Calendário, reserva, pesquisa (falam com a API via booking-api.js)
+│   ├── cookie-consent.js        → Aviso de cookies
+│   └── analytics*.js            → Google Analytics 4 / Google Ads (IDs vazios até serem preenchidos)
+├── data/                        → Fonte de verdade: apartamentos, traduções, comodidades, FAQ,
+│                                  galerias dos serviços, avaliações, mapa Beds24
+├── admin/                       → Painel de administração (PHP)
+├── api/                         → API de reservas (PHP): Beds24 + Stripe
+├── scripts/sync-data.js         → Recria as cópias dos dados nos .js a partir dos JSON
+├── img/                         → Fotos (uma pasta por apartamento + servicos/)
+└── docs/                        → Guias para quem vai lançar o site
 ```
 
 ## Como adicionar um novo apartamento
@@ -120,7 +124,7 @@ no servidor em `data/backups/AAAA-MM-DD_HHMMSS/` (as últimas 60 gravações).
 
 ## Notas técnicas
 
-- **Sem build step.** É HTML/CSS/JS puro — basta abrir `index.html` num browser ou publicar os ficheiros tal como estão.
+- **Sem build step.** O site é HTML/CSS/JS puro; o painel, a API de reservas e o sitemap precisam de PHP. Para ver localmente: `php -S 127.0.0.1:8080 -t .` na raiz do projeto.
 - **Imagens do Airbnb**: os apartamentos Sweety Porto, Casa B e So Trendy Porto usam fotos alojadas no CDN do Airbnb (`a0.muscache.com`). Se deixarem de aparecer no futuro, o mais seguro é descarregar essas fotos e colocá-las na pasta `img/`, tal como já foi feito para o Fábrica no Jardim.
 - **Beds24 + Stripe**: disponibilidade, preços, reservas e pagamento estão preparados (pasta `api/` + `js/booking-api.js`), mas em modo `mock` até alguém ligar as contas. Guia completo em [`docs/INTEGRACAO-BEDS24-STRIPE.md`](docs/INTEGRACAO-BEDS24-STRIPE.md).
-- **Fonte**: Fraunces (serif editorial, Google Fonts) + Inter (texto) + IBM Plex Mono (detalhes/preços).
+- **Fontes**: Lora (títulos), Inter (texto) e IBM Plex Mono (detalhes), via Google Fonts.

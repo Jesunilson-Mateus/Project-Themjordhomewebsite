@@ -14,19 +14,22 @@
 
   var TEXT = {
     pt: {
-      message: 'Usamos cookies essenciais para o site funcionar e, apenas com a sua autorização, cookies para medir a audiência. Pode aceitar ou rejeitar os cookies não essenciais a qualquer momento.',
+      message: 'Usamos cookies essenciais para o site funcionar e, apenas com a sua autorização, cookies do Google para medir a audiência e a eficácia dos anúncios. Pode aceitar ou rejeitar os cookies não essenciais a qualquer momento.',
+      policy: 'Política de privacidade',
       accept: 'Aceitar',
       reject: 'Rejeitar',
       manage: 'Cookies'
     },
     en: {
-      message: 'We use essential cookies to run the site and, only with your consent, cookies to measure audience. You can accept or reject non-essential cookies at any time.',
+      message: 'We use essential cookies to run the site and, only with your consent, Google cookies to measure audience and advertising performance. You can accept or reject non-essential cookies at any time.',
+      policy: 'Privacy policy',
       accept: 'Accept',
       reject: 'Reject',
       manage: 'Cookies'
     },
     fr: {
-      message: 'Nous utilisons des cookies essentiels au fonctionnement du site et, uniquement avec votre accord, des cookies de mesure d’audience. Vous pouvez accepter ou refuser les cookies non essentiels à tout moment.',
+      message: 'Nous utilisons des cookies essentiels au fonctionnement du site et, uniquement avec votre accord, des cookies Google pour mesurer l’audience et l’efficacité des annonces. Vous pouvez accepter ou refuser les cookies non essentiels à tout moment.',
+      policy: 'Politique de confidentialité',
       accept: 'Accepter',
       reject: 'Refuser',
       manage: 'Cookies'
@@ -66,7 +69,7 @@
     wrap.setAttribute('role', 'region');
     wrap.setAttribute('aria-label', 'Cookies');
     wrap.innerHTML =
-      '<p class="cookie-consent-text"></p>' +
+      '<p class="cookie-consent-text"><span></span> <a class="cookie-consent-link" href="politica-privacidade.html"></a></p>' +
       '<div class="cookie-consent-actions">' +
         '<button type="button" class="btn-cookie btn-cookie-reject"></button>' +
         '<button type="button" class="btn-cookie btn-cookie-accept"></button>' +
@@ -98,7 +101,8 @@
   function applyStrings() {
     var strings = TEXT[currentLang()];
     if (bannerEl) {
-      bannerEl.querySelector('.cookie-consent-text').textContent = strings.message;
+      bannerEl.querySelector('.cookie-consent-text span').textContent = strings.message;
+      bannerEl.querySelector('.cookie-consent-link').textContent = strings.policy;
       bannerEl.querySelector('.btn-cookie-reject').textContent = strings.reject;
       bannerEl.querySelector('.btn-cookie-accept').textContent = strings.accept;
     }

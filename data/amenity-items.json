@@ -178,5 +178,9 @@
   "2 single sofa beds": {
     "pt": "2 sofás-cama de solteiro",
     "fr": "2 canapés-lits simples"
+  },
+  "Cookware": {
+    "pt": "Utensílios de cozinha",
+    "fr": "Ustensiles de cuisine"
   }
 }

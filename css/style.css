@@ -394,6 +394,7 @@ a.service-card{text-decoration:none; color:inherit;}
 /* footer legal link */
 .footer-bottom a{opacity:.75; transition:opacity .2s ease;}
 .footer-links{display:flex; gap:18px; flex-wrap:wrap;}
+.cookie-consent-link{color:inherit; text-decoration:underline; text-underline-offset:2px; white-space:nowrap;}
 .footer-bottom a:hover{opacity:1; text-decoration:underline;}
 
 /* ---------- Page loader — the logo draws itself while the page loads ---------- */

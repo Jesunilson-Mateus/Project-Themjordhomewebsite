@@ -25,6 +25,7 @@ $pages = [
     'servico-manutencao.html' => '0.7',
     'faq.html' => '0.6',
     'condicoes-gerais.html' => '0.3',
+    'politica-privacidade.html' => '0.3',
     'legal-notice.html' => '0.2',
 ];
 

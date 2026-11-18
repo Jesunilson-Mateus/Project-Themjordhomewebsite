@@ -89,9 +89,9 @@ pagamento (`request`) não contam como conversão.
 
 ## 4. Antes de lançar campanhas
 
-- **Política de privacidade e cookies**: ainda não existe no site. É obrigatória
-  com o Google Analytics/Ads ativos — deve descrever o GA4, o Google Ads, o
-  Stripe e os cookies usados, e ficar ligada no rodapé e no aviso de cookies.
+- **Política de privacidade e cookies**: `politica-privacidade.html` (PT/EN/FR), ligada
+  no rodapé e no aviso de cookies. Descreve o GA4, o Google Ads, o Stripe e os cookies;
+  se forem acrescentadas outras ferramentas, atualizá-la.
 - Confirmar que as páginas de aterragem dos anúncios (ex.: um apartamento ou
   a coleção) carregam bem no telemóvel.
 - As campanhas, orçamentos e palavras-chave são decididos com a TheMajord'Home.

@@ -42,7 +42,7 @@ ErrorDocument 503 /manutencao.html
     RewriteRule ^(lang-[a-z]{2}/)?redirect\.php$ / [R=301,L,NC,QSD]
     RewriteRule ^(lang-[a-z]{2}/)?(apartamentos|apartments|appartements)\.php$ /apartments.html [R=301,L,NC,QSD]
     RewriteRule ^(lang-[a-z]{2}/)?mentions-legales\.php$ /legal-notice.html [R=301,L,NC,QSD]
-    RewriteRule ^(lang-[a-z]{2}/)?politique-confidentialite\.php$ /legal-notice.html [R=301,L,NC,QSD]
+    RewriteRule ^(lang-[a-z]{2}/)?politique-confidentialite\.php$ /politica-privacidade.html [R=301,L,NC,QSD]
     RewriteRule ^(lang-[a-z]{2}/)?realestate\.php$ https://www.tmh-realestate.com/ [R=301,L,NC,QSD]
 
     RewriteCond %{DOCUMENT_ROOT}/data/maintenance.flag -f
