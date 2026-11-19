@@ -16,10 +16,11 @@ API de reservas: [`docs/INTEGRACAO-BEDS24-STRIPE.md`](docs/INTEGRACAO-BEDS24-STR
 ## Publicar pela primeira vez
 
 1. Apontar o domínio para o alojamento e ativar HTTPS.
-2. Copiar o conteúdo do repositório para a raiz do site.
-3. Criar no servidor, fora do git:
-   - `api/config.php` (a partir de `api/config.example.php`);
-   - a conta do painel (instruções em `admin/LEIA-ME.txt`, entregue à parte).
+2. Enviar o conteúdo da pasta do projeto para a raiz do site (SFTP ou gestor de ficheiros do
+   alojamento). As pastas `docs/` e `scripts/` não são precisas no servidor.
+3. Criar no servidor `api/config.php` (a partir de `api/config.example.php`). A conta do painel
+   (utilizador `equipa`) já vem em `admin/users.json`; a password é entregue à parte e deve ser
+   trocada no primeiro acesso.
 4. Dar ao PHP permissão de escrita em `data/`, `img/`, `admin/users.json`, `js/properties-data.js`,
    `js/i18n.js`, `js/reviews-data.js`, `js/faq-data.js` e nas 4 páginas `servico-*.html`.
 5. Ligar Beds24 e Stripe em modo de teste, testar uma reserva completa e só depois passar a `live`
@@ -27,7 +28,15 @@ API de reservas: [`docs/INTEGRACAO-BEDS24-STRIPE.md`](docs/INTEGRACAO-BEDS24-STR
 6. Com o HTTPS a funcionar, ativar no `.htaccess` a regra "Endereço canónico" (HTTPS + www).
 7. Google Analytics, Google Ads e Search Console: [`docs/GOOGLE-ADS-SEO.md`](docs/GOOGLE-ADS-SEO.md).
 
-## Páginas de erro e manutenção
+## Página 404 e modo manutenção
+
+- **Página 404** (`404.html`, PT/EN/FR): aparece para qualquer endereço que não existe, com
+  ligações para a página inicial e a coleção. Responde com o código 404 e `X-Robots-Tag: noindex`.
+- **Modo manutenção**: liga-se e desliga-se no painel (`/admin/` → Manutenção), que cria/apaga
+  `data/maintenance.flag`. Enquanto está ligado, todo o site público mostra `manutencao.html`
+  (PT/EN/FR) com o código 503 e `Retry-After: 1800` (temporário para o Google). Continuam a
+  funcionar o painel, o webhook do Stripe e os ficheiros `css/`, `js/`, `img/`. Quem o ligou recebe
+  o cookie `tmh_preview=1` e continua a ver o site normal, para testar.
 
 O `.htaccess` da raiz:
 
@@ -36,19 +45,19 @@ O `.htaccess` da raiz:
   (`/lang-pt/…`, `apartamentos.php`, `mentions-legales.php`, …) para as páginas novas;
 - quando o **modo manutenção** está ligado no painel (`/admin/` → Manutenção), responde a todo o site
   público com `manutencao.html` (código 503). O painel e o webhook do Stripe continuam a funcionar;
-- bloqueia `.git/`, outros ficheiros escondidos e `_arquivo/`.
+- bloqueia ficheiros e pastas escondidos (exceto `.well-known`, usado pelos certificados HTTPS).
 
 ## Atualizar o site
 
 > **Importante:** depois de o site estar no ar, **os dados verdadeiros são os do servidor** — a
 > equipa edita-os no painel. Numa atualização, estes ficheiros **não podem ser substituídos** pelas
-> versões do repositório, ou perdem-se as alterações feitas no painel:
+> versões da pasta do projeto, ou perdem-se as alterações feitas no painel:
 >
 > `data/` · `img/` · `admin/users.json` · `api/config.php` · `js/properties-data.js` · `js/i18n.js` ·
 > `js/reviews-data.js` · `js/faq-data.js` · `servico-*.html`
 >
-> Se uma atualização precisar de mexer num deles (p. ex. textos da interface em `js/i18n.js`), trazer
-> primeiro a versão do servidor para o repositório, fazer a alteração sobre ela e só depois publicar.
+> Se uma atualização precisar de mexer num deles (p. ex. textos da interface em `js/i18n.js`),
+> descarregar primeiro a versão do servidor, fazer a alteração sobre ela e só depois publicar.
 
 1. No painel, **ligar o modo manutenção**.
 2. **Fazer uma cópia** do servidor (descarregar por SFTP ou pelo painel do alojamento): `data/`
@@ -62,11 +71,10 @@ O `.htaccess` da raiz:
 | O quê | Onde | O que contém | Como recuperar |
 |---|---|---|---|
 | **Cópias automáticas do painel** | No servidor, `data/backups/AAAA-MM-DD_HHMMSS/` — uma pasta por gravação no painel, as **últimas 60** | Todos os `data/*.json` (apartamentos, traduções, comodidades, galerias dos serviços, perguntas frequentes, avaliações, mapa Beds24) e `users.json` (contas do painel), tal como estavam **antes** dessa gravação | Copiar os ficheiros da pasta escolhida para `data/` (e `users.json` para `admin/`); depois correr `node scripts/sync-data.js` para regenerar os `.js` e as galerias. Sem Node no servidor: correr o script numa cópia local e enviar os ficheiros gerados |
-| **Código** | GitHub — histórico do git | Todas as versões que foram para o repositório | `git log` para encontrar a versão; `git checkout <commit> -- <ficheiro>` |
+| **Código** | Pasta do projeto entregue (Google Drive) e a cópia publicada no alojamento | Páginas, estilos, scripts, painel e API | Voltar a enviar o ficheiro a partir da pasta do projeto (exceto os ficheiros de dados da lista acima) |
 | **Fotos** | No servidor, `img/` | As fotos. **Não há cópia automática.** Apagar uma foto no painel só a retira do site — o ficheiro fica em `img/` | Voltar a escolher a foto no painel; se o ficheiro se perdeu, usar a cópia do passo 2 ou a do alojamento |
 | **Reservas** | O **Beds24** (fonte de verdade); `data/reservations/` no servidor guarda o estado de cada pagamento | Reservas, estados e ligação ao Stripe | Consultar no Beds24 e no Stripe |
-| **Configuração e contas** | `api/config.php` e `admin/users.json`, no servidor (nunca no git) | Chaves do Beds24/Stripe; contas do painel (também em cada cópia automática) | Guardar uma cópia fora do servidor, em local seguro |
+| **Configuração e contas** | `api/config.php` e `admin/users.json`, no servidor (nunca partilhados nem publicados noutro lado) | Chaves do Beds24/Stripe; contas do painel (também em cada cópia automática) | Guardar uma cópia fora do servidor, em local seguro |
 | **Cópias do alojamento** | Painel do alojamento (p. ex. cPanel → Backups) | Depende do alojamento | Recomendado: cópias diárias de todo o site |
-| **Arquivo local** | `_arquivo/`, só no computador de desenvolvimento | Ficheiros sem uso no site — ver `_arquivo/LEIA-ME.md` | — |
 
 Pré-visualização local: `php -S 127.0.0.1:8080 -t .` na raiz do projeto.
